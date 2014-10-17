@@ -37,18 +37,26 @@
 <div class="navbar navbar-default navbar-fixed-top" role="navigation">
   <div class="container">
   	{{HTML::image('img/top.jpg','',['height'=>'150px'])}}
-  	<table>
+  	<table class='landing-tbl' border='1'>
   		<tr>
-  			<td rowspan='2'>{{HTML::image('img/logo.gif', '')}}</td>
-  		</tr>
-  		<tr>
-  			<td>
-  				{{HTML::link('http://www.wwf.org.hk/', HTML::image('img/partner_wwf.jpg')) }}
-  				{{HTML::image('img/partner_nat-geo.jpg')}}
-  				{{HTML::image('img/partner_national-geographic.jpg')}}
-  				{{HTML::image('img/partner_wild-aid.jpg')}}
+  			<td rowspan='2' style='text-align:left; width:300px'>{{HTML::image('img/logo_big.png', '')}}</td>
+  			<td style='text-align:right'>
+  				<a href="http://www.wwf.org.hk/" target='_blank'>{{HTML::image('img/partner_wwf.gif', '', ['class'=>'partner']), ''}}</a>
+  				{{HTML::image('img/partner_earth-hour.gif', '', ['class'=>'partner'])}}
+  				{{HTML::image('img/partner_wild-aid.gif', '', ['class'=>'partner'])}}
+  				{{HTML::image('img/partner_national-geographic.gif', '', ['class'=>'partner'])}}
+  				{{HTML::image('img/partner_nat-geo.gif', '', ['class'=>'partner'])}}
   			</td>
-  			<td></td>
+  		</tr>
+  		<tr>  			
+  			<td style='text-align:right'>
+  				<select name='country' id='country' class='form-control'>
+						<option>Country</option>
+						<option value='SG'>Singapore</option>
+						<option value='HK'>Hong Kong</option>
+						<option value='MY'>Malaysia</option>
+					</select>
+  			</td>
   		</tr>
   	</table>
   </div>
@@ -71,7 +79,7 @@
 		Privacy Policy | Terms & Conditions
 		</div>
 		<div style='float:right'>
-		{{HTML::image('img/social_media.jpg', $alt='Shark Savers social media')}}
+		{{HTML::image('img/social_media.png', $alt='Shark Savers social media')}}
 	</div>
 </div>
 

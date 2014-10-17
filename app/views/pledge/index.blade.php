@@ -2,7 +2,7 @@
 
 <h1>Pledge</h1>
 
-{{HTML::link('pledge/create', 'Create Plege')}}
+{{HTML::link('admin/pledge/create', 'Create Plege')}}
 <br><br>
 
 @if ($pledges->isEmpty())
@@ -14,7 +14,7 @@
 			<tr>
 				<th>First Name</th>
 				<th>Last Name</th>
-				<th>Email</th>
+				<th>email</th>
 				<th>NRIC</th>
 				<th>Country</th>
 			</tr>

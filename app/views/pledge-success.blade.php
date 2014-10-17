@@ -18,11 +18,12 @@ function shareFacebook()	{
 }	
 </script>
 
-I'm FINished with FINS<br>
-你好<br>
-<br>
-Do you want to make a difference?<br>
-<br>
+{{HTML::image('img/im-finished.jpg')}}
+<br><br>
+
+Do you want to make a difference?
+<br><br>
+
 A pledge is a highly personal statement that lets others know what you
 believe in, showing how you back up our convictions and beliefs. It is
 something you will stand up for, and resist social and peer pressures. It is
@@ -35,19 +36,35 @@ Singaporeans to also do the same. Together we can make a difference in
 Singapore, and in the world.
 <br><br>
 
-Success!<br>
-Thank you for your pledge!<br>
+<div class='pledge-success1'>
+  Success!<br>
+  Thank you for your pledge!
+</div>
 <br>
-Visit our Facebook for more campaign updates :)
+
+<div class='pledge-success2'>
+  Visit our Facebook for more campaign updates :)
+</div>
 <br><br>
 
-{{$count}}<br>
-OF 100,000 PLEDGES NEEDED
+<?php
+//$count = str_split(Pledge::all()->count());
+$count = str_split(50000);
+?>
+@foreach($count as $k => $c)
+<span class='counter-bg'>{{$c}}</span>
+@endforeach
+<br>
+
+{{HTML::image('img/pledge-needed.png')}}
 <br><br>
+
+{{HTML::image('img/share-facebook.jpg', '', ['onclick'=>'shareFacebook()'])}}
+
+<a href="https://twitter.com/intent/tweet?text=I'm FINished with FINS. Join the pledge now! http://www.finishedwithfins.org/sg/pledge">
+  {{HTML::image('img/share-twitter.jpg')}}
+</a>
+
 <script type="text/javascript" src="http://platform.twitter.com/widgets.js"></script>
-<a href="https://twitter.com/intent/tweet?text=I'm FINished with FINS. Join the pledge now! http://www.finishedwithfins.org/sg/pledge">Yoast</a>
-<input type='button' value='Share' class='btn btn-primary' onclick='shareFacebook()'/>
-<input type='button' value='Tweet' class='btn btn-primary'/>
-
 
 @stop

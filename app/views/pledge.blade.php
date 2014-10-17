@@ -1,14 +1,22 @@
 @section('content')
 
+<script src="{{asset('js/jquery.validate.min.js') }}"></script>
+
 <script type="text/javascript">
+function submitForm() {
+	$('#val').submit();
+}
+
   $( document ).ready(function() {
-		/*$("#val").validate({
+  	$("#val").validate({
 		  rules: {
 		    first_name: { required: true },
 		    last_name: { required: true },
 		    nric: { required: true },
 		    email: { required: true },
 		    country: { required: true },
+		    finished: { required: true },
+		    support: { required: true },
 		  },
 		  messages: {
 		    first_name: { required: "Please enter first name"},
@@ -16,15 +24,17 @@
 		    nric: { required: "Please enter NRIC"},
 		    email: { required: "Please enter valid email"},
 		    country: { required: "Please select country"},
+		    finished: { required: "Please check the checkbox"},
+		    support: { required: "Please check the checkbox"},
 		  }
-		});*/
+		});
 
 	});
 </script>
 
-I'm FINished with FINS<br>
-你好<br>
-<br>
+{{HTML::image('img/im-finished.jpg')}}
+<br><br>
+
 Do you want to make a difference?<br>
 <br>
 A pledge is a highly personal statement that lets others know what you
@@ -45,22 +55,33 @@ Singapore, and in the world.
   </div>
 @endif
 
-<div style='color:red'>All fields are mandatory</div>
-<br>
-
 {{ Form::open(['id'=>'val', 'url'=> 'pledge', 'role'=>'form']) }}
-	
-<input type='text' name='first_name' id='first_name' placeholder='First Name' class='form-control'>
-<br> 
 
-<input type='text' name='last_name' id='last_name' placeholder='Last Name' class='form-control'> 
-<br>	
-
-<input type='text' name='nric' id='nric' placeholder='NRIC' class='form-control'> 
-<br>	
-
-<input type='text' name='email' id='email' placeholder='Email' class='form-control'> 
-<br>	
+<table>
+	<tr>
+		<td width='440px'>
+			<input type='text' name='first_name' id='first_name' placeholder='First Name' class='form-control pledge-text'>
+			<br><label for='first_name' generated='true' class='error'></label>
+		</td>
+		<td width='20px'>&nbsp;</td>
+		<td width='440px'>
+			<input type='text' name='last_name' id='last_name' placeholder='Last Name' class='form-control pledge-text'>
+			<br><label for='last_name' generated='true' class='error'></label>			
+		</td>
+	</tr>
+	<tr>
+		<td>
+			<input type='text' name='nric' id='nric' placeholder='NRIC' class='form-control pledge-text'>
+			<br><label for='nric' generated='true' class='error'></label>
+		</td>
+		<td width='20px'>&nbsp;</td>		
+		<td>
+			<input type='text' name='email' id='email' placeholder='Email' class='form-control pledge-text'>
+			<br><label for='email' generated='true' class='error'></label>			
+		</td>
+	</tr>
+</table>
+<br>
 
 <select name='country' id='country' class='form-control'>
 	<option>Country</option>
@@ -68,18 +89,18 @@ Singapore, and in the world.
 	<option value='HK'>Hong Kong</option>
 	<option value='MY'>Malaysia</option>
 </select>
-<br>	
+<br><label for='country' generated='true' class='error'></label>	
 <br>
 
-<input type='checkbox'> "I'm FINished with FINs and I will never eat or serve
+<input type='checkbox' id='finished' name='finished'> "I'm FINished with FINs and I will never eat or serve
 shark fin soup again"
-<br><br>
+<br><label for='finished' generated='true' class='error'></label><br>
 
-<input type='checkbox'> "I support ending the shark fin trade in my country and
+<input type='checkbox' id='support' name='support'> "I support ending the shark fin trade in my country and
 ask my government to enact a ban on the shark fin trade"
-<br><br>
+<br><label for='support' generated='true' class='error'></label><br>
 
-<input type='submit' value='Pledge Now' class='btn btn-primary'>
+{{HTML::image('img/pledge-now.jpg', '', ['onclick'=>'submitForm()'])}}
 
 {{ Form::close() }}
 

@@ -1,40 +1,84 @@
-@section('content')
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+		<title>Learning Laravel Website </title>
+		
+		<script src="{{asset('js/jquery-2.1.1.min.js') }}"></script>
+		<script src="{{asset('js/jquery-ui.min.js') }}"></script>
+		<link rel="stylesheet" href="{{ asset('css/jquery-ui.min.css') }}">
+		
+		<script src="{{asset('js/jquery.validate.min.js') }}"></script>
 
-<script src="{{asset('js/jquery.bxslider.min.js') }}"></script>
-<link rel="stylesheet" href="{{ asset('css/jquery.bxslider.css') }}">
+		<link rel="stylesheet" href="{{ asset('css/bootstrap.min.css') }}">
+		<script src="{{asset('js/bootstrap.min.js') }}"></script>
+		
+		<link rel="stylesheet" href="{{ asset('css/landing.css') }}">
 
-<script type="text/javascript">
-	$(document).ready( function() {
-		$('.bxslider').bxSlider({
-		  mode: 'fade',
-		  captions: true
-		});
-	});
-</script>
+		<script src="{{asset('js/jquery.bxslider.min.js') }}"></script>
+		<link rel="stylesheet" href="{{ asset('css/jquery.bxslider.css') }}">
 
-<!-- 
-{{HTML::image('img/partner.jpg', $alt='shark savers partners', ['onclick'=>'toggle_div()'])}}
- -->
 
-<ul class="bxslider">
-  <li><img src="http://localhost/sharksavers/public/img/tree_root.jpg" title="Funky roots" /></li>
-  <li><img src="http://localhost/sharksavers/public/img/hill_road.jpg" title="The long and winding road" /></li>
-  <li><img src="http://localhost/sharksavers/public/img/trees.jpg" title="Happy trees" /></li>
-</ul>
+		<script type='text/javascript'>
+			$(document).ready( function() {
+				$('#country').change(function() {
+					var country = $(this).val();
+					//http://stackoverflow.com/questions/200337/whats-the-best-way-to-automatically-redirect-someone-to-another-webpage
+					window.location.href = "{{URL::to('sg')}}";					
+				});
 
-<div class='col-xs-9'>
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur faucibus
-tincidunt dolor a molestie. Maecenas cursus rutrum magna, nec cursus nisl
-gravida non. Vivamus cursus erat nunc.
+				//$('.bxslider').bxSlider({
+				//  mode: 'fade',
+				//  captions: true
+				//});
+			});
+		</script>
+
+	</head>
+<body>
+
+<div class="container">	
+
+<table class='landing-tbl'>
+	<tr>
+		<td rowspan='2' style='text-align:left; width:300px'>{{HTML::image('img/logo_big.png', '')}}</td>
+		<td style='text-align:right'>
+			<a href="http://www.wwf.org.hk/" target='_blank'>{{HTML::image('img/partner_wwf.gif', '', ['class'=>'partner']), ''}}</a>
+			{{HTML::image('img/partner_earth-hour.gif', '', ['class'=>'partner'])}}
+			{{HTML::image('img/partner_wild-aid.gif', '', ['class'=>'partner'])}}
+			{{HTML::image('img/partner_national-geographic.gif', '', ['class'=>'partner'])}}
+			{{HTML::image('img/partner_nat-geo.gif', '', ['class'=>'partner'])}}
+		</td>
+	</tr>
+	<tr>  			
+		<td style='text-align:right'>
+			<select name='country' id='country' class='form-control'>
+				<option>Country</option>
+				<option value='SG'>Singapore</option>
+				<option value='HK'>Hong Kong</option>
+				<option value='MY'>Malaysia</option>
+			</select>
+		</td>
+	</tr>
+</table>
+
+
+{{HTML::image('img/landing.png')}}
+
 </div>
 
-<div class='col-xs-3'>
-<select name='country' id='country' class='form-control'>
-<option>Country</option>
-<option value='SG'>Singapore</option>
-<option value='HK'>Hong Kong</option>
-<option value='MY'>Malaysia</option>
-</select>
+<div class='footer'>
+	<div class='container'>
+		<div style='float:left'>
+		Shark savers, inc. is a 501(C) (3) Non-Profit Organization.<br>
+		Copyright © 2013 Shark Savers Inc. All Rights Reserved.<br>
+		Privacy Policy | Terms & Conditions
+		</div>
+		<div style='float:right'>
+		{{HTML::image('img/social_media.png', $alt='Shark Savers social media')}}
+	</div>
 </div>
 
-@stop
+</body>
+</html>

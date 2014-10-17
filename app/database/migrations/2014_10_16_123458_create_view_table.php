@@ -13,12 +13,12 @@ class CreateViewTable extends Migration {
 	public function up()
 	{
 		Schema::create('view', function($table)
-        {
-        	//http://laravel.com/docs/4.2/security
-            $table->increments('id');
-            $table->string('site', 50);
-            $table->string('ip', 20);
-        });
+    {
+    	//http://laravel.com/docs/4.2/security
+        $table->increments('id');
+        $table->string('site', 50);
+        $table->string('ip', 20);
+    });
 	}
 
 	/**

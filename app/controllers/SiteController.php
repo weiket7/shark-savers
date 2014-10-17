@@ -18,7 +18,25 @@ class SiteController extends BaseController {
 	public function index()
 	{
 		$data = [];
-		$this->layout->content = View::make('index', $data);
+		return View::make('index', $data);
+	}
+
+	public function sg() {
+		$this->layout = View::make('template');
+		$data = [];
+		$this->layout->content = View::make('index2', $data);
+	}
+
+	public function hk() {
+		$this->layout = View::make('template');
+		$data = [];
+		$this->layout->content = View::make('index2', $data);
+	}
+
+	public function my() {
+		$this->layout = View::make('template');
+		$data = [];		
+		$this->layout->content = View::make('index2', $data);
 	}
 
 	public function index2()
@@ -29,6 +47,7 @@ class SiteController extends BaseController {
 
 	public function pledge()
 	{
+		$this->layout = View::make('template');
 		$data = [];
 		$this->layout->content = View::make('pledge', $data);
 	}
@@ -53,13 +72,9 @@ class SiteController extends BaseController {
 	}
 
 	public function pledgeSuccess() {
+		$this->layout = View::make('template');		
 		$data = ['count'=>Pledge::count()];
 		$this->layout->content = View::make('pledge-success', $data);
-	}
-
-	public function admin() {
-		$data = ['pledges'=>Pledge::all()];
-		$this->layout->content = View::make('admin', $data);
 	}
 
 }
