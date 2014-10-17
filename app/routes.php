@@ -11,10 +11,15 @@
 |
 */
 
-Route::get('/', function()
-{
-	$t = Test::find(1);
-	echo $t->value;
-	var_dump($t);
-	//return View::make('hello');
+Route::get('/', 'SiteController@index');
+Route::get('hello', 'SiteController@index2');
+Route::get('pledge', 'SiteController@pledge');
+Route::get('pledge-success', 'SiteController@pledgeSuccess');
+Route::post('pledge', 'SiteController@pledgePost');
+Route::get('admin', 'SiteController@admin');
+Route::get('email', function() {
+	Mail::send('pledge-email', array('key' => 'value'), function($message)
+	{
+	    $message->to('foo@example.com', 'John Smith')->subject('Welcome!');
+	});
 });
