@@ -17,10 +17,29 @@
 			{{ Form::hidden('id', $pledge->id) }}
 		@endif
 
-		<div>
-		  {{ Form::label('first_name', 'First Name', ['class'=>'col-sm-2 control-label']) }}
-		  {{ Form::text('first_name', $pledge->first_name) }}
-		</div>
+
+		<table>	
+			<tr>
+				<td width='100px'>{{ Form::label('first_name', 'First Name') }}</td>
+				<td>{{ Form::text('first_name', $pledge->first_name) }}</td>
+			</tr>
+			<tr>
+				<td width='100px'>{{ Form::label('first_name', 'First Name') }}</td>
+				<td>{{ Form::text('first_name', $pledge->first_name) }}</td>
+			</tr>
+			<tr>
+				<td width='100px'>{{ Form::label('first_name', 'First Name') }}</td>
+				<td>{{ Form::text('first_name', $pledge->first_name) }}</td>
+			</tr>
+			<tr>
+				<td width='100px'>{{ Form::label('first_name', 'First Name') }}</td>
+				<td>{{ Form::text('first_name', $pledge->first_name) }}</td>
+			</tr>
+			<tr>
+				<td width='100px'>{{ Form::label('first_name', 'First Name') }}</td>
+				<td>{{ Form::text('first_name', $pledge->first_name) }}</td>
+			</tr>
+		</table>
 
 		<div>
 			<span class='col-sm-2'></span>

@@ -39,6 +39,29 @@ class SiteController extends BaseController {
 		$this->layout->content = View::make('index2', $data);
 	}
 
+	public function ambassadors() {
+		$this->layout = View::make('template');
+		//$data = ['grid'=>Grid::whereRaw("type='A'")->get()];		
+		$data = [];
+		$this->layout->content = View::make('index2', $data);
+	}
+
+	public function videos() {
+		$this->layout = View::make('template');
+		//$data = ['grid'=>Grid::whereRaw("type='V'")->get()];		
+		$data = [];
+		$this->layout->content = View::make('index2', $data);
+	}
+
+	public function supporters() {
+		$this->layout = View::make('template');
+		//$data = ['grid'=>Grid::whereRaw("type='S'")->get()];		
+		$data = [];
+		$this->layout->content = View::make('index2', $data);
+	}
+
+
+
 	public function index2()
 	{
 		$data = [];

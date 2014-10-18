@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateGridTable extends Migration {
+class CreateAmbassadorTable extends Migration {
 
 	/**
 	 * Run the migrations.
@@ -12,13 +12,15 @@ class CreateGridTable extends Migration {
 	 */
 	public function up()
 	{
-		Schema::create('grid', function($table)
+		Schema::create('ambassador', function($table)
     {
     	//http://laravel.com/docs/4.2/security
         $table->increments('id');
+        $table->string('name1', 50);
+        $table->string('name2', 50);
+        $table->string('sub1', 50);
         $table->string('image', 50);
-        $table->string('caption', 50);
-        $table->char('type', 1);
+        $table->string('sub2', 50);
         $table->timestamps();
     });
 	}
@@ -30,7 +32,7 @@ class CreateGridTable extends Migration {
 	 */
 	public function down()
 	{
-		Schema::dropIfExists('grid');
+		Schema::dropIfExists('ambassador');
 	}
 
 }

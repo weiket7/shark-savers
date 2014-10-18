@@ -38,45 +38,54 @@
 	</head>
 <body>
 
-<div class="container">	
+<div class='shark-bg'>
 
-<table class='landing-tbl'>
-	<tr>
-		<td rowspan='2' style='text-align:left; width:300px'>{{HTML::image('img/logo_big.png', '')}}</td>
-		<td style='text-align:right'>
-			<a href="http://www.wwf.org.hk/" target='_blank'>{{HTML::image('img/partner_wwf.gif', '', ['class'=>'partner']), ''}}</a>
-			{{HTML::image('img/partner_earth-hour.gif', '', ['class'=>'partner'])}}
-			{{HTML::image('img/partner_wild-aid.gif', '', ['class'=>'partner'])}}
-			{{HTML::image('img/partner_national-geographic.gif', '', ['class'=>'partner'])}}
-			{{HTML::image('img/partner_nat-geo.gif', '', ['class'=>'partner'])}}
-		</td>
-	</tr>
-	<tr>  			
-		<td style='text-align:right'>
-			<select name='country' id='country' class='form-control'>
-				<option>Country</option>
-				<option value='SG'>Singapore</option>
-				<option value='HK'>Hong Kong</option>
-				<option value='MY'>Malaysia</option>
-			</select>
-		</td>
-	</tr>
-</table>
+	<div class="container">	
 
+	<table class='landing-tbl'>
+		<tr>
+			<td rowspan='2' style='text-align:left; width:300px'>{{HTML::image('img/logo.png', '')}}</td>
+			<td style='text-align:right'>
+				<a href="http://www.wwf.org.hk/" target='_blank'>{{HTML::image('img/partner_wwf.gif', '', ['class'=>'partner']), ''}}</a>
+				<a href="http://www.earthhour.org/" target='_blank'>{{HTML::image('img/partner_earth-hour.gif', '', ['class'=>'partner'])}}</a>
+				<a href="http://wildaid.org/" target='_blank'>{{HTML::image('img/partner_wild-aid.gif', '', ['class'=>'partner'])}}</a>
+				<a href="http://natgeotv.com/asia" target='_blank'>{{HTML::image('img/partner_national-geographic.gif', '', ['class'=>'partner'])}}</a>
+				<a href="http://natgeotv.com/asia" target='_blank'>{{HTML::image('img/partner_nat-geo.gif', '', ['class'=>'partner'])}}</a>
+			</td>
+		</tr>
+		<tr>  			
+			<td style='text-align:right'>
+				<select name='country' id='country' class='form-control'>
+					<option>WHERE ARE YOU FROM?</option>
+					<option value='SG'>Singapore</option>
+					<option value='HK'>Hong Kong</option>
+					<option value='MY'>Malaysia</option>
+				</select>
+			</td>
+		</tr>
+	</table>
 
-{{HTML::image('img/landing.png')}}
+	<div class='row'>
+		<div class='col-md-12'>
+			{{HTML::image('img/landing.png')}}
+		</div>
+	</div>
 
-</div>
+	</div>
+
+	</div>
 
 <div class='footer'>
 	<div class='container'>
-		<div style='float:left'>
+		<div style='float:left; text-align:left'>
 		Shark savers, inc. is a 501(C) (3) Non-Profit Organization.<br>
 		Copyright © 2013 Shark Savers Inc. All Rights Reserved.<br>
 		Privacy Policy | Terms & Conditions
 		</div>
 		<div style='float:right'>
-		{{HTML::image('img/social_media.png', $alt='Shark Savers social media')}}
+		{{HTML::image('img/facebook.png')}}
+		{{HTML::image('img/twitter.png')}}
+		{{HTML::image('img/youtube.png')}}
 	</div>
 </div>
 

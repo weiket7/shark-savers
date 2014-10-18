@@ -17,9 +17,8 @@
 		<script type="text/javascript" language="javascript" src="//cdn.datatables.net/plug-ins/a5734b29083/integration/bootstrap/3/dataTables.bootstrap.js"></script>
 
 		<script type='text/javascript'>
-			$(document).ready( function() {			 
-				$("form").find('div').addClass('form-group');
-		    $("select, input:text, textarea").addClass('form-control');
+			$(document).ready( function() {		
+				$("select, input:text, textarea").addClass('form-control');
 		    $("input:submit, input:button, button").addClass('btn btn-default');
 
 		    $('.dataTable').dataTable();
@@ -39,7 +38,9 @@
 <ul class="pagination">
   <li>{{HTML::link('/', 'finishedwithfinsorg')}}</li>
   <li>{{HTML::link('admin/grid', 'Grid')}}</li>
-  <li>{{HTML::link('admin/pledge', 'Pledge')}}</li>
+  <li>{{HTML::link('admin/ambassador', 'Ambassador')}}</li>
+  <li>{{HTML::link('admin/supporter', 'Supporter')}}</li>
+  <li>{{HTML::link('admin/video', 'Video')}}</li>
 </ul>
 
 @yield('content')
