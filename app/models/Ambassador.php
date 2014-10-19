@@ -1,8 +1,8 @@
 <?php
 
-class Grid extends Eloquent {
+class Ambassador extends Eloquent {
 
-	protected $table = 'grid';
+	protected $table = 'ambassador';
 
 	/*public static $rules = array(
   	'first_name'=>'required',
@@ -12,14 +12,8 @@ class Grid extends Eloquent {
   	'address'=>'required',
   );*/
 
-	public function content() {
-		if ($this->type == 'V') {
-			return Video::find($this->content_id);
-		}
-	}
-
 	public static function bare () {
-		$columns = Schema::getColumnListing('grid');
+		$columns = Schema::getColumnListing('ambassador');
 		$data = new stdClass();
 		foreach($columns as $c) {
 			$data->$c = '';

@@ -1,18 +1,17 @@
 @section('content')
 
-<h1>Grid</h1>
+<h1>Ambassador</h1>
 
-{{HTML::link('admin/grid/create', 'Create Grid')}}
+{{HTML::link('admin/ambassador/create', 'Create Ambassador')}}
 <br><br>
 
-@if ($grids->isEmpty())
-	<p> No grids</p>
+@if ($ambassadors->isEmpty())
+	<p> No ambassadors</p>
 
 @else
 	<table class='dataTable'>
 		<thead>
 			<tr>
-				<th>Type</th>
 				<th>Name1</th>
 				<th>Name2</th>
 				<th>Sub1</th>
@@ -21,14 +20,13 @@
 			</tr>
 		</thead>
 		<tbody>
-			@foreach($grids as $g)
+			@foreach($ambassadors as $g)
 				<tr>
-					<td>{{$g->type}}</td>
 					<td>{{$g->name1}}</td>
 					<td>{{$g->name2}}</td>
 					<td>{{$g->sub1}}</td>
 					<td>{{$g->sub2}}</td>
-					<td>{{$g->caption}}</td>
+					<td>{{$g->image}}</td>
 				</tr>
 			@endforeach
 	</tbody>

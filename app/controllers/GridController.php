@@ -20,6 +20,7 @@ class GridController extends BaseController {
 
 		$grid = new Grid();
 		$grid->type = $input['type'];
+		$grid->content_id = $input['content_id'];
 		$grid->caption = $input['caption'];
 
 		//$destinationPath = $_SERVER['DOCUMENT_ROOT'] . "/img/supporter/";

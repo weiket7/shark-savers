@@ -23,6 +23,14 @@ class CreateAmbassadorTable extends Migration {
         $table->string('sub2', 50);
         $table->timestamps();
     });
+
+    $a = new Ambassador();
+    $a->name1 = "Kimberly Chia";
+    $a->name2 = "谢静仪";
+    $a->sub1 = "Artiste/Youth Ambassador";
+    $a->sub2 = "艺人";
+    $a->image = "kimberly-chia.jpg";
+    $a->save();
 	}
 
 	/**

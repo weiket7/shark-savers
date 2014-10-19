@@ -18,7 +18,9 @@ function shareFacebook()	{
 }	
 </script>
 
-{{HTML::image('img/im-finished.jpg')}}
+<div class='container'>
+
+{{HTML::image('img/im-finished-pledge.png')}}
 <br><br>
 
 Do you want to make a difference?
@@ -48,16 +50,16 @@ Singapore, and in the world.
 <br><br>
 
 <?php
-//$count = str_split(Pledge::all()->count());
-$count = str_split(50000);
+$count = str_split(str_pad(Pledge::all()->count(), 5, '0', STR_PAD_LEFT));
+//$count = str_split(50000);
 ?>
 @foreach($count as $k => $c)
 <span class='counter-bg'>{{$c}}</span>
 @endforeach
 <br>
 
-{{HTML::image('img/pledge-needed.png')}}
-<br><br>
+{{HTML::image('img/pledge-needed.png', '', ['style'=>'margin-top:10px'])}}
+<br><br><br>
 
 {{HTML::image('img/share-facebook.jpg', '', ['onclick'=>'shareFacebook()'])}}
 
@@ -66,5 +68,9 @@ $count = str_split(50000);
 </a>
 
 <script type="text/javascript" src="http://platform.twitter.com/widgets.js"></script>
+
+</div>
+
+<div style='height:50px'>&nbsp;</div>
 
 @stop

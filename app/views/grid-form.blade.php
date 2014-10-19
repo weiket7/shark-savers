@@ -30,6 +30,10 @@
 				<td>{{ Form::file('image', $grid->image) }}</td>
 			</tr>
 			<tr>
+				<td width='100px'>{{ Form::label('content_id', 'Content') }}</td>
+				<td>{{ Form::text('content_id', $grid->content_id) }}</td>
+			</tr>
+			<tr>
 				<td width='100px'>{{ Form::label('caption', 'Caption') }}</td>
 				<td>{{ Form::text('caption', $grid->caption) }}</td>
 			</tr>

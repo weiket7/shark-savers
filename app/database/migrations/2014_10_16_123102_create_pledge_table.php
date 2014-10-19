@@ -22,9 +22,18 @@ class CreatePledgeTable extends Migration {
         $table->string('country', 20);
         $table->boolean('finished');
         $table->boolean('support');
-        $table->timestamps();
-        
+        $table->timestamps();        
     });
+
+    $p = new Pledge();
+    $p->first_name='Wei Ket';
+    $p->last_name='Wei Ket';
+    $p->nric='S1234567G';
+    $p->email='wei_ket@hotmail.com';
+    $p->country='Singapore';
+    $p->finished=1;
+    $p->support=1;
+    $p->save();
 
 	}
 

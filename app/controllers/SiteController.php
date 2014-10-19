@@ -41,38 +41,33 @@ class SiteController extends BaseController {
 
 	public function ambassadors() {
 		$this->layout = View::make('template');
-		//$data = ['grid'=>Grid::whereRaw("type='A'")->get()];		
-		$data = [];
+		$data = ['grids'=>Grid::where('type','=','A')->orderBy('position')->get()];
 		$this->layout->content = View::make('index2', $data);
 	}
 
 	public function videos() {
 		$this->layout = View::make('template');
-		//$data = ['grid'=>Grid::whereRaw("type='V'")->get()];		
-		$data = [];
+		$data = ['grids'=>Grid::where('type','=','V')->orderBy('position')->get()];
 		$this->layout->content = View::make('index2', $data);
 	}
 
 	public function supporters() {
 		$this->layout = View::make('template');
-		//$data = ['grid'=>Grid::whereRaw("type='S'")->get()];		
-		$data = [];
+		$data = ['grids'=>Grid::where('type','=','S')->orderBy('position')->get()];
 		$this->layout->content = View::make('index2', $data);
 	}
 
-
-
 	public function index2()
 	{
-		$data = [];
-		$this->layout->content = View::make('index', $data);
+		$this->layout = View::make('template');
+		$data = ['grids'=>Grid::orderBy('position')->get()];
+		$this->layout->content = View::make('index2', $data);
 	}
 
 	public function pledge()
 	{
 		$this->layout = View::make('template');
-		$data = [];
-		$this->layout->content = View::make('pledge', $data);
+		$this->layout->content = View::make('pledge');
 	}
 
 	public function pledgePost()
@@ -91,7 +86,7 @@ class SiteController extends BaseController {
 		$pledge->country = $input['country'];
 		$pledge->save();
 
-		return Redirect::to('pledge-success');
+		return Redirect::to($input['url_country'].'/pledge-success');
 	}
 
 	public function pledgeSuccess() {

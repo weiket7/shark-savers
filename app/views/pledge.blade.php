@@ -32,7 +32,9 @@ function submitForm() {
 	});
 </script>
 
-{{HTML::image('img/im-finished.jpg')}}
+<div class='container'>
+
+{{HTML::image('img/im-finished-pledge.png')}}
 <br><br>
 
 Do you want to make a difference?<br>
@@ -55,36 +57,40 @@ Singapore, and in the world.
   </div>
 @endif
 
-{{ Form::open(['id'=>'val', 'url'=> 'pledge', 'role'=>'form']) }}
+<?php
+$url = explode('/',Request::path());
+$url_country = $url[0];
+?>
+{{ Form::open(['id'=>'val', 'url'=> $url_country.'/pledge', 'role'=>'form']) }}
+{{Form::hidden('url_country', $url_country)}}
 
-<table>
+<table style='margin-bottom:10px'>
 	<tr>
-		<td width='440px'>
-			<input type='text' name='first_name' id='first_name' placeholder='First Name' class='form-control pledge-text'>
-			<br><label for='first_name' generated='true' class='error'></label>
+		<td width='440px' height='50px' style='text-align:left; vertical-align:top'>
+			<input type='text' name='first_name' id='first_name' placeholder='First Name' class='form-control pledge-textbox'>
+			<label for='first_name' generated='true' class='error'></label>
 		</td>
-		<td width='20px'>&nbsp;</td>
-		<td width='440px'>
-			<input type='text' name='last_name' id='last_name' placeholder='Last Name' class='form-control pledge-text'>
-			<br><label for='last_name' generated='true' class='error'></label>			
+		<td width='20px' height='50px'>&nbsp;</td>
+		<td width='440px' style='text-align:left; vertical-align:top'>
+			<input type='text' name='last_name' id='last_name' placeholder='Last Name' class='form-control pledge-textbox'>
+			<label for='last_name' generated='true' class='error'></label>			
 		</td>
 	</tr>
 	<tr>
-		<td>
-			<input type='text' name='nric' id='nric' placeholder='NRIC' class='form-control pledge-text'>
-			<br><label for='nric' generated='true' class='error'></label>
+		<td style='text-align:left; vertical-align:top'>
+			<input type='text' name='nric' id='nric' placeholder='NRIC' class='form-control pledge-textbox'>
+			<label for='nric' generated='true' class='error'></label>
 		</td>
 		<td width='20px'>&nbsp;</td>		
-		<td>
-			<input type='text' name='email' id='email' placeholder='Email' class='form-control pledge-text'>
-			<br><label for='email' generated='true' class='error'></label>			
+		<td style='text-align:left; vertical-align:top'>
+			<input type='text' name='email' id='email' placeholder='Email' class='form-control pledge-textbox'>
+			<label for='email' generated='true' class='error'></label>			
 		</td>
 	</tr>
 </table>
-<br>
 
 <select name='country' id='country' class='form-control'>
-	<option>Country</option>
+	<option disabled selected>Country</option>
 	<option value='SG'>Singapore</option>
 	<option value='HK'>Hong Kong</option>
 	<option value='MY'>Malaysia</option>
@@ -92,16 +98,25 @@ Singapore, and in the world.
 <br><label for='country' generated='true' class='error'></label>	
 <br>
 
+<!-- <div style='text-align:left'>
+<div style='margin-left:auto; margin-right:auto;'> -->
 <input type='checkbox' id='finished' name='finished'> "I'm FINished with FINs and I will never eat or serve
 shark fin soup again"
 <br><label for='finished' generated='true' class='error'></label><br>
+<!-- </div>
+</div> -->
+
 
 <input type='checkbox' id='support' name='support'> "I support ending the shark fin trade in my country and
 ask my government to enact a ban on the shark fin trade"
 <br><label for='support' generated='true' class='error'></label><br>
 
-{{HTML::image('img/pledge-now.jpg', '', ['onclick'=>'submitForm()'])}}
+{{HTML::image('img/pledge-now2.jpg', '', ['onclick'=>'submitForm()'])}}
 
 {{ Form::close() }}
+
+</div>
+
+<div style='height:50px'>&nbsp;</div>
 
 @stop

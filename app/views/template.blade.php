@@ -3,7 +3,7 @@
 	<head>
 		<meta charset="UTF-8">
 		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-		<title>Learning Laravel Website </title>
+		<title>I'm Finished With Fins</title>
 		
 		<script src="{{asset('js/jquery-2.1.1.min.js') }}"></script>
 		<script src="{{asset('js/jquery-ui.min.js') }}"></script>
@@ -13,6 +13,25 @@
 		<script src="{{asset('js/bootstrap.min.js') }}"></script>
 
 		<link rel="stylesheet" href="{{ asset('css/custom.css') }}">
+
+		<!-- Twitter Card data -->
+		<meta name="twitter:card" content="summary">
+		<meta name="twitter:site" content="@publisher_handle">
+		<meta name="twitter:title" content="I'm Finished With Fins">
+		<meta name="twitter:description" content="What do over 100 of Singapore's most iconic and influential personalities
+		have in common? They have all taken a personal pledge to stop eating shark fin soup by saying “I'm
+		FINished with Fins”. ">
+		<meta name="twitter:creator" content="@author_handle">
+		<meta name="twitter:image" content="http://www.finishedwithfins.org/img/logo.png">
+		<!-- Open Graph data -->
+		<meta property="og:title" content="I'm Finished With Fins" />
+		<meta property="og:type" content="article" />
+		<meta property="og:url" content="http://www.finishedwithfins.org/" />
+		<meta property="og:image" content="http://www.finishedwithfins.org/img/logo.png" />
+		<meta property="og:description" content="What do over 100 of Singapore's most iconic and influential personalities
+		have in common? They have all taken a personal pledge to stop eating shark fin soup by saying “I'm
+		FINished with Fins”." />
+		<meta property="og:site_name" content="I'm Finished With Fins" />
 		
 	</head>
 <body>
@@ -24,7 +43,7 @@
   <div class="container">
   	<table class='landing-tbl'>
 			<tr>
-				<td style='text-align:left'>{{HTML::image('img/logo.png', '')}}</td>				
+				<td style='text-align:left'><a href="{{URL::to('/')}}">{{HTML::image('img/logo.png', '')}}</a></td>				
 				<td style='text-align:right'>
 					<select name='language' id='language' class='form-control'>
 						<option>English</option>

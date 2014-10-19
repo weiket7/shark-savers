@@ -15,6 +15,7 @@ Route::get('/', 'SiteController@index');
 
 Route::group(array('prefix' => 'sg'), function()
 {	 
+	Route::get('/', 'SiteController@index2');
 	Route::get('pledge', 'SiteController@pledge');
 	Route::get('pledge-success', 'SiteController@pledgeSuccess');
 	Route::post('pledge', 'SiteController@pledgePost');
@@ -39,15 +40,20 @@ Route::group(array('prefix' => 'admin'), function()
 	Route::post('supporter/create', 'SupporterController@createPost');
 	Route::get('supporter/update', 'SupporterController@update');
 	Route::post('supporter/update', 'SupporterController@updatePost');
+	Route::get('ambassador', 'AmbassadorController@index');
+	Route::get('ambassador/create', 'AmbassadorController@create');
+	Route::post('ambassador/create', 'AmbassadorController@createPost');
+	Route::get('ambassador/update', 'AmbassadorController@update');
+	Route::post('ambassador/update', 'AmbassadorController@updatePost');
 	Route::get('pledge', 'PledgeController@');
 	Route::get('pledge/create', 'PledgeController@create');
 });
 
 
-Route::get('sg', 'SiteController@sg');
+/*Route::get('sg', 'SiteController@sg');
 Route::get('my', 'SiteController@my');
 Route::get('hk', 'SiteController@hk');
-
+*/
 
 Route::get('email', function() {
 	Mail::send('pledge-email', array('key' => 'value'), function($message)

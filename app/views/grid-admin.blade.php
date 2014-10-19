@@ -14,6 +14,7 @@
 			<tr>
 				<th>Type</th>
 				<th>Image</th>
+				<th>Content</th>
 				<th>Caption</th>
 			</tr>
 		</thead>
@@ -22,6 +23,7 @@
 				<tr>
 					<td>{{$g->type}}</td>
 					<td>{{$g->image}}</td>
+					<td>{{$g->content_id}}</td>
 					<td>{{$g->caption}}</td>
 				</tr>
 			@endforeach
