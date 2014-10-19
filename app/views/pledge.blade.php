@@ -32,24 +32,26 @@ function submitForm() {
 	});
 </script>
 
-<div class='container'>
+<div class='container' style='text-align:center'>
 
 {{HTML::image('img/im-finished-pledge.png')}}
 <br><br>
 
-Do you want to make a difference?<br>
-<br>
-A pledge is a highly personal statement that lets others know what you
-believe in, showing how you back up our convictions and beliefs. It is
-something you will stand up for, and resist social and peer pressures. It is
-something you wear as a badge and remain faithful to for life.
-<br><br>
+<div class='hidden-xs hidden-sm'>
+	Do you want to make a difference?<br>
+	<br>
+	A pledge is a highly personal statement that lets others know what you
+	believe in, showing how you back up our convictions and beliefs. It is
+	something you will stand up for, and resist social and peer pressures. It is
+	something you wear as a badge and remain faithful to for life.
+	<br><br>
 
-Your pledge will help us spread the message and encourage even more to
-follow. Take the pledge today and help us reach the goal of getting 100,000
-Singaporeans to also do the same. Together we can make a difference in
-Singapore, and in the world.
-<br><br>
+	Your pledge will help us spread the message and encourage even more to
+	follow. Take the pledge today and help us reach the goal of getting 100,000
+	Singaporeans to also do the same. Together we can make a difference in
+	Singapore, and in the world.
+	<br>
+</div>
 
 @if(Session::has('msg'))
   <div class="alert alert-success ">
@@ -64,30 +66,27 @@ $url_country = $url[0];
 {{ Form::open(['id'=>'val', 'url'=> $url_country.'/pledge', 'role'=>'form']) }}
 {{Form::hidden('url_country', $url_country)}}
 
-<table style='margin-bottom:10px'>
-	<tr>
-		<td width='440px' height='50px' style='text-align:left; vertical-align:top'>
-			<input type='text' name='first_name' id='first_name' placeholder='First Name' class='form-control pledge-textbox'>
-			<label for='first_name' generated='true' class='error'></label>
-		</td>
-		<td width='20px' height='50px'>&nbsp;</td>
-		<td width='440px' style='text-align:left; vertical-align:top'>
-			<input type='text' name='last_name' id='last_name' placeholder='Last Name' class='form-control pledge-textbox'>
-			<label for='last_name' generated='true' class='error'></label>			
-		</td>
-	</tr>
-	<tr>
-		<td style='text-align:left; vertical-align:top'>
+<div class='row'>
+	<div class='col-md-6' style='height:60px'>
+		<input type='text' name='first_name' id='first_name' placeholder='First Name' class='form-control pledge-textbox'>
+		<label for='first_name' generated='true' class='error'></label>
+	</div>
+	<div class='col-md-6'>
+		<input type='text' name='last_name' id='last_name' placeholder='Last Name' class='form-control pledge-textbox'>
+			<label for='last_name' generated='true' class='error'></label>	
+	</div>
+</div>
+
+<div class='row'>
+	<div class='col-md-6' style='height:60px'>
 			<input type='text' name='nric' id='nric' placeholder='NRIC' class='form-control pledge-textbox'>
 			<label for='nric' generated='true' class='error'></label>
-		</td>
-		<td width='20px'>&nbsp;</td>		
-		<td style='text-align:left; vertical-align:top'>
+	</div>
+	<div class='col-md-6'>
 			<input type='text' name='email' id='email' placeholder='Email' class='form-control pledge-textbox'>
-			<label for='email' generated='true' class='error'></label>			
-		</td>
-	</tr>
-</table>
+			<label for='email' generated='true' class='error'></label>
+	</div>
+</div>
 
 <select name='country' id='country' class='form-control'>
 	<option disabled selected>Country</option>
@@ -110,6 +109,7 @@ shark fin soup again"
 <input type='checkbox' id='support' name='support'> "I support ending the shark fin trade in my country and
 ask my government to enact a ban on the shark fin trade"
 <br><label for='support' generated='true' class='error'></label><br>
+<br>
 
 {{HTML::image('img/pledge-now2.jpg', '', ['onclick'=>'submitForm()'])}}
 

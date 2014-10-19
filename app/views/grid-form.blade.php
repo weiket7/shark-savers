@@ -26,16 +26,32 @@
 				</td>
 			</tr>
 			<tr>
+				<td width='100px'>{{ Form::label('title', 'Title') }}</td>
+				<td>{{ Form::text('title', $grid->title) }}</td>
+			</tr>
+			<tr>
+				<td width='100px'>{{ Form::label('link', 'Link') }}</td>
+				<td>{{ Form::text('link', $grid->link) }}</td>
+			</tr>
+			<tr>
+				<td width='100px'>{{ Form::label('position', 'Position') }}</td>
+				<td>{{ Form::text('position', $grid->position) }}</td>
+			</tr>
+			<tr>
 				<td width='100px'>{{ Form::label('image', 'Image') }}</td>
 				<td>{{ Form::file('image', $grid->image) }}</td>
 			</tr>
 			<tr>
-				<td width='100px'>{{ Form::label('content_id', 'Content') }}</td>
-				<td>{{ Form::text('content_id', $grid->content_id) }}</td>
+				<td width='100px'>{{ Form::label('logo', 'Logo') }}</td>
+				<td>{{ Form::file('logo', $grid->logo) }}</td>
 			</tr>
 			<tr>
 				<td width='100px'>{{ Form::label('caption', 'Caption') }}</td>
 				<td>{{ Form::text('caption', $grid->caption) }}</td>
+			</tr>
+			<tr>
+				<td width='100px'>{{ Form::label('text', 'Text') }}</td>
+				<td>{{ Form::textarea('text', $grid->text) }}</td>
 			</tr>
 		</table>
 

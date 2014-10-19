@@ -1,19 +1,16 @@
-
 .content {
   border: 1px solid #CCC;
   padding: 10px 0px 0px 0px;
 }
 
 .container {
-	text-align:center;
-	width: 900px;
+  max-width:900px;
+  min-width:640px;
 }
 
 .form-control {
 	width: auto;
 }
-
-
 
 input[type=checkbox] {
 	margin: 10px 0 0 0;
@@ -70,6 +67,9 @@ body {
 
 .landing-tbl {
   width:100%;
+}
+.landing-tbl td {
+  text-align:center;
 }
 
 .counter-bg {
@@ -169,3 +169,57 @@ body {
   font-size:22px;
 }
 
+/*BXSLIDER*/
+/*http://stackoverflow.com/questions/18601896/bxslider-unwanted-top-bottom-white-space*/
+.bx-wrapper .bx-viewport {
+    -moz-box-shadow: 0 0 0px #ccc;
+    -webkit-box-shadow: 0 0 0px #ccc;
+    box-shadow: 0 0 0px #ccc;
+    border:  0px solid #000;
+    left: 0px;
+        
+    /*fix other elements on the page moving (on Chrome)*/
+    -webkit-transform: translatez(0);
+    -moz-transform: translatez(0);
+        -ms-transform: translatez(0);
+        -o-transform: translatez(0);
+        transform: translatez(0);
+  }  
+.bx-wrapper .bx-next {
+ background: url(../img/slider-next.png) no-repeat;
+}
+.bx-wrapper .bx-controls-direction a {
+  z-index: 1;
+}
+.bx-wrapper .bx-prev {
+ background: url(../img/slider-prev.png) no-repeat;
+}
+
+/*MOBILE 017dc3*/
+.mobile-menu {
+  width:100%;
+  background-color: #017dc3;
+  height:50px;
+  padding-top:10px;
+}
+.mobile-menu-word {
+  color: white;
+   font-weight: bold;
+  font-size: 24px;
+  line-height:0;
+}
+.triple-line {
+  margin-right: 100px;
+}
+
+
+.grey { -webkit-filter: grayscale(100%);
+-moz-filter: grayscale(100%);
+filter: grayscale(100%);
+}
+
+.grey:hover {
+  -webkit-filter: grayscale(0%);
+-moz-filter: grayscale(0%);
+filter: grayscale(0%);
+};

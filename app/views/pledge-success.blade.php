@@ -18,7 +18,7 @@ function shareFacebook()	{
 }	
 </script>
 
-<div class='container'>
+<div class='container' style='text-align:center'>
 
 {{HTML::image('img/im-finished-pledge.png')}}
 <br><br>
@@ -61,10 +61,10 @@ $count = str_split(str_pad(Pledge::all()->count(), 5, '0', STR_PAD_LEFT));
 {{HTML::image('img/pledge-needed.png', '', ['style'=>'margin-top:10px'])}}
 <br><br><br>
 
-{{HTML::image('img/share-facebook.jpg', '', ['onclick'=>'shareFacebook()'])}}
+{{HTML::image('img/share-facebook.png', '', ['onclick'=>'shareFacebook()'])}}
 
 <a href="https://twitter.com/intent/tweet?text=I'm FINished with FINS. Join the pledge now! http://www.finishedwithfins.org/sg/pledge">
-  {{HTML::image('img/share-twitter.jpg')}}
+  {{HTML::image('img/share-twitter.png')}}
 </a>
 
 <script type="text/javascript" src="http://platform.twitter.com/widgets.js"></script>

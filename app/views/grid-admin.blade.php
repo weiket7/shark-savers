@@ -13,18 +13,24 @@
 		<thead>
 			<tr>
 				<th>Type</th>
-				<th>Image</th>
-				<th>Content</th>
+				<th>Title</th>
+				<th>Link</th>
+				<th>Position</th>
 				<th>Caption</th>
+				<th>Image</th>
+				<th>Logo</th>
 			</tr>
 		</thead>
 		<tbody>
 			@foreach($grids as $g)
 				<tr>
 					<td>{{$g->type}}</td>
-					<td>{{$g->image}}</td>
-					<td>{{$g->content_id}}</td>
+					<td>{{$g->title}}</td>
+					<td>{{$g->link}}</td>
+					<td>{{$g->position}}</td>
 					<td>{{$g->caption}}</td>
+					<td>{{$g->image}}</td>
+					<td>{{$g->logo}}</td>
 				</tr>
 			@endforeach
 	</tbody>

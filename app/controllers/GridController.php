@@ -20,8 +20,11 @@ class GridController extends BaseController {
 
 		$grid = new Grid();
 		$grid->type = $input['type'];
-		$grid->content_id = $input['content_id'];
+		$grid->title = $input['title'];
+		$grid->link = $input['link'];
+		$grid->position = $input['position'];
 		$grid->caption = $input['caption'];
+		$grid->text = $input['text'];
 
 		//$destinationPath = $_SERVER['DOCUMENT_ROOT'] . "/img/supporter/";
     $destinationPath = $_SERVER['DOCUMENT_ROOT'] . "/sharksavers/img/grid/";
@@ -31,7 +34,14 @@ class GridController extends BaseController {
         $uploadSuccess   = $file->move($destinationPath, $filename);
         $grid->image = $filename;
     }
+    if (Input::hasFile('logo')) {
+        $file            = Input::file('logo');
+        $filename        = $file->getClientOriginalName();
+        $uploadSuccess   = $file->move($destinationPath, $filename);
+        $grid->logo = $filename;
+    }
 		$grid->save();
+
 
 		return Redirect::to('admin/grid');
 	}

@@ -13,6 +13,10 @@
 
 Route::get('/', 'SiteController@index');
 
+Route::get('/r', function() {
+	return View::make('r');
+});
+
 Route::group(array('prefix' => 'sg'), function()
 {	 
 	Route::get('/', 'SiteController@index2');

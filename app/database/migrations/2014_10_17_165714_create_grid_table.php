@@ -16,36 +16,117 @@ class CreateGridTable extends Migration {
     {
     	//http://laravel.com/docs/4.2/security
         $table->increments('id');
-        $table->string('content_id', 50);
-        $table->string('image', 50);
-        $table->string('caption', 50);
         $table->char('type', 1);
+        $table->string('image', 50);
+        $table->string('logo', 50);
+        $table->text('text');
+        $table->text('title');
+        $table->text('link');
+        $table->string('caption', 50);
         $table->mediumInteger('position');
+        $table->string('content_id', 50);
         $table->timestamps();
     });
 
     $g = new Grid();
-    $g->content_id = 1;
-    $g->caption = "Lorem ipsum";
-    $g->image = "grid1.jpg";
-    $g->type = 'V';
-    $g->position = '1';
-    $g->save();
-
-    $g = new Grid();
-    $g->content_id = 1;
-    $g->caption = "Lorem ipsum";
-    $g->image = "grid1.jpg";
     $g->type = 'A';
-    $g->position = '2';
+    $g->title = 'Kimberly Chia 谢静仪';
+    $g->link = '';
+    $g->position = '1';
+    $g->text = '1';
+    $g->logo = '';
+    $g->image = "am1.png";
+    $g->caption = "Lorem ipsum";
     $g->save();
 
     $g = new Grid();
-    $g->content_id = 1;
+    $g->title = 'Kimberly Chia 谢静仪';
+    $g->link = '';
+    $g->position = '2';
+    $g->logo = '';
     $g->caption = "Lorem ipsum";
-    $g->image = "grid1.jpg";
-    $g->type = 'S';
+    $g->image = "am2.png";
+    $g->type = 'A';
+    $g->text = '2';
+    $g->save();
+
+    $g = new Grid();
+    $g->title = 'Kimberly Chia 谢静仪';
+    $g->link = '';
     $g->position = '3';
+    $g->logo = '';
+    $g->caption = "Lorem ipsum";
+    $g->image = "am3.png";
+    $g->type = 'A';
+    $g->text = '3';
+    $g->save();
+
+    //v    
+    $g = new Grid();
+    $g->title = 'Shark Savers';
+    $g->link = 'dc39XlwahUY';
+    $g->position = '';
+    $g->logo = '';
+    $g->caption = "Lorem ipsum";
+    $g->image = "vid1.png";
+    $g->type = 'V';
+    $g->text = '4';
+    $g->save();
+
+    $g = new Grid();
+    $g->title = 'Shark Savers';
+    $g->link = 'dc39XlwahUY';
+    $g->position = '';
+    $g->logo = '';
+    $g->caption = "Lorem ipsum";
+    $g->image = "vid2.png";
+    $g->type = 'V';
+    $g->text = '5';
+    $g->save();
+
+    $g = new Grid();
+    $g->title = 'Shark Savers';
+    $g->link = 'dc39XlwahUY';
+    $g->position = '';
+    $g->logo = '';
+    $g->caption = "Lorem ipsum";
+    $g->image = "vid3.png";
+    $g->type = 'V';
+    $g->text = '6';
+    $g->save();
+
+    //su
+    $g = new Grid();
+    $g->title = 'Shark Savers';
+    $g->link = '';
+    $g->position = '7';
+    $g->logo = 'accomplice-logo.png';
+    $g->caption = "Lorem ipsum";
+    $g->image = "accomplice.png";
+    $g->type = 'S';
+    $g->text = 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis sagittis eleifend lectus, vel vehicula lectus sagittis ut. Curabitur volutpat mi nec velit tincidunt euismod a id dolor. Pellentesque egestas nunc tincidunt luctus dignissim. Donec id ex erat. Sed varius scelerisque massa in bibendum. Praesent pulvinar, lectus quis fringilla aliquet, mi justo consequat augue, eget dignissim nisi mauris nec urna. Fusce ultrices egestas tellus eget blandit. Fusce porta accumsan laoreet. Morbi nec ante vehicula, venenatis nunc id, sollicitudin nulla. Pellentesque condimentum dui sit amet rhoncus commodo. Mauris ut efficitur nisi. Duis id sapien vel ex eleifend ullamcorper. Integer aliquam odio ipsum, vitae pretium elit venenatis consectetur. Proin bibendum dolor eu nisi lacinia pharetra. Donec vitae consectetur libero.';
+    $g->save();
+
+    $g = new Grid();
+    $g->title = 'Shark Savers';
+    $g->link = '';
+    $g->position = '8';
+    $g->logo = 'accomplice-logo.png';
+    $g->caption = "Lorem ipsum";
+    $g->image = "accomplice.png";
+    $g->type = 'S';
+    $g->text = 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis sagittis eleifend lectus, vel vehicula lectus sagittis ut. Curabitur volutpat mi nec velit tincidunt euismod a id dolor. Pellentesque egestas nunc tincidunt luctus dignissim. Donec id ex erat. Sed varius scelerisque massa in bibendum. Praesent pulvinar, lectus quis fringilla aliquet, mi justo consequat augue, eget dignissim nisi mauris nec urna. Fusce ultrices egestas tellus eget blandit. Fusce porta accumsan laoreet. Morbi nec ante vehicula, venenatis nunc id, sollicitudin nulla. Pellentesque condimentum dui sit amet rhoncus commodo. Mauris ut efficitur nisi. Duis id sapien vel ex eleifend ullamcorper. Integer aliquam odio ipsum, vitae pretium elit venenatis consectetur. Proin bibendum dolor eu nisi lacinia pharetra. Donec vitae consectetur libero.';
+    $g->save();
+
+    $g = new Grid();
+    $g->title = 'Shark Savers';
+    $g->link = '';
+    $g->position = '9';
+    $g->logo = 'accomplice-logo.png';
+    $g->caption = "Lorem ipsum";
+    $g->image = "accomplice.png";
+    $g->type = 'S';
+    $g->text = 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis sagittis eleifend lectus, vel vehicula lectus sagittis ut. Curabitur volutpat mi nec velit tincidunt euismod a id dolor. Pellentesque egestas nunc tincidunt luctus dignissim. Donec id ex erat. Sed varius scelerisque massa in bibendum. Praesent pulvinar, lectus quis fringilla aliquet, mi justo consequat augue, eget dignissim nisi mauris nec urna. Fusce ultrices egestas tellus eget blandit. Fusce porta accumsan laoreet. Morbi nec ante vehicula, venenatis nunc id, sollicitudin nulla. Pellentesque condimentum dui sit amet rhoncus commodo. Mauris ut efficitur nisi. Duis id sapien vel ex eleifend ullamcorper. Integer aliquam odio ipsum, vitae pretium elit venenatis consectetur. Proin bibendum dolor eu nisi lacinia pharetra. Donec vitae consectetur libero.';
     $g->save();
 	}
 
