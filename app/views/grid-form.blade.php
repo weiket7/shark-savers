@@ -13,8 +13,10 @@ $(document).ready( function() {
 			$('#link-tr').hide();
 		} else if (type == 'S') {
 			$('#link-tr').hide();
+			$('#category-tr').hide();
 		} else if (type == 'V') {
 			$('#logo-tr').hide();
+			$('#category-tr').hide();
 		}
 	});
 });
@@ -49,6 +51,13 @@ $(document).ready( function() {
 			<tr id='title-tr'>
 				<td width='100px'>{{ Form::label('title', 'Title') }}</td>
 				<td>{{ Form::text('title', $grid->title) }}</td>
+			</tr>
+			<tr id='category-tr'>
+				<td width='100px'>{{ Form::label('category', 'Category') }}</td>
+				<td>
+					<?php $category = [''=>'','A'=>'Artiste','E'=>'Entertainment','C'=>'Corporate', 'O'=>'Others']?>
+					{{ Form::select('category', $category, $grid->category) }}
+				</td>
 			</tr>
 			<tr id='link-tr'>
 				<td width='100px'>{{ Form::label('link', 'Link') }}</td>

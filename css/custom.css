@@ -54,6 +54,9 @@ body {
   position: absolute;
   bottom: 0;
   width: 100%;
+  font-size: 0.825em;
+  color: #666;
+
   padding-top:20px;
   /* Set the fixed height of the footer here */
   height: 90px;
@@ -86,7 +89,7 @@ body {
 #language {
   background-color: black;
   color: white;
-  
+  padding: 5px;  
 }
 
 #partner-div {
@@ -121,6 +124,7 @@ body {
 .pledge-success1 {
   font-size:36px;
   font-weight: bold;
+  line-height: 0.9;
 }
 
 .pledge-success2 {
@@ -138,7 +142,13 @@ border-bottom: none;
 .modal-footer{
 border-top: none;
 }
-
+.modal-backdrop {background: #fff; opacity: 0.9;}
+.close {
+  opacity: 1;
+}
+.modal-content {
+  margin-top:7%;
+}
 
 .shark-bg {
   background-image: url(../img/shark-bg3.jpg);
@@ -164,10 +174,16 @@ border-top: none;
   font-weight:bold;
   margin-bottom: 5px;
 }
+#pop-video-width{
+width:100%;
+display:block;
+}
 
 .pop-sub {
   font-size: 12px;
 }
+
+a { color:black; }
 
 .pop-finished {
   z-index: -1;
@@ -186,6 +202,7 @@ border-top: none;
     box-shadow: 0 0 0px #ccc;
     border:  0px solid #000;
     left: 0px;
+    background: none;
         
     -webkit-transform: translatez(0);
     -moz-transform: translatez(0);
@@ -236,3 +253,4 @@ filter: grayscale(100%);
 -moz-filter: grayscale(0%);
 filter: grayscale(0%);
 };
+

@@ -20,11 +20,11 @@ class CreateGridTable extends Migration {
         $table->string('image', 50);
         $table->string('logo', 50);
         $table->text('text');
-        $table->text('title');
-        $table->text('link');
+        $table->char('category', 1);
+        $table->string('title', 200);
+        $table->string('link', 200);
         $table->string('caption', 50);
         $table->mediumInteger('position');
-        $table->string('content_id', 50);
         $table->timestamps();
     });
 
@@ -35,6 +35,7 @@ class CreateGridTable extends Migration {
     $g->position = '1';
     $g->text = '1';
     $g->logo = '';
+    $g->category = "A";
     $g->image = "am1.png";
     $g->caption = "Lorem ipsum";
     $g->save();
@@ -45,6 +46,7 @@ class CreateGridTable extends Migration {
     $g->position = '2';
     $g->logo = '';
     $g->caption = "Lorem ipsum";
+    $g->category = "A";
     $g->image = "am2.png";
     $g->type = 'A';
     $g->text = '2';
@@ -56,6 +58,7 @@ class CreateGridTable extends Migration {
     $g->position = '3';
     $g->logo = '';
     $g->caption = "Lorem ipsum";
+    $g->category = "A";
     $g->image = "am3.png";
     $g->type = 'A';
     $g->text = '3';
@@ -64,7 +67,7 @@ class CreateGridTable extends Migration {
     //v    
     $g = new Grid();
     $g->title = 'Shark Savers';
-    $g->link = 'dc39XlwahUY';
+    $g->link = 'WYpTC4R7M3M';
     $g->position = '';
     $g->logo = '';
     $g->caption = "Lorem ipsum";
@@ -75,7 +78,7 @@ class CreateGridTable extends Migration {
 
     $g = new Grid();
     $g->title = 'Shark Savers';
-    $g->link = 'dc39XlwahUY';
+    $g->link = 'WYpTC4R7M3M';
     $g->position = '';
     $g->logo = '';
     $g->caption = "Lorem ipsum";
@@ -86,7 +89,7 @@ class CreateGridTable extends Migration {
 
     $g = new Grid();
     $g->title = 'Shark Savers';
-    $g->link = 'dc39XlwahUY';
+    $g->link = 'WYpTC4R7M3M';
     $g->position = '';
     $g->logo = '';
     $g->caption = "Lorem ipsum";

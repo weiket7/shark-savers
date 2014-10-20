@@ -15,6 +15,10 @@ class GridController extends BaseController {
 		$this->layout->content = View::make('grid-form', $data);
 	}
 
+	public function info () {
+		$this->layout->content = View::make('info');		
+	}
+
 	public function createPost() {
 		$input = Input::all();
 
@@ -22,6 +26,7 @@ class GridController extends BaseController {
 		$grid->type = $input['type'];
 		$grid->title = $input['title'];
 		$grid->link = $input['link'];
+		$grid->category = $input['category'];
 		/*$grid->position = $input['position'];*/
 		$grid->caption = $input['caption'];
 		$grid->text = $input['text'];

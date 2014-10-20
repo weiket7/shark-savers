@@ -20,6 +20,8 @@ function shareFacebook()	{
 
 <div class='container' style='text-align:center'>
 
+<div style='height:20px'>&nbsp;</div>
+
 {{HTML::image('img/im-finished-pledge.png')}}
 <br><br>
 

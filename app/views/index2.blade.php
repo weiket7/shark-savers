@@ -12,7 +12,7 @@
 		var image = $('#A'+id).attr('data-image');
 		$('#pop-ambassador-image').attr('src', "{{URL::to('img/grid')}}/"+image);
 		$('#pop-ambassador-title').text($('#A'+id).attr('data-title'));
-		$('#myModal').modal();
+		$('#ambassador-modal').modal();
 	}
 
 	function showVideo(id) {
@@ -55,9 +55,10 @@
 	<?php
 	$count = 1;
 	$total = count($grids);
+	$category_arr = array('A'=>'Artiste', 'C'=>'Corporate', 'O'=>'Others', 'E'=>'Entertainment');
 	foreach($grids as $key => $g) {		
 		if($g->type=='A') {
-			echo "<div id='A".$g->id."' data-title='".$g->title."' data-image='".$g->image."' style='display:none'></div>";
+			echo "<div id='A".$g->id."' data-title='".$category_arr[$g->category].': '.$g->title."' data-image='".$g->image."' style='display:none'></div>";
 		} elseif ($g->type=='V') {
 			echo "<div id='V".$g->id."' data-link='".$g->link."' data-title='".$g->title."' data-text='".$g->text."' style='display:none'></div>";
 		} elseif ($g->type='S') {
@@ -69,16 +70,23 @@
 	?> 
 		<div class='col-md-4 grid-outer'>
 			<div class='grid-inner'>
+				<!--http://stackoverflow.com/questions/2743989/vertically-aligning-divs-->
 				@if($g->type == 'A')
 					{{HTML::image('img/grid/'.$g->image,'a',['class'=>'grey', 'width'=>'285px','onclick'=>"showAmbassador(".$g->id.")"])}}
 				@elseif($g->type == 'V')
+					{{HTML::image('img/video-play.png', '', ['style'=>'position:absolute; top:125px; left: 125px; z-index:100'])}}
 					{{HTML::image('img/grid/'.$g->image,'a',['class'=>'grey', 'width'=>'285px','onclick'=>"showVideo(".$g->id.")"])}}
 				@elseif($g->type == 'S')
-					<div style='width:285px; height:285px; background-color:#eee; text-align:center; padding-top:90px' onclick=showSupporter('{{$g->id}}')>
-					{{HTML::image('img/grid/'.$g->logo,'a',['class'=>'grey', 'width'=>'285px', 'style'=>'height:100px; width:100px'])}}
+					<div style='width:285px; height:285px; background-color:#fff; text-align:center; padding-top:100px' onclick=showSupporter('{{$g->id}}')>
+					{{HTML::image('img/grid/'.$g->logo,'',['class'=>'grey', 'style'=>'height:100px; width:100px; display:inline'])}}
 					</div>
 				@endif
-				<div class='grid-text'>{{$g->caption}}</div>
+
+				@if($g->type == 'A')
+					<div class='grid-text'>Ambassador: {{$g->title}}</div>
+				@else
+					<div class='grid-text'>{{$g->caption}}</div>					
+				@endif
 				<!-- <span class='grid-down'>{{HTML::image('img/down.png')}}</span> -->
 			</div>
 		</div>
@@ -96,11 +104,13 @@
 
 <?php $grid = Grid::find(1) ?>
 
-<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+<div class="modal fade" id="ambassador-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
   <div class="modal-dialog" style='width:900px;'>
     <div class="modal-content">
       <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+        <button type="button" class="close" data-dismiss="modal">
+        	{{HTML::image('img/close.jpg')}}
+        </button>
         <h4 class="modal-title pop-title" id="myModalLabel"><div id='pop-ambassador-title'></div></h4>
       </div>
 
@@ -135,12 +145,13 @@
   <div class="modal-dialog" style='width:900px;'>
     <div class="modal-content">
       <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-        <h4 class="modal-title pop-title" id="myModalLabel"><div id='pop-video-title'></div></h4>
+        <button type="button" class="close" data-dismiss="modal">
+        	{{HTML::image('img/close.jpg')}}
+        </button>
       </div>
 
       <div class="modal-body">
-		    <iframe width="800" height="315" src="//www.youtube.com/embed/dc39XlwahUY?rel=0" id='' frameborder="0" allowfullscreen></iframe>
+		    <iframe width="100%" height="500" src="" id='pop-video-link' frameborder="0" allowfullscreen></iframe>
       </div>      
 
       <div class="modal-footer">
@@ -164,8 +175,9 @@
   <div class="modal-dialog" style='width:900px;'>
     <div class="modal-content">
       <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-        <h4 class="modal-title pop-title" id="myModalLabel"><div id='pop-supporter-title'></div></h4>
+        <button type="button" class="close" data-dismiss="modal">
+        	{{HTML::image('img/close.jpg')}}
+        </button>
       </div>
 
       <div class="modal-body">
@@ -173,7 +185,7 @@
       	<br><br>
       	<table>
 	      	<tr>
-		      	<td width='350px' style='text-align:center'>
+		      	<td width='300px' style='text-align:center;'>
 		      		<img id='pop-supporter-logo' src=''>
 		      	</td>
 		      	<td>

@@ -40,67 +40,91 @@
 <body>
 <!--getbootstrap.com/examples/navbar-fixed-top/-->
 
+<?php
+$url = explode('/',Request::path());
+$country = $url[0];
+?>
+
 <div style="background-image:url(../img/shark-repeat.jpg); background-repeat-y;">
 
 <div class="navbar navbar-default navbar-fixed-top" role="navigation">
   <div class="container">
   	<table class='landing-tbl'>
 			<tr>
-				<td style='text-align:left'><a href="{{URL::to('/')}}">{{HTML::image('img/logo.png', '')}}</a></td>				
+				<td style='text-align:left'>
+					<a href="{{URL::to('/')}}">{{HTML::image('img/logo-'.$country.'.png', '')}}</a>
+				</td>				
 				<td style='text-align:right'>
-					<div class='hidden-xs hidden-sm'>
+					<!-- <div class='hidden-xs hidden-sm'>
 						<select name='language' id='language' class='form-control'>
 							<option>English</option>
 							<option>Chinese</option>
 						</select>
-					</div>
+					</div> -->
 					
 					<div id='partner-div'>
-					<a href="http://www.wwf.org.hk/" target='_blank'>{{HTML::image('img/partner_wwf.gif', '', ['class'=>'partner']), ''}}</a>
-					<a href="http://www.earthhour.org/" target='_blank'>{{HTML::image('img/partner_earth-hour.gif', '', ['class'=>'partner'])}}</a>
-					<a href="http://wildaid.org/" target='_blank'>{{HTML::image('img/partner_wild-aid.gif', '', ['class'=>'partner'])}}</a>
-					<a href="http://natgeotv.com/asia" target='_blank'>{{HTML::image('img/partner_national-geographic.gif', '', ['class'=>'partner'])}}</a>
-					<a href="http://natgeotv.com/asia" target='_blank'>{{HTML::image('img/partner_nat-geo.gif', '', ['class'=>'partner'])}}</a>
+						<a href="http://www.wwf.org.hk/" target='_blank'>{{HTML::image('img/partner_wwf.gif', '', ['class'=>'partner']), ''}}</a>
+						<a href="http://www.earthhour.org/" target='_blank'>{{HTML::image('img/partner_earth-hour.gif', '', ['class'=>'partner'])}}</a>
+						<a href="http://wildaid.org/" target='_blank'>{{HTML::image('img/partner_wild-aid.gif', '', ['class'=>'partner'])}}</a>
+						<a href="http://natgeotv.com/asia" target='_blank'>{{HTML::image('img/partner_national-geographic.gif', '', ['class'=>'partner'])}}</a>
+						<a href="http://natgeotv.com/asia" target='_blank'>{{HTML::image('img/partner_nat-geo.gif', '', ['class'=>'partner'])}}</a>
+						<span class='hidden-xs hidden-sm'>
+							<select name='language' id='language'>
+								<option>English</option>
+								<option>Chinese</option>
+							</select>
+						</span>
 					</div>
 
 					<?php
-					$count = str_split(str_pad(Pledge::all()->count(), 5, '0', STR_PAD_LEFT));
+					$count = Pledge::all()->count();
+					//$count = 100000;
+					if ($count < 100000) //99,999
+						$count_padded = str_split(str_pad($count, 5, '0', STR_PAD_LEFT));
+					else
+						$count_padded = str_split($count);
 					//$count = str_split(50000);
 					?>
-					@foreach($count as $k => $c)
+					@foreach($count_padded as $k => $c)
 					<span class='counter-bg'>{{$c}}</span>
 					@endforeach
 					{{HTML::image('img/pledge-needed.png')}}
 				</td>
 			</tr>			
 		</table>
-
-		<?php
-		$url = explode('/',Request::path());
-		$country = $url[0];
-		?>
+		
 		<!-- <div class='hidden-xs'> -->
 			<table class='landing-tbl'>
 				<tr>
 					<td width='1%' style='padding-right:20px;'>
-						<a href="{{URL::to('/'.$country)}}">{{HTML::image('img/home.png')}}</a>
-						<br><b>Home</b>
+						<a href="{{URL::to('/'.$country)}}">
+							{{HTML::image('img/home.png')}}
+							<br><b>Home</b>
+						</a>
+					</td>
+					<td width='1%' style='padding-right:20px; padding-left:20px; '>				
+						<a href="{{URL::to('/'.$country.'/ambassadors')}}">
+							{{HTML::image('img/ambassador.png')}}
+							<br><b>Ambassadors</b>
+						</a>
 					</td>
 					<td width='1%' style='padding-right:20px; padding-left:20px'>				
-						<a href="{{URL::to('/'.$country.'/ambassadors')}}">{{HTML::image('img/ambassador.png')}}</a>
-						<br><b>Ambassadors</b>
+						<a href="{{URL::to('/'.$country.'/videos')}}">
+							{{HTML::image('img/videos.png')}}
+							<br><b>Videos</b>
+						</a>
 					</td>
 					<td width='1%' style='padding-right:20px; padding-left:20px'>				
-						<a href="{{URL::to('/'.$country.'/videos')}}">{{HTML::image('img/videos.png')}}</a>
-						<br><b>Videos</b>
-					</td>
-					<td width='1%' style='padding-right:20px; padding-left:20px'>				
-						<a href="{{URL::to('/'.$country.'/supporters')}}">{{HTML::image('img/supporters.png')}}</a>
-						<br><b>Supporters</b>
+						<a href="{{URL::to('/'.$country.'/supporters')}}">
+							{{HTML::image('img/supporters.png')}}
+							<br><b>Supporters</b>
+						</a>
 					</td>
 					<td style='text-align:right'>
-						<a href="{{URL::to(''.$country.'/pledge')}}">{{HTML::image('img/pledge-now.png')}}</a>
-					</td>
+						<a href="{{URL::to(''.$country.'/pledge')}}">
+							{{HTML::image('img/pledge-now.png')}}
+						</td>
+					</a>
 				</tr>
 			</table>
 		<!-- </div> -->

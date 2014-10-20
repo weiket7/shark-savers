@@ -34,7 +34,7 @@ Route::group(array('prefix' => 'sg'), function()
 
 Route::group(array('prefix' => 'admin'), function()
 {	 
-	Route::get('/', 'GridController@index');
+	Route::get('/', 'GridController@info');
 	Route::get('grid', 'GridController@index');
 	Route::get('grid/create', 'GridController@create');
 	Route::post('grid/create', 'GridController@createPost');

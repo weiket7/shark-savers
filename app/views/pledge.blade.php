@@ -34,10 +34,12 @@ function submitForm() {
 
 <div class='container' style='text-align:center'>
 
+<div style='height:20px'>&nbsp;</div>
+
 {{HTML::image('img/im-finished-pledge.png')}}
 <br><br>
 
-<div class='hidden-xs hidden-sm'>
+<div class='hidden-xs hidden-sm' style='margin-bottom:20px'>
 	Do you want to make a difference?<br>
 	<br>
 	A pledge is a highly personal statement that lets others know what you
