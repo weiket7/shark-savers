@@ -38,9 +38,11 @@
 <ul class="pagination">
   <li>{{HTML::link('/', 'finishedwithfinsorg')}}</li>
   <li>{{HTML::link('admin/grid', 'Grid')}}</li>
-  <li>{{HTML::link('admin/ambassador', 'Ambassador')}}</li>
+  <li>{{HTML::link('admin/pledge', 'Pledge')}}</li>
+  <li>{{HTML::link('admin/issue', 'Issue Tracker')}}</li>
+  <!-- <li>{{HTML::link('admin/ambassador', 'Ambassador')}}</li>
   <li>{{HTML::link('admin/supporter', 'Supporter')}}</li>
-  <li>{{HTML::link('admin/video', 'Video')}}</li>
+  <li>{{HTML::link('admin/video', 'Video')}}</li> -->
 </ul>
 
 @yield('content')

@@ -128,9 +128,17 @@ body {
   font-weight: bold;
 }
 
+/*MODAL*/
 .modal-title {
   text-align:left;
 }
+.modal-header{
+border-bottom: none;
+}
+.modal-footer{
+border-top: none;
+}
+
 
 .shark-bg {
   background-image: url(../img/shark-bg3.jpg);
@@ -171,6 +179,7 @@ body {
 
 /*BXSLIDER*/
 /*http://stackoverflow.com/questions/18601896/bxslider-unwanted-top-bottom-white-space*/
+
 .bx-wrapper .bx-viewport {
     -moz-box-shadow: 0 0 0px #ccc;
     -webkit-box-shadow: 0 0 0px #ccc;
@@ -178,7 +187,6 @@ body {
     border:  0px solid #000;
     left: 0px;
         
-    /*fix other elements on the page moving (on Chrome)*/
     -webkit-transform: translatez(0);
     -moz-transform: translatez(0);
         -ms-transform: translatez(0);
@@ -194,6 +202,11 @@ body {
 .bx-wrapper .bx-prev {
  background: url(../img/slider-prev.png) no-repeat;
 }
+.bx-wrapper .bx-controls-direction a {
+  width: 28px;
+  height: 43px;
+}
+
 
 /*MOBILE 017dc3*/
 .mobile-menu {

@@ -22,7 +22,7 @@ class GridController extends BaseController {
 		$grid->type = $input['type'];
 		$grid->title = $input['title'];
 		$grid->link = $input['link'];
-		$grid->position = $input['position'];
+		/*$grid->position = $input['position'];*/
 		$grid->caption = $input['caption'];
 		$grid->text = $input['text'];
 

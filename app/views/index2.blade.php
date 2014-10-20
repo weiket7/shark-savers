@@ -3,13 +3,8 @@
 <script type="text/javascript">
 	$(document).ready( function() {
 		$('.bxslider').bxSlider({
-		  mode: 'fade',
 		  captions: true,
 		  pager: false,
-		  nextImage: "<img src='{{URL::to('img/slider-left.png')}}'/>",
-		  prevImage: "<img src='{{URL::to('img/slider-left.png')}}'/>",
-		  nextText: '',
-		  prevText: '',
 		});
 	});
 
@@ -30,9 +25,9 @@
 	function showSupporter(id) {
 		$('#pop-supporter-title').text($('#S'+id).attr('data-title'));
 		var image = $('#S'+id).attr('data-image');
-		$('#pop-supporter-image').attr('src', "{{URL::to('img/supporter')}}/"+image);
+		$('#pop-supporter-image').attr('src', "{{URL::to('img/grid')}}/"+image);
 		var logo = $('#S'+id).attr('data-logo');
-		$('#pop-supporter-logo').attr('src', "{{URL::to('img/supporter')}}/"+logo);
+		$('#pop-supporter-logo').attr('src', "{{URL::to('img/grid')}}/"+logo);
 		$('#pop-supporter-text').text($('#S'+id).attr('data-text'));
 		$('#supporter-modal').modal();
 	}
@@ -119,7 +114,7 @@
 	        </div>
       </div>      
 
-      <div class="modal-footer">
+      <div class="modal-footer" style='border-top: 4px solid red'>
 	      <div class='col-xs-9' style='text-align:left'>
 	      	{{HTML::image('img/share-facebook.png', '', ['onclick'=>'shareFacebook()', 'style'=>'height:40px'])}}
 

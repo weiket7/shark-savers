@@ -52,7 +52,6 @@
 						<select name='language' id='language' class='form-control'>
 							<option>English</option>
 							<option>Chinese</option>
-							<option>Malay</option>
 						</select>
 					</div>
 					

@@ -17,6 +17,10 @@ Route::get('/r', function() {
 	return View::make('r');
 });
 
+Route::get('bxslider', function() {
+	return View::make('bxslider');
+});
+
 Route::group(array('prefix' => 'sg'), function()
 {	 
 	Route::get('/', 'SiteController@index2');
@@ -30,11 +34,17 @@ Route::group(array('prefix' => 'sg'), function()
 
 Route::group(array('prefix' => 'admin'), function()
 {	 
-	Route::get('/', 'SiteController@admin');
+	Route::get('/', 'GridController@index');
 	Route::get('grid', 'GridController@index');
 	Route::get('grid/create', 'GridController@create');
 	Route::post('grid/create', 'GridController@createPost');
-	Route::get('video', 'VideoController@index');
+	Route::get('pledge', 'PledgeController@index');
+	Route::get('pledge/create', 'PledgeController@create');
+	Route::post('pledge/create', 'PledgeController@createPost');
+	Route::get('issue', 'IssueController@index');
+	Route::get('issue/create', 'IssueController@create');
+	Route::post('issue/create', 'IssueController@createPost');
+	/*Route::get('video', 'VideoController@index');
 	Route::get('video/create', 'VideoController@create');
 	Route::post('video/create', 'VideoController@createPost');
 	Route::get('video/update', 'VideoController@update');
@@ -48,9 +58,7 @@ Route::group(array('prefix' => 'admin'), function()
 	Route::get('ambassador/create', 'AmbassadorController@create');
 	Route::post('ambassador/create', 'AmbassadorController@createPost');
 	Route::get('ambassador/update', 'AmbassadorController@update');
-	Route::post('ambassador/update', 'AmbassadorController@updatePost');
-	Route::get('pledge', 'PledgeController@');
-	Route::get('pledge/create', 'PledgeController@create');
+	Route::post('ambassador/update', 'AmbassadorController@updatePost');*/
 });
 
 
