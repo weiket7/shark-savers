@@ -39,6 +39,7 @@
   <li>{{HTML::link('/', 'finishedwithfinsorg')}}</li>
   <li>{{HTML::link('admin/grid', 'Grid')}}</li>
   <li>{{HTML::link('admin/position', 'Position')}}</li>
+  <li>{{HTML::link('admin/pledge', 'Slider')}}</li>
   <li>{{HTML::link('admin/pledge', 'Pledge')}}</li>
   <li>{{HTML::link('admin/issue', 'Issue Tracker')}}</li>
   <li>{{HTML::link('admin/issue', 'Config')}}</li>
