@@ -1,9 +1,15 @@
-<!doctype html>
+<?php
+$url = explode('/',Request::path());
+$country = $url[0];
+?>
+
 <html lang="en">
 	<head>
 		<meta charset="UTF-8">
 		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-		<title>Learning Laravel Website </title>
+		<title>
+			IFWF | I'm Finished With Fins
+		</title>
 		
 		<script src="{{asset('js/jquery-2.1.1.min.js') }}"></script>
 		<script src="{{asset('js/jquery-ui.min.js') }}"></script>
@@ -83,11 +89,6 @@
 </div>
 </div>
 
-<?php
-$url = explode('/',Request::path());
-$country = $url[0];
-?>
-
 <div class='footer'>
 	<div class='container'>
 		<table style='width:100%'>
@@ -102,9 +103,12 @@ $country = $url[0];
 				<a href='https://www.facebook.com/SharkSaversSingapore' target='_blank'><span class='link-facebook'></span></a>
 				<a href='http://www.twitter.com/SharkSaversSG' target='_blank'><span class='link-twitter'></span></a>
 				<a href='https://www.youtube.com/user/sharksaverssingapore' target='_blank'><span class='link-youtube'></span></a>
-			@else
+			@elseif (strtolower($country)=='hk')
+				<a href='https://www.facebook.com/FinishedWithFins' target='_blank'><span class='link-facebook'></span></a>				
+				<a href='https://www.youtube.com/user/HKSharksavers' target='_blank'><span class='link-youtube'></span></a>
+			@else <!--MY-->
 				<a href='https://www.facebook.com/FinishedWithFins' target='_blank'><span class='link-facebook'></span></a>
-				<a href='http://www.twitter.com/SharkSaversSG' target='_blank'><span class='link-twitter'></span></a>
+				<!--weibo instagram-->
 				<a href='https://www.youtube.com/user/HKSharksavers' target='_blank'><span class='link-youtube'></span></a>
 			@endif
 		</td>

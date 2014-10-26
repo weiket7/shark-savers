@@ -3,7 +3,15 @@
 	<head>
 		<meta charset="UTF-8">
 		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-		<title>I'm Finished With Fins</title>
+		<title>
+			IMWF | I'm Finished With Fins
+			<?php
+			$url = explode('/',Request::path());
+			$country = $url[0];
+			$country_arr = array('SG'=>'Singapore', 'MY'=>'Malaysia', 'HK'=>'Hong Kong');
+			?>
+			{{ $country_arr[strtoupper($country)] }}
+		</title>
 		
 		<script src="{{asset('js/jquery-2.1.1.min.js') }}"></script>
 		<script src="{{asset('js/jquery-ui.min.js') }}"></script>
@@ -39,11 +47,6 @@
 	</head>
 <body>
 <!--getbootstrap.com/examples/navbar-fixed-top/-->
-
-<?php
-$url = explode('/',Request::path());
-$country = $url[0];
-?>
 
 <div class="navbar navbar-default navbar-fixed-top" role="navigation">
   <div class="container">
@@ -145,9 +148,12 @@ $country = $url[0];
 				<a href='https://www.facebook.com/SharkSaversSingapore' target='_blank'><span class='link-facebook'></span></a>
 				<a href='http://www.twitter.com/SharkSaversSG' target='_blank'><span class='link-twitter'></span></a>
 				<a href='https://www.youtube.com/user/sharksaverssingapore' target='_blank'><span class='link-youtube'></span></a>
-			@else
+			@elseif (strtolower($country)=='hk')
+				<a href='https://www.facebook.com/FinishedWithFins' target='_blank'><span class='link-facebook'></span></a>				
+				<a href='https://www.youtube.com/user/HKSharksavers' target='_blank'><span class='link-youtube'></span></a>
+			@else <!--MY-->
 				<a href='https://www.facebook.com/FinishedWithFins' target='_blank'><span class='link-facebook'></span></a>
-				<a href='http://www.twitter.com/SharkSaversSG' target='_blank'><span class='link-twitter'></span></a>
+				<!--weibo instagram-->
 				<a href='https://www.youtube.com/user/HKSharksavers' target='_blank'><span class='link-youtube'></span></a>
 			@endif
 		</td>

@@ -31,19 +31,19 @@
 	</head>
 <body>
 
-
-
 <div class="container">	
 
+{{HTML::image('img/logo-sg.png')}}
+
 <ul class="pagination">
-  <li>{{HTML::link('/', 'finishedwithfinsorg')}}</li>
+  <li>{{HTML::link('/', 'finishedwithfins.org')}}</li>
   <li>{{HTML::link('admin/grid', 'Grid')}}</li>
   <li>{{HTML::link('admin/position', 'Position')}}</li>
   <li>{{HTML::link('admin/pledge', 'Slider')}}</li>
   <li>{{HTML::link('admin/pledge', 'Pledge')}}</li>
   <li>{{HTML::link('admin/issue', 'Issue Tracker')}}</li>
-  <li>{{HTML::link('admin/issue', 'Config')}}</li>
-  <li>{{HTML::link('admin/info', 'Info')}}</li>
+  <!-- <li>{{HTML::link('admin/issue', 'Config')}}</li> -->
+  <li>{{HTML::link('admin/info', 'Dimensions')}}</li>
   <!-- <li>{{HTML::link('admin/ambassador', 'Ambassador')}}</li>
   <li>{{HTML::link('admin/supporter', 'Supporter')}}</li>
   <li>{{HTML::link('admin/video', 'Video')}}</li> -->

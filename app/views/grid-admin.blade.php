@@ -25,7 +25,7 @@
 			@foreach($grids as $g)
 				<tr>
 					<td>{{$g->type}}</td>
-					<td>{{$g->title}}</td>
+					<td>{{link_to('admin/grid/update/'.$g->id, $g->title) }}</td>
 					<td>{{$g->link}}</td>
 					<td>{{$g->position}}</td>
 					<td>{{$g->caption}}</td>
