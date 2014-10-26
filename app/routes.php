@@ -20,6 +20,10 @@ Route::get('/r', function() {
 	return View::make('r');
 });
 
+Route::get('width', function() {
+	return View::make('width');
+});
+
 Route::get('bxslider', function() {
 	return View::make('bxslider');
 });

@@ -80,7 +80,7 @@
 					//$count = str_split(50000);
 					?>
 					
-					<div class='visible-xs' style='float:right'>
+					<div class='visible-xs visible-sm visible-md' style='float:right'>
 						<table>
 							<tr>
 								<td>
@@ -102,7 +102,7 @@
 						</table>						
 					</div>
 
-					<div class='visible-sm visible-md visible-lg'>
+					<div class='hidden-xs hidden-sm hidden-md'>
 						@foreach($count_padded as $k => $c)
 							<span class='counter-bg'>{{$c}}</span>
 						@endforeach
@@ -113,62 +113,54 @@
 			</tr>			
 		</table>
 		
-			<table class='landing-tbl hidden-xs' style='margin-top:7px; margin-bottom: 7px'>
-				<tr>
-					<td width='20px' style='padding-right:20px;'>
-						<a href="{{URL::to('/'.$country)}}">
-							<span class='link-home'></span>
-							<b>Home</b>
-						</a>
-					</td>
-					<td width='130px' style='text-align:center'>				
-						<a href="{{URL::to('/'.$country.'/ambassadors')}}">
-							<span class='link-ambassadors'></span>
-							<b>Ambassadors</b>
-						</a>
-					</td>
-					<td width='100px' style='text-align:center'>				
-						<a href="{{URL::to('/'.$country.'/videos')}}">
-							<span class='link-videos'></span>
-							<b>Videos</b>
-						</a>
-					</td>
-					<td width='100px' style='text-align:center'>				
-						<a href="{{URL::to('/'.$country.'/supporters')}}">
-							<span class='link-supporters'></span>
-							<b>Supporters</b>
-						</a>
-					</td>
-					<td style='text-align:right'>
-						<a href="{{URL::to(''.$country.'/pledge')}}">
-							<span class='pledge-now-small'></span>
-						</td>
+		<table class='landing-tbl hidden-xs hidden-sm hidden-md' style='margin-top:7px; margin-bottom: 7px'>
+			<tr>
+				<td width='20px' style='padding-right:20px;'>
+					<a href="{{URL::to('/'.$country)}}">
+						<span class='link-home'></span>
+						<b>Home</b>
 					</a>
-				</tr>
-			</table>
+				</td>
+				<td width='130px' style='text-align:center'>				
+					<a href="{{URL::to('/'.$country.'/ambassadors')}}">
+						<span class='link-ambassadors'></span>
+						<b>Ambassadors</b>
+					</a>
+				</td>
+				<td width='100px' style='text-align:center'>				
+					<a href="{{URL::to('/'.$country.'/videos')}}">
+						<span class='link-videos'></span>
+						<b>Videos</b>
+					</a>
+				</td>
+				<td width='100px' style='text-align:center'>				
+					<a href="{{URL::to('/'.$country.'/supporters')}}">
+						<span class='link-supporters'></span>
+						<b>Supporters</b>
+					</a>
+				</td>
+				<td style='text-align:right'>
+					<a href="{{URL::to(''.$country.'/pledge')}}">
+						<span class='pledge-now-small'></span>
+					</td>
+				</a>
+			</tr>
+		</table>
 
-
-
-			<div class='visible-xs'>
-				<div class="dropdown">
-				  <button class="dropdown-toggle" type="button" id="mobile-menu" data-toggle="dropdown">
-				    {{HTML::image('img/triple-line.jpg', '', ['style'=>'margin-left: 10px; margin-right:20px'])}}
-				   	MENU
-				  </button>
-				  <ul class="dropdown-menu" id='mobile-menu-dropdown' role="menu" aria-labelledby="dropdownMenu1">
-				    <li role="presentation" style='border-bottom: 1px solid #ccc;'><a style='padding-top:10px' href="{{URL::to('/'.$country.'/ambassadors')}}">Ambassadors</a></li>
-				    <li role="presentation" style='border-bottom: 1px solid #ccc'><a style='padding-top:10px' href="{{URL::to('/'.$country.'/videos')}}">Videos</a></li>
-				    <li role="presentation"><a style='padding-top:10px' href="{{URL::to('/'.$country.'/supporters')}}">Supporters</a></li>
-				  </ul>
-				</div>
+		<div class='visible-xs visible-sm visible-md'>
+			<div class="dropdown">
+			  <button class="dropdown-toggle" type="button" id="mobile-menu" data-toggle="dropdown">
+			    {{HTML::image('img/triple-line.jpg', '', ['style'=>'margin-left: 10px; margin-right:20px'])}}
+			   	MENU
+			  </button>
+			  <ul class="dropdown-menu" id='mobile-menu-dropdown' role="menu" aria-labelledby="dropdownMenu1">
+			    <li role="presentation" style='border-bottom: 1px solid #ccc;'><a style='padding-top:10px' href="{{URL::to('/'.$country.'/ambassadors')}}">Ambassadors</a></li>
+			    <li role="presentation" style='border-bottom: 1px solid #ccc'><a style='padding-top:10px' href="{{URL::to('/'.$country.'/videos')}}">Videos</a></li>
+			    <li role="presentation"><a style='padding-top:10px' href="{{URL::to('/'.$country.'/supporters')}}">Supporters</a></li>
+			  </ul>
 			</div>
+		</div>
   </div>
-  <!-- <div class='visible-xs'>
-  	<div class='mobile-menu'>
-  		{{HTML::image('img/triple-line.jpg', '', ['class'=>'triple-line'])}}
-  		<span class='mobile-menu-word'>MENU</span>
-  	</div>
-  </div> -->
 </div>
 
 @yield('content')
