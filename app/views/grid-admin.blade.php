@@ -14,23 +14,30 @@
 			<tr>
 				<th>Type</th>
 				<th>Title</th>
-				<th>Link</th>
 				<th>Position</th>
-				<th>Caption</th>
 				<th>Image</th>
 				<th>Logo</th>
+				<th>Link</th>
 			</tr>
 		</thead>
 		<tbody>
+			<?php $type_arr = ['A'=>'Ambassador', 'S'=>'Supporter', 'V'=>'Video'] ?>
 			@foreach($grids as $g)
 				<tr>
-					<td>{{$g->type}}</td>
+					<td>{{$type_arr[$g->type]}}</td>
 					<td>{{link_to('admin/grid/update/'.$g->id, $g->title) }}</td>
-					<td>{{$g->link}}</td>
 					<td>{{$g->position}}</td>
-					<td>{{$g->caption}}</td>
-					<td>{{$g->image}}</td>
-					<td>{{$g->logo}}</td>
+					<td>{{HTML::image('img/grid/'.$g->image, '', ['height'=>'40px'])}}</td>
+					<td>
+						@if ($g->logo != '')
+							{{HTML::image('img/grid/'.$g->logo, '', ['height'=>'40px'])}}
+						@endif
+					</td>
+					<td>
+						@if ($g->link != '') 
+							{{HTML::link('http://youtube.com/watch?v='.$g->link, 'Video', ['target'=>'_blank'])}}
+						@endif
+					</td>
 				</tr>
 			@endforeach
 	</tbody>

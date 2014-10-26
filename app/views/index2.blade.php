@@ -11,7 +11,8 @@
 	function showAmbassador(id) {
 		var image = $('#A'+id).attr('data-image');
 		$('#pop-ambassador-title').text($('#A'+id).attr('data-title'));
-		$('#pop-ambassador-image').attr('src', "{{URL::to('img/grid')}}/"+image);
+		$('#pop-ambassador-image1').attr('src', "{{URL::to('img/grid')}}/"+image);
+		$('#pop-ambassador-image2').attr('src', "{{URL::to('img/grid')}}/"+image);
 		$('#ambassador-modal').modal();
 	}
 
@@ -32,6 +33,21 @@
 		$('#pop-supporter-text').text($('#S'+id).attr('data-text'));
 		$('#supporter-modal').modal();
 	}
+
+	function shareFacebook()	{
+		var width=600;
+		var height=400;
+		var leftPosition, topPosition;
+	  //Allow for borders.
+	  leftPosition = (window.screen.width / 2) - ((width / 2) + 10);
+	  //Allow for title and status bars.
+	  topPosition = (window.screen.height / 2) - ((height / 2) + 50);
+	  var windowFeatures = "status=no,height=" + height + ",width=" + width + ",resizable=yes,left=" + leftPosition + ",top=" + topPosition + ",screenX=" + leftPosition + ",screenY=" + topPosition + ",toolbar=no,menubar=no,scrollbars=no,location=no,directories=no";
+	  var u="http://www.finishedwithfins.org";
+	  var t="I'm FINished with FINS. Join the pledge now! http://www.finishedwithfins.org/sg/pledge";
+	  window.open('http://www.facebook.com/sharer.php?u='+encodeURIComponent(u)+'&message='+encodeURIComponent(t),'sharer', windowFeatures);
+	  
+	}	
 </script>
 
 <div class='shark-bg'>
@@ -83,10 +99,12 @@
 					</div>
 				@endif
 
+				<?php $category_arr = ['A'=>'Artiste','E'=>'Entertainment','C'=>'Corporate', 'M'=>'Musician', 'O'=>'Others'] ?>
 				@if($g->type == 'A')
-					<div class='grid-text'>Ambassador: {{$g->title}}</div>
+
+					<div class='grid-text'>{{$category_arr[$g->category]}}: {{$g->title}}</div>
 				@else
-					<div class='grid-text'>{{$g->caption}}</div>					
+					<div class='grid-text'>{{$g->title}}</div>					
 				@endif
 				<!-- <span class='grid-down'>{{HTML::image('img/down.png')}}</span> -->
 			</div>
@@ -103,7 +121,11 @@
 
 <div style='height:50px'>&nbsp;</div>
 
-<?php $grid = Grid::find(1) ?>
+<?php
+$url = explode('/',Request::path());
+$country = $url[0];
+$country_arr = array('SG'=>'Singapore', 'MY'=>'Malaysia', 'HK'=>'Hong Kong');
+?>
 
 <div class="modal fade" id="ambassador-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
   <div class="modal-dialog" style='width:900px;'>
@@ -116,13 +138,28 @@
       </div>
 
       <div class="modal-body" style='height:497px'>
+      	<!-- <div class='hidden-sm hidden-xs'> -->
 		      <div style='position:absolute; top:60px; left:20px; z-index:1'>
-	        	{{HTML::image('img/im-finished-large.png')}}
+	        	@if ($country == 'hk')
+	        		{{HTML::image('img/im-finished-hk.png')}}
+	        	@else
+	        		{{HTML::image('img/im-finished-sgmy.png')}}
+	        	@endif
 	        </div>
 
 	        <div style='text-align:right'>
-	        	<img src='' id='pop-ambassador-image' style='height:482px'/>
+	        	<img src='' id='pop-ambassador-image1' style='height:482px'/>
 	        </div>
+        <!-- </div> -->
+
+        <!-- <div class='visible-sm visible-xs row'>
+       	 	@if ($country == 'hk')
+        		{{HTML::image('img/im-finished-hk.png')}}
+        	@else
+        		{{HTML::image('img/im-finished-sgmy.png')}}
+        	@endif
+        	<img src='' id='pop-ambassador-image2'/>
+        </div> -->
       </div>      
 
       <div class="modal-footer" style='border-top: 4px solid red; text-align:left'>
@@ -130,7 +167,7 @@
 
 				<a href="https://twitter.com/intent/tweet?text=I'm FINished with FINS. Join the pledge now! http://www.finishedwithfins.org/sg/pledge">
 				  {{HTML::image('img/share-twitter.png', '', ['style'=>'height:40px'])}}
-				</a>
+				</a>			
       </div>
     </div>
   </div>
@@ -141,7 +178,7 @@
     <div class="modal-content">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal">
-        	{{HTML::image('img/close.jpg')}}
+        	{{HTML::image('img/close.jpg', '', ['height'=>'40px'])}}
         </button>
         <h4 class="modal-title pop-title"><div id='pop-video-title'></div></h4>
       </div>
@@ -166,7 +203,7 @@
     <div class="modal-content">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal">
-        	{{HTML::image('img/close.jpg')}}
+        	{{HTML::image('img/close.jpg', '', ['height'=>'40px'])}}
         </button>
       	<h4 class="modal-title pop-title">
       		<img id='pop-supporter-logo-small'  height='30px' src=''>&nbsp;
@@ -190,11 +227,11 @@
       </div>      
 
       <div class="modal-footer" style='text-align:left'>
-      	{{HTML::image('img/share-facebook.png', '', ['onclick'=>'shareFacebook()', 'style'=>'height:40px'])}}
-
+      	<span class='share-facebook' onclick='shareFacebook()'></span>
 				<a href="https://twitter.com/intent/tweet?text=I'm FINished with FINS. Join the pledge now! http://www.finishedwithfins.org/sg/pledge">
-				  {{HTML::image('img/share-twitter.png', '', ['style'=>'height:40px'])}}
+				  <span class='share-twitter'></span>
 				</a>
+      	<a href='{{$g->link}}' target='_blank'><span class='visit-site'></span></a>	
       </div>
     </div>
   </div>

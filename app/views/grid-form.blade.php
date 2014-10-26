@@ -47,6 +47,7 @@ function showSupporter() {
 	$('#title-tr').show();
 	$('#image-tr').show();
 	$('#logo-tr').show();
+	$('#link-tr').show();
 	$('#text-tr').show();
 }
 
@@ -102,8 +103,10 @@ function hideAll() {
 				<td width='100px'>{{ Form::label('link', 'Link') }}</td>
 				<td>
 					{{ Form::text('link', $grid->link) }}
+					@if ($grid->type == 'V')
 					From https://www.youtube.com/watch?v=WYpTC4R7M3M<br>
 					Just paste <b>WYpTC4R7M3M</b> here
+					@endif
 				</td>
 			</tr>
 			<tr id='image-tr' class='tr'>

@@ -14,6 +14,7 @@
 Route::get('/', 'SiteController@index');
 
 Route::model('grid', 'Grid');
+Route::model('pledge', 'Pledge');
 
 Route::get('/r', function() {
 	return View::make('r');
@@ -21,6 +22,13 @@ Route::get('/r', function() {
 
 Route::get('bxslider', function() {
 	return View::make('bxslider');
+});
+
+Route::get('exist/{nric}', function($nric) {
+	$nric = preg_replace('/[^0-9,]|,[0-9]*$/','',$nric);	//remove non-numeric
+	$p = DB::table('pledge')->where('nric', 'like', '%'.$nric.'%')->get();
+	/*var_dump($p);*/
+	echo $p ? 'true' : 'false';	//exist = true 
 });
 
 Route::group(array('prefix' => 'sg'), function()

@@ -1,4 +1,5 @@
 /*bootstrap*/
+
 .row {
   margin-left: 0px;
   margin-right: 0px;
@@ -259,10 +260,6 @@ a { color:black; }
   font-size: 24px;
   line-height:0;
 }
-.triple-line {
-  margin-right: 100px;
-}
-
 
 .grey { -webkit-filter: grayscale(100%);
 -moz-filter: grayscale(100%);
@@ -284,7 +281,7 @@ filter: grayscale(0%);
     background-image:url(../img/supporters.png);
 }
 .link-supporters:hover {
-    background-image:url(../img/supporters-roll.png);
+    background-image:url(../img/supporters-hover.png);
 }
 .link-videos {
     display:block;
@@ -295,7 +292,7 @@ filter: grayscale(0%);
     background-image:url(../img/videos.png);
 }
 .link-videos:hover {
-    background-image:url(../img/videos-roll.png);
+    background-image:url(../img/videos-hover.png);
 }
 .link-home {
     display:block;
@@ -306,7 +303,7 @@ filter: grayscale(0%);
     background-image:url(../img/home.png);
 }
 .link-home:hover {
-    background-image:url(../img/home-roll.png);
+    background-image:url(../img/home-hover.png);
 }
 .link-ambassadors {
     display:block;
@@ -317,7 +314,7 @@ filter: grayscale(0%);
     background-image:url(../img/ambassadors.png);
 }
 .link-ambassadors:hover {
-    background-image:url(../img/ambassadors-roll.png);
+    background-image:url(../img/ambassadors-hover.png);
 }
 .link-facebook {
     display:inline-block;
@@ -326,7 +323,7 @@ filter: grayscale(0%);
     background-image:url(../img/facebook.png);
 }
 .link-facebook:hover {
-    background-image:url(../img/facebook-roll.png);
+    background-image:url(../img/facebook-hover.png);
 }
 .link-youtube {
     display:inline-block;
@@ -335,7 +332,7 @@ filter: grayscale(0%);
     background-image:url(../img/youtube.png);
 }
 .link-youtube:hover {
-    background-image:url(../img/youtube-roll.png);
+    background-image:url(../img/youtube-hover.png);
 }
 .link-twitter {
     display:inline-block;
@@ -344,5 +341,90 @@ filter: grayscale(0%);
     background-image:url(../img/twitter.png);
 }
 .link-twitter:hover {
-    background-image:url(../img/twitter-roll.png);
+    background-image:url(../img/twitter-hover.png);
+}
+.link-instagram {
+    display:inline-block;
+    width:44px;
+    height:44px;
+    background-image:url(../img/instagram.png);
+}
+.link-instagram:hover {
+    background-image:url(../img/instagram-hover.png);
+}
+.link-weibo {
+    display:inline-block;
+    width:44px;
+    height:44px;
+    background-image:url(../img/weibo.png);
+}
+.link-weibo:hover {
+    background-image:url(../img/weibo-hover.png);
+}
+.pledge-now {
+    display:inline-block;
+    width:437px;
+    height:85px;
+    background-image:url(../img/pledge-now.png);
+}
+.pledge-now:hover {
+    background-image:url(../img/pledge-now-hover.png);
+}
+
+.pledge-now-small {
+    display:inline-block;
+    width:272px;
+    height:53px;
+    background-image:url(../img/pledge-now-small.png);
+}
+.pledge-now-small:hover {
+    background-image:url(../img/pledge-now-small-hover.png);
+}
+.visit-site {
+    display:inline-block;
+    width:177px;
+    height:40px;
+    background-image:url(../img/visit-site.png);
+}
+.visit-site:hover {
+    background-image:url(../img/visit-site-hover.png);
+}
+.share-facebook {
+    display:inline-block;
+    width:155px;
+    height:40px;
+    background-image:url(../img/share-facebook.png);
+}
+.share-twitter {
+    display:inline-block;
+    width:155px;
+    height:40px;
+    background-image:url(../img/share-twitter.png);
+}
+
+#mobile-menu {
+  background-color: #007dc3;
+  width:100%;
+  color: white;
+  height: 50px;
+  text-align: left;
+  font-size: 20px;
+  font-weight: bold;
+}
+
+#mobile-menu-dropdown {
+  padding: 0;
+  border-radius: 0px;
+  border: none;
+  background-color: transparent;
+}
+
+#mobile-menu-dropdown >li>a {
+  background-color: #007dc3;
+  width:100%;
+  color: white;
+  height: 50px;
+  text-align: left;
+  font-size: 20px;
+  font-weight: bold;
 }

@@ -11,9 +11,9 @@ function shareFacebook()	{
   //Allow for title and status bars.
   topPosition = (window.screen.height / 2) - ((height / 2) + 50);
   var windowFeatures = "status=no,height=" + height + ",width=" + width + ",resizable=yes,left=" + leftPosition + ",top=" + topPosition + ",screenX=" + leftPosition + ",screenY=" + topPosition + ",toolbar=no,menubar=no,scrollbars=no,location=no,directories=no";
-  u="http://www.robin-residences.org";
-  t="Robin Residences new launch at District 10 along Robin Drive. View location map, details and register interest today!";
-  window.open('http://www.facebook.com/sharer.php?u='+encodeURIComponent(u)+'&t='+encodeURIComponent(t),'sharer', windowFeatures);
+  var u="http://www.finishedwithfins.org";
+  var t="I'm FINished with FINS. Join the pledge now! http://www.finishedwithfins.org/sg/pledge";
+  window.open('http://www.facebook.com/sharer.php?u='+encodeURIComponent(u)+'&message='+encodeURIComponent(t),'sharer', windowFeatures);
   
 }	
 </script>
@@ -63,10 +63,10 @@ $count = str_split(str_pad(Pledge::all()->count(), 5, '0', STR_PAD_LEFT));
 {{HTML::image('img/pledge-needed.png', '', ['style'=>'margin-top:10px'])}}
 <br><br><br>
 
-{{HTML::image('img/share-facebook.png', '', ['onclick'=>'shareFacebook()'])}}
+{{HTML::image('img/share-facebook.png', '', ['onclick'=>'shareFacebook()', 'height'=>'40px'])}}
 
 <a href="https://twitter.com/intent/tweet?text=I'm FINished with FINS. Join the pledge now! http://www.finishedwithfins.org/sg/pledge">
-  {{HTML::image('img/share-twitter.png')}}
+  {{HTML::image('img/share-twitter.png', '', ['height'=>'40px'])}}
 </a>
 
 <script type="text/javascript" src="http://platform.twitter.com/widgets.js"></script>

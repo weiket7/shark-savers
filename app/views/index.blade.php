@@ -31,7 +31,13 @@ $country = $url[0];
 				$('#country').change(function() {
 					var country = $(this).val();
 					//http://stackoverflow.com/questions/200337/whats-the-best-way-to-automatically-redirect-someone-to-another-webpage
-					window.location.href = "{{URL::to('sg')}}";					
+					if (country == 'SG') {
+						window.location.href = "{{URL::to('sg')}}";											
+					} else if (country == 'MY') {
+						window.location.href = "{{URL::to('my')}}";																	
+					} else if (country == 'HK') {
+						window.location.href = "{{URL::to('hk')}}";
+					}
 				});
 
 				$('.bxslider').bxSlider({
@@ -57,7 +63,7 @@ $country = $url[0];
 	<table class='landing-tbl'>
 		<tr>
 			<td rowspan='2' style='text-align:left; width:300px'>
-				<a href="{{URL::to('/')}}">{{HTML::image('img/logo-sg.png', '')}}</a>
+				<a href="{{URL::to('/')}}">{{HTML::image('img/logo.png', '')}}</a>
 			</td>
 			<td style='text-align:right'>
 				<a href="http://www.wwf.org.hk/" target='_blank'>{{HTML::image('img/partner_wwf.gif', '', ['class'=>'partner']), ''}}</a>
@@ -99,18 +105,9 @@ $country = $url[0];
 		Privacy Policy | Terms & Conditions
 		</td>
 		<td style='text-align:right'>		
-			@if (strtolower($country)=='sg')
-				<a href='https://www.facebook.com/SharkSaversSingapore' target='_blank'><span class='link-facebook'></span></a>
-				<a href='http://www.twitter.com/SharkSaversSG' target='_blank'><span class='link-twitter'></span></a>
-				<a href='https://www.youtube.com/user/sharksaverssingapore' target='_blank'><span class='link-youtube'></span></a>
-			@elseif (strtolower($country)=='hk')
-				<a href='https://www.facebook.com/FinishedWithFins' target='_blank'><span class='link-facebook'></span></a>				
-				<a href='https://www.youtube.com/user/HKSharksavers' target='_blank'><span class='link-youtube'></span></a>
-			@else <!--MY-->
-				<a href='https://www.facebook.com/FinishedWithFins' target='_blank'><span class='link-facebook'></span></a>
-				<!--weibo instagram-->
-				<a href='https://www.youtube.com/user/HKSharksavers' target='_blank'><span class='link-youtube'></span></a>
-			@endif
+			<a href='https://www.facebook.com/SharkSaversSingapore' target='_blank'><span class='link-facebook'></span></a>
+			<a href='http://www.twitter.com/SharkSaversSG' target='_blank'><span class='link-twitter'></span></a>
+			<a href='https://www.youtube.com/user/sharksaverssingapore' target='_blank'><span class='link-youtube'></span></a>
 		</td>
 		</tr>
 		</table>

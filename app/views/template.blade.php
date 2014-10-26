@@ -79,16 +79,41 @@
 						$count_padded = str_split($count);
 					//$count = str_split(50000);
 					?>
-					@foreach($count_padded as $k => $c)
-					<span class='counter-bg'>{{$c}}</span>
-					@endforeach
-					{{HTML::image('img/pledge-needed.png', '', ['style'=>'margin-top:-10px'])}}
+					
+					<div class='visible-xs' style='float:right'>
+						<table>
+							<tr>
+								<td>
+									@foreach($count_padded as $k => $c)
+										<span class='counter-bg'>{{$c}}</span>
+									@endforeach
+								</td>
+								<td rowspan='2' style='padding-left:10px'>
+									<a href="{{URL::to(''.$country.'/pledge')}}">
+										{{HTML::image('img/pledge-now-mobile.png')}}
+									</a>
+								</td>
+							</tr>
+							<tr>
+								<td>
+									{{HTML::image('img/pledge-needed-mobile.png', '')}}
+								</td>
+							</tr>
+						</table>						
+					</div>
+
+					<div class='visible-sm visible-md visible-lg'>
+						@foreach($count_padded as $k => $c)
+							<span class='counter-bg'>{{$c}}</span>
+						@endforeach
+
+						{{HTML::image('img/pledge-needed.png', '', ['style'=>'margin-top:-10px'])}}
+					</div>
 				</td>
 			</tr>			
 		</table>
 		
-		<!-- <div class='hidden-xs'> -->
-			<table class='landing-tbl' style='margin-top:7px; margin-bottom: 7px'>
+			<table class='landing-tbl hidden-xs' style='margin-top:7px; margin-bottom: 7px'>
 				<tr>
 					<td width='20px' style='padding-right:20px;'>
 						<a href="{{URL::to('/'.$country)}}">
@@ -116,12 +141,27 @@
 					</td>
 					<td style='text-align:right'>
 						<a href="{{URL::to(''.$country.'/pledge')}}">
-							{{HTML::image('img/pledge-now.png')}}
+							<span class='pledge-now-small'></span>
 						</td>
 					</a>
 				</tr>
 			</table>
-		<!-- </div> -->
+
+
+
+			<div class='visible-xs'>
+				<div class="dropdown">
+				  <button class="dropdown-toggle" type="button" id="mobile-menu" data-toggle="dropdown">
+				    {{HTML::image('img/triple-line.jpg', '', ['style'=>'margin-left: 10px; margin-right:20px'])}}
+				   	MENU
+				  </button>
+				  <ul class="dropdown-menu" id='mobile-menu-dropdown' role="menu" aria-labelledby="dropdownMenu1">
+				    <li role="presentation" style='border-bottom: 1px solid #ccc;'><a style='padding-top:10px' href="{{URL::to('/'.$country.'/ambassadors')}}">Ambassadors</a></li>
+				    <li role="presentation" style='border-bottom: 1px solid #ccc'><a style='padding-top:10px' href="{{URL::to('/'.$country.'/videos')}}">Videos</a></li>
+				    <li role="presentation"><a style='padding-top:10px' href="{{URL::to('/'.$country.'/supporters')}}">Supporters</a></li>
+				  </ul>
+				</div>
+			</div>
   </div>
   <!-- <div class='visible-xs'>
   	<div class='mobile-menu'>
@@ -133,33 +173,48 @@
 
 @yield('content')
 
-
 <div class='footer'>
 	<div class='container'>
 		<table style='width:100%'>
 		<tr>
-		<td>
-		Shark savers, inc. is a 501(C) (3) Non-Profit Organization.<br>
-		Copyright © 2013 Shark Savers Inc. All Rights Reserved.<br>
-		Privacy Policy | Terms & Conditions
-		</td>
-		<td style='text-align:right'>		
-			@if (strtolower($country)=='sg')
-				<a href='https://www.facebook.com/SharkSaversSingapore' target='_blank'><span class='link-facebook'></span></a>
-				<a href='http://www.twitter.com/SharkSaversSG' target='_blank'><span class='link-twitter'></span></a>
-				<a href='https://www.youtube.com/user/sharksaverssingapore' target='_blank'><span class='link-youtube'></span></a>
-			@elseif (strtolower($country)=='hk')
-				<a href='https://www.facebook.com/FinishedWithFins' target='_blank'><span class='link-facebook'></span></a>				
-				<a href='https://www.youtube.com/user/HKSharksavers' target='_blank'><span class='link-youtube'></span></a>
-			@else <!--MY-->
-				<a href='https://www.facebook.com/FinishedWithFins' target='_blank'><span class='link-facebook'></span></a>
-				<!--weibo instagram-->
-				<a href='https://www.youtube.com/user/HKSharksavers' target='_blank'><span class='link-youtube'></span></a>
-			@endif
-		</td>
+			<td>
+			Shark savers, inc. is a 501(C) (3) Non-Profit Organization.<br>
+			Copyright © 2013 Shark Savers Inc. All Rights Reserved.<br>
+			Privacy Policy | Terms & Conditions
+			</td>
+			<td style='text-align:right'>		
+				@if (strtolower($country)=='sg')
+					<a href='https://www.facebook.com/SharkSaversSingapore' target='_blank'><span class='link-facebook'></span></a>
+					<a href='http://www.twitter.com/SharkSaversSG' target='_blank'><span class='link-twitter'></span></a>
+					<a href='https://www.youtube.com/user/sharksaverssingapore' target='_blank'><span class='link-youtube'></span></a>
+				@elseif (strtolower($country)=='hk')
+					<a href='https://www.facebook.com/FinishedWithFins' target='_blank'><span class='link-facebook'></span></a>				
+					<a href='https://www.youtube.com/user/HKSharksavers' target='_blank'><span class='link-youtube'></span></a>
+				@else <!--MY-->
+					<a href='https://www.facebook.com/FinishedWithFins' target='_blank'><span class='link-facebook'></span></a>
+					<a href='http://www.weibo.com/sharksavershk' target='_blank'><span class='link-weibo'></span></a>
+					<a href='http://instagram.com/sharksavershk' target='_blank'><span class='link-instagram'></span></a>
+					<a href='https://www.youtube.com/user/HKSharksavers' target='_blank'><span class='link-youtube'></span></a>
+				@endif
+			</td>
 		</tr>
 		</table>
 	</div>
+</div>
+
+<!--preload hover-->
+<div style='display:none'>
+{{HTML::image('img/ambassadors-hover.png')}}
+{{HTML::image('img/videos-hover.png')}}
+{{HTML::image('img/supporters-hover.png')}}
+{{HTML::image('img/home-hover.png')}}
+{{HTML::image('img/facebook-hover.png')}}
+{{HTML::image('img/youtube-hover.png')}}
+{{HTML::image('img/twitter-hover.png')}}
+{{HTML::image('img/instagram-hover.png')}}
+{{HTML::image('img/weibo-hover.png')}}
+{{HTML::image('img/pledge-now-hover.png')}}
+{{HTML::image('img/pledge-now-small-hover.png')}}
 </div>
 
 </body>
