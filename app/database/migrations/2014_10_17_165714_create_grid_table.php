@@ -26,7 +26,33 @@ class CreateGridTable extends Migration {
         $table->string('caption', 50);
         $table->mediumInteger('position');
         $table->timestamps();
+
+        Schema::create('grid_country', function($table)
+        {
+          //http://laravel.com/docs/4.2/security
+            $table->integer('grid_id');
+            $table->string('country', 2);
+        });
+
+        $country_arr = ['SG','MY','HK'];
+          $count = 0;
+          foreach($country_arr as $key => $c) {
+              DB::table('grid_country')->insert([
+                'grid_id'=>1+$count,
+                'country'=>$c,
+              ]);    
+              DB::table('grid_country')->insert([
+                'grid_id'=>4+$count,
+                'country'=>$c,
+              ]);    
+              DB::table('grid_country')->insert([
+                'grid_id'=>7+$count,
+                'country'=>$c,
+              ]);    
+              $count++;   
+          }
     });
+
 
     $g = new Grid();
     $g->type = 'A';
@@ -37,7 +63,6 @@ class CreateGridTable extends Migration {
     $g->logo = '';
     $g->category = "A";
     $g->image = "am1.png";
-    $g->caption = "Lorem ipsum";
     $g->save();
 
     $g = new Grid();
@@ -45,7 +70,6 @@ class CreateGridTable extends Migration {
     $g->link = '';
     $g->position = '2';
     $g->logo = '';
-    $g->caption = "Lorem ipsum";
     $g->category = "A";
     $g->image = "am2.png";
     $g->type = 'A';
@@ -57,7 +81,6 @@ class CreateGridTable extends Migration {
     $g->link = '';
     $g->position = '3';
     $g->logo = '';
-    $g->caption = "Lorem ipsum";
     $g->category = "A";
     $g->image = "am3.png";
     $g->type = 'A';
@@ -70,7 +93,6 @@ class CreateGridTable extends Migration {
     $g->link = 'WYpTC4R7M3M';
     $g->position = '';
     $g->logo = '';
-    $g->caption = "Lorem ipsum";
     $g->image = "vid1.png";
     $g->type = 'V';
     $g->text = '4';
@@ -81,7 +103,6 @@ class CreateGridTable extends Migration {
     $g->link = 'WYpTC4R7M3M';
     $g->position = '';
     $g->logo = '';
-    $g->caption = "Lorem ipsum";
     $g->image = "vid2.png";
     $g->type = 'V';
     $g->text = '5';
@@ -92,7 +113,6 @@ class CreateGridTable extends Migration {
     $g->link = 'WYpTC4R7M3M';
     $g->position = '';
     $g->logo = '';
-    $g->caption = "Lorem ipsum";
     $g->image = "vid3.png";
     $g->type = 'V';
     $g->text = '6';
@@ -104,7 +124,6 @@ class CreateGridTable extends Migration {
     $g->link = '';
     $g->position = '7';
     $g->logo = 'accomplice-logo.png';
-    $g->caption = "Lorem ipsum";
     $g->image = "accomplice.png";
     $g->type = 'S';
     $g->text = 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis sagittis eleifend lectus, vel vehicula lectus sagittis ut. Curabitur volutpat mi nec velit tincidunt euismod a id dolor. Pellentesque egestas nunc tincidunt luctus dignissim. Donec id ex erat. Sed varius scelerisque massa in bibendum. Praesent pulvinar, lectus quis fringilla aliquet, mi justo consequat augue, eget dignissim nisi mauris nec urna. Fusce ultrices egestas tellus eget blandit. Fusce porta accumsan laoreet. Morbi nec ante vehicula, venenatis nunc id, sollicitudin nulla. Pellentesque condimentum dui sit amet rhoncus commodo. Mauris ut efficitur nisi. Duis id sapien vel ex eleifend ullamcorper. Integer aliquam odio ipsum, vitae pretium elit venenatis consectetur. Proin bibendum dolor eu nisi lacinia pharetra. Donec vitae consectetur libero.';
@@ -115,7 +134,6 @@ class CreateGridTable extends Migration {
     $g->link = '';
     $g->position = '8';
     $g->logo = 'accomplice-logo.png';
-    $g->caption = "Lorem ipsum";
     $g->image = "accomplice.png";
     $g->type = 'S';
     $g->text = 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis sagittis eleifend lectus, vel vehicula lectus sagittis ut. Curabitur volutpat mi nec velit tincidunt euismod a id dolor. Pellentesque egestas nunc tincidunt luctus dignissim. Donec id ex erat. Sed varius scelerisque massa in bibendum. Praesent pulvinar, lectus quis fringilla aliquet, mi justo consequat augue, eget dignissim nisi mauris nec urna. Fusce ultrices egestas tellus eget blandit. Fusce porta accumsan laoreet. Morbi nec ante vehicula, venenatis nunc id, sollicitudin nulla. Pellentesque condimentum dui sit amet rhoncus commodo. Mauris ut efficitur nisi. Duis id sapien vel ex eleifend ullamcorper. Integer aliquam odio ipsum, vitae pretium elit venenatis consectetur. Proin bibendum dolor eu nisi lacinia pharetra. Donec vitae consectetur libero.';
@@ -126,7 +144,6 @@ class CreateGridTable extends Migration {
     $g->link = '';
     $g->position = '9';
     $g->logo = 'accomplice-logo.png';
-    $g->caption = "Lorem ipsum";
     $g->image = "accomplice.png";
     $g->type = 'S';
     $g->text = 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis sagittis eleifend lectus, vel vehicula lectus sagittis ut. Curabitur volutpat mi nec velit tincidunt euismod a id dolor. Pellentesque egestas nunc tincidunt luctus dignissim. Donec id ex erat. Sed varius scelerisque massa in bibendum. Praesent pulvinar, lectus quis fringilla aliquet, mi justo consequat augue, eget dignissim nisi mauris nec urna. Fusce ultrices egestas tellus eget blandit. Fusce porta accumsan laoreet. Morbi nec ante vehicula, venenatis nunc id, sollicitudin nulla. Pellentesque condimentum dui sit amet rhoncus commodo. Mauris ut efficitur nisi. Duis id sapien vel ex eleifend ullamcorper. Integer aliquam odio ipsum, vitae pretium elit venenatis consectetur. Proin bibendum dolor eu nisi lacinia pharetra. Donec vitae consectetur libero.';
@@ -140,7 +157,8 @@ class CreateGridTable extends Migration {
 	 */
 	public function down()
 	{
-		Schema::dropIfExists('grid');
+        Schema::dropIfExists('grid');
+		Schema::dropIfExists('grid_country');
 	}
 
 }

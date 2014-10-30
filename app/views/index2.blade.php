@@ -11,8 +11,8 @@
 	function showAmbassador(id) {
 		var image = $('#A'+id).attr('data-image');
 		$('#pop-ambassador-title').text($('#A'+id).attr('data-title'));
-		$('#pop-ambassador-image1').attr('src', "{{URL::to('img/grid')}}/"+image);
-		$('#pop-ambassador-image2').attr('src', "{{URL::to('img/grid')}}/"+image);
+		$('#pop-ambassador-image1').attr('src', "http://www.adoptadog.sg/sharksavers/img/grid/"+image);
+		$('#pop-ambassador-image2').attr('src', "http://www.adoptadog.sg/sharksavers/img/grid/"+image);
 		$('#ambassador-modal').modal();
 	}
 
@@ -26,10 +26,10 @@
 	function showSupporter(id) {
 		$('#pop-supporter-title').text($('#S'+id).attr('data-title'));
 		var image = $('#S'+id).attr('data-image');
-		$('#pop-supporter-image').attr('src', "{{URL::to('img/grid')}}/"+image);
+		$('#pop-supporter-image').attr('src', "http://www.adoptadog.sg/sharksavers/img/grid/"+image);
 		var logo = $('#S'+id).attr('data-logo');
-		$('#pop-supporter-logo').attr('src', "{{URL::to('img/grid')}}/"+logo);
-		$('#pop-supporter-logo-small').attr('src', "{{URL::to('img/grid')}}/"+logo);
+		$('#pop-supporter-logo').attr('src', "http://www.adoptadog.sg/sharksavers/img/grid/"+logo);
+		$('#pop-supporter-logo-small').attr('src', "http://www.adoptadog.sg/sharksavers/img/grid/"+logo);
 		$('#pop-supporter-text').text($('#S'+id).attr('data-text'));
 		$('#supporter-modal').modal();
 	}
@@ -56,10 +56,11 @@
 
 <div class='container'>
 	<ul class="bxslider">
-	  <li>{{HTML::image('img/landing2.png')}}</li>
-	  <li>{{HTML::image('img/landing2.png')}}</li>
-	  <!-- <li><img src="http://localhost/sharksavers/public/img/hill_road.jpg" title="The long and winding road" /></li>
-	  <li><img src="http://localhost/sharksavers/public/img/trees.jpg" title="Happy trees" /></li> -->
+	  @foreach ($sliders as $key => $s)
+			@if ($s['image'] !='')
+				<li>{{ HTML::image('img/'.$s['image'],'') }}</li>
+			@endif
+		@endforeach
 	</ul>
 </div>
 
@@ -137,8 +138,10 @@ $country_arr = array('SG'=>'Singapore', 'MY'=>'Malaysia', 'HK'=>'Hong Kong');
         <h4 class="modal-title pop-title" id="myModalLabel"><div id='pop-ambassador-title'></div></h4>
       </div>
 
-      <div class="modal-body" style='height:497px'>
-      	<!-- <div class='hidden-sm hidden-xs'> -->
+      <div class="modal-body" style='text-align:center'>
+      	<img src='' id='pop-ambassador-image1' style='width:60%' class='hidden-xs hidden-sm hidden-md'/>      	
+      	<img src='' id='pop-ambassador-image2' style='width:100%' class='visible-xs visible-sm visible-md'/>      	
+      	<!-- <div class='hidden-sm hidden-xs'>
 		      <div style='position:absolute; top:60px; left:20px; z-index:1'>
 	        	@if ($country == 'hk')
 	        		{{HTML::image('img/im-finished-hk.png')}}
@@ -150,7 +153,7 @@ $country_arr = array('SG'=>'Singapore', 'MY'=>'Malaysia', 'HK'=>'Hong Kong');
 	        <div style='text-align:right'>
 	        	<img src='' id='pop-ambassador-image1' style='height:482px'/>
 	        </div>
-        <!-- </div> -->
+        </div> -->
 
         <!-- <div class='visible-sm visible-xs row'>
        	 	@if ($country == 'hk')

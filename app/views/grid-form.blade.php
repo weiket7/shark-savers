@@ -1,5 +1,7 @@
 @section('content')
 
+<script src="{{asset('js/jquery.validate.min.js') }}"></script>
+
 <?php $route = Route::currentRouteAction(); ?>
 <?php $action = substr(strstr($route, '@'), 1); ?>
 <style type="text/css">
@@ -35,12 +37,87 @@ $(document).ready( function() {
 			showVideo();
 		}
 	});
+
+	$.validator.addMethod("roles", function(value, elem, param) {
+    if($(".roles:checkbox:checked").length > 0){
+	       return true;
+	   }else {
+	       return false;
+	   }
+	},"Select at least one");
+	
+
 });
+
+//http://stackoverflow.com/questions/3035634/jquery-validate-check-at-least-one-checkbox
+function submitForm() {
+	if ($('#type').val() == 'A') {
+		$('form').attr('id', 'ambassador-form');
+		//alert();
+		$("#ambassador-form").validate({
+	    rules: {
+	    	type: {required: true},
+	      category: { required: true},
+	      title: { required: true },
+	      //image: { required: true },
+	      "country[]": { required: true, minlength: 1}
+	    },
+	    messages: {
+	    	type: {required: "Required"},
+	      category: { required: "Required"},
+	      title: { required: "Required" },
+	      //image: { required: "Required"},
+	      "country[]": { required: "Required"}
+	    }
+	  });
+
+		$('#ambassador-form').submit();
+	} else if ($('#type').val() == 'S') {
+		$('form').attr('id', 'supporter-form');
+
+		$("#supporter-form").validate({
+	    rules: {
+	    	type: {required: true},
+	      title: { required: true },
+	      link: { required: true},
+	      "country[]": { required: true, minlength: 1}
+	    },
+	    messages: {
+	    	type: {required: "Required"},
+	      title: { required: "Required" },
+	      link: { required: "Required"},
+	       "country[]": { required: "Required"}
+	    }
+	  });
+
+		$('#supporter-form').submit();		
+	} else {
+		$('form').attr('id', 'video-form');
+
+		$("#video-form").validate({
+	    rules: {
+	    	type: {required: true},
+	      title: { required: true },
+	      link: { required: true},
+	      "country[]": { required: true, minlength: 1}
+	    },
+	    messages: {
+	    	type: {required: "Required"},
+	      title: { required: "Required" },
+	      link: { required: "Required"},
+	       "country[]": { required: "Required"}
+	    }
+	  });
+
+		$('#video-form').submit();		
+	}
+}
 
 function showAmbassador() {
 	$('#title-tr').show();
 	$('#category-tr').show();
 	$('#image-tr').show();
+	$('#delete-tr').show();
 }
 
 function showSupporter() {
@@ -49,12 +126,14 @@ function showSupporter() {
 	$('#logo-tr').show();
 	$('#link-tr').show();
 	$('#text-tr').show();
+	$('#delete-tr').show();
 }
 
 function showVideo() {
 	$('#title-tr').show();
 	$('#link-tr').show();
 	$('#image-tr').show();
+	$('#delete-tr').show();
 }
 
 function hideAll() {
@@ -74,7 +153,7 @@ function hideAll() {
 	@endif
 	
 	<div class="content">
-		{{ Form::open(['url'=> 'admin/grid/'.$action, 'class'=>'form-horizontal', 'role'=>'form', 'files'=>true]) }}
+		{{ Form::open(['url'=> 'admin/grid/'.$action, 'id'=>'val', 'class'=>'form', 'role'=>'form', 'files'=>true]) }}
 		@if ($action == 'update')
 			{{ Form::hidden('id', $grid->id) }}
 			{{ Form::hidden('position', $grid->position) }}
@@ -84,14 +163,29 @@ function hideAll() {
 			<tr id='type-tr'>
 				<td width='100px'>{{ Form::label('type', 'Type') }}</td>
 				<td>
-					<?php $type = [''=>'','V'=>'Video','A'=>'Ambassador','S'=>'Supporter']?>
-					{{ Form::select('type', $type, $grid->type) }}
+					<?php $type_arr = [''=>null,'V'=>'Video','A'=>'Ambassador','S'=>'Supporter']?>
+					{{ Form::select('type', $type_arr, $grid->type) }}
+				</td>
+			</tr>
+			<tr>
+				<td width='100px'>{{ Form::label('country', 'Country') }}</td>
+				<td>
+					<?php $country_arr = ['SG'=>'Singapore','HK'=>'Hong Kong','MY'=>'Malaysia',]?>
+					@foreach($country_arr as $code => $country) 
+	  			@if (in_array($code, $grid_country))
+						{{ Form::checkbox('country[]', $code, true, ['id'=>$code, 'class'=>'{country[]: true}']) }}
+					@else
+						{{ Form::checkbox('country[]', $code, false, ['id'=>$code]) }}
+			  	@endif
+			  	<label for='{{ $code }}'>{{ $country }}</label>&nbsp;
+		  	@endforeach
+		  	<label for='country[]' class='error' generated='true'>
 				</td>
 			</tr>
 			<tr id='category-tr' class='tr'>
 				<td width='100px'>{{ Form::label('category', 'Category') }}</td>
 				<td>
-					<?php $category = [''=>'','A'=>'Artiste','E'=>'Entertainment','C'=>'Corporate', 'M'=>'Musician', 'O'=>'Others']?>
+					<?php $category = [''=>null,'A'=>'Artiste','E'=>'Entertainment','C'=>'Corporate', 'M'=>'Musician', 'O'=>'Others']?>
 					{{ Form::select('category', $category, $grid->category) }}
 				</td>
 			</tr>
@@ -135,11 +229,15 @@ function hideAll() {
 				<td width='100px'>{{ Form::label('text', 'Text') }}</td>
 				<td>{{ Form::textarea('text', $grid->text) }}</td>
 			</tr>
+			<tr id='delete-tr' class='tr'>
+				<td width='100px'>{{ Form::label('delete', 'Delete') }}</td>
+				<td>{{ Form::checkbox('delete') }}</td>
+			</tr>
 		</table>
 
 		<br>
 		@if ($action != 'view')	<!--create update-->
-			{{ Form::submit(ucfirst($action).' Grid') }}
+			{{ Form::button(ucfirst($action).' Grid', ['onclick'=>'submitForm()']) }}
 		@endif
 		{{ Form::button('Back', ['onclick'=>'history.back();']) }}		
 

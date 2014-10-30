@@ -6,17 +6,20 @@ class GridController extends BaseController {
 
 	public function index()
 	{
-		$data = ['grids'=>Grid::all()];
+		$data = ['grids'=>Grid::orderBy('position')->get()];
 		$this->layout->content = View::make('grid-admin', $data);
 	}
 
 	public function create () {
-		$data = ['grid'=>Grid::bare()];
+		$data = ['grid'=>Grid::bare(), 'grid_country'=>[]];
 		$this->layout->content = View::make('grid-form', $data);
 	}
 
 	public function update (Grid $grid) {
-		$data = ['grid'=>$grid];
+		$data = [
+		'grid'=>$grid,
+		'grid_country'=>DB::table('grid_country')->where('grid_id', $grid->id)->lists('country'),
+		];
 		$this->layout->content = View::make('grid-form', $data);
 	}
 
@@ -52,14 +55,23 @@ class GridController extends BaseController {
     }
 		$grid->save();
 
+		foreach($_POST['country'] as $key => $c) {
+    	DB::table('grid_country')
+            ->insert(['grid_id'=>$grid->id, 'country'=>$c]);
+    }
 
 		return Redirect::to('admin/grid');
 	}
 
 	public function updatePost() {
 		$input = Input::all();
-
 		$grid = Grid::findOrFail(Input::get('id'));
+
+		if (isset($_POST['delete'])) {
+			$grid->delete();
+			return Redirect::to('admin/grid')->with('msg', 'Grid has been deleted');
+		}
+
 		$grid->type = $input['type'];
 		$grid->title = $input['title'];
 		$grid->link = $input['link'];
@@ -67,6 +79,14 @@ class GridController extends BaseController {
 		/*$grid->position = $input['position'];*/
 		$grid->caption = $input['caption'];
 		$grid->text = $input['text'];
+
+		DB::table('grid_country')
+      ->where('grid_id', $input['id'])
+      ->delete();
+    foreach($_POST['country'] as $key => $c) {
+    	DB::table('grid_country')
+      ->insert(['grid_id'=>$input['id'], 'country'=>$c]);
+    }
 
 		//$destinationPath = $_SERVER['DOCUMENT_ROOT'] . "/img/supporter/";
     $destinationPath = $_SERVER['DOCUMENT_ROOT'] . "/sharksavers/img/grid/";
@@ -84,8 +104,24 @@ class GridController extends BaseController {
     }
 		$grid->save();
 
+		return Redirect::to('admin/grid')->with('msg', 'Grid has been updated');
+	}
 
-		return Redirect::to('admin/grid/update/'.$input['id']);
+	public function position() {
+		$data = ['grids'=>Grid::orderBy('position')->get()];
+		$this->layout->content = View::make('position', $data);
+	}
+
+	public function positionPost() {
+		$id_arr = DB::table('grid')->lists('id');
+		//var_dump($id_arr);
+		foreach($id_arr as $key => $id) {
+			echo $id . $_POST['grid'.$id].'<br>';
+			DB::table('grid')
+            ->where('id', $id)
+            ->update(array('position' => $_POST['grid'.$id]));
+		}
+		return Redirect::to('admin/position');
 	}
 
 

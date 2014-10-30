@@ -3,7 +3,7 @@
 	<head>
 		<meta charset="UTF-8">
 		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-		<title>Learning Laravel Website </title>
+		<title>IFWF - I'm Finished with Fins</title>
 		
 		<script src="{{asset('js/jquery-2.1.1.min.js') }}"></script>
 		<script src="{{asset('js/jquery-ui.min.js') }}"></script>
@@ -27,6 +27,17 @@
 					.addClass('table table-striped table-bordered');
 		  });
 		</script>
+		
+		<style type="text/css">
+			.error {
+				font-weight: normal;
+				color: red;
+			}
+
+			label {
+				font-weight: normal;
+			}
+		</style>
 
 	</head>
 <body>
@@ -39,7 +50,7 @@
   <li>{{HTML::link('/', 'finishedwithfins.org')}}</li>
   <li>{{HTML::link('admin/grid', 'Grid')}}</li>
   <li>{{HTML::link('admin/position', 'Position')}}</li>
-  <li>{{HTML::link('admin/pledge', 'Slider')}}</li>
+  <li>{{HTML::link('admin/slider', 'Slider')}}</li>
   <li>{{HTML::link('admin/pledge', 'Pledge')}}</li>
   <li>{{HTML::link('admin/issue', 'Issue Tracker')}}</li>
   <!-- <li>{{HTML::link('admin/issue', 'Config')}}</li> -->

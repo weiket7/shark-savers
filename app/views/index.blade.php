@@ -86,10 +86,11 @@ $country = $url[0];
 	</table>
 
 	<ul class="bxslider">
-	  <li>{{HTML::image('img/landing2.png')}}</li>
-	  <li>{{HTML::image('img/landing2.png')}}</li>
-	  <!-- <li><img src="http://localhost/sharksavers/public/img/hill_road.jpg" title="The long and winding road" /></li>
-	  <li><img src="http://localhost/sharksavers/public/img/trees.jpg" title="Happy trees" /></li> -->
+		@foreach ($sliders as $key => $s)
+			@if ($s['image'] !='')
+				<li><?php echo "<img src='img/".$s['image']."'>" ?></li>
+			@endif		
+		@endforeach
 	</ul>
 
 </div>
@@ -99,7 +100,7 @@ $country = $url[0];
 	<div class='container'>
 		<table style='width:100%'>
 		<tr>
-		<td>
+		<td style='font-size:10px'>
 		Shark savers, inc. is a 501(C) (3) Non-Profit Organization.<br>
 		Copyright © 2013 Shark Savers Inc. All Rights Reserved.<br>
 		Privacy Policy | Terms & Conditions

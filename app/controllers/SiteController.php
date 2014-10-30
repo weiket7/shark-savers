@@ -17,50 +17,74 @@ class SiteController extends BaseController {
 
 	public function index()
 	{
-		$data = [];
+		$temp = Slider::orderBy('position')->get();
+		$sliders = [];
+		foreach($temp as $key => $s) {
+			$sliders[$s->id] = ['image'=>$s->image, 'position'=>$s->position];
+		}
+		$data = ['sliders'=>$sliders];
 		return View::make('index', $data);
-	}
-
-	public function sg() {
-		$this->layout = View::make('template');
-		$data = [];
-		$this->layout->content = View::make('index2', $data);
-	}
-
-	public function hk() {
-		$this->layout = View::make('template');
-		$data = [];
-		$this->layout->content = View::make('index2', $data);
-	}
-
-	public function my() {
-		$this->layout = View::make('template');
-		$data = [];		
-		$this->layout->content = View::make('index2', $data);
 	}
 
 	public function ambassadors() {
 		$this->layout = View::make('template');
-		$data = ['grids'=>Grid::where('type','=','A')->orderBy('position')->get()];
+		$temp = Slider::orderBy('position')->get();
+		$sliders = [];
+		foreach($temp as $key => $s) {
+			$sliders[$s->id] = ['image'=>$s->image, 'position'=>$s->position];
+		}
+		$data = [
+			'grids'=>Grid::where('type','=','A')->orderBy('position')->get(),
+			'sliders'=>$sliders
+		];
 		$this->layout->content = View::make('index2', $data);
 	}
 
 	public function videos() {
 		$this->layout = View::make('template');
-		$data = ['grids'=>Grid::where('type','=','V')->orderBy('position')->get()];
+		$temp = Slider::orderBy('position')->get();
+		$sliders = [];
+		foreach($temp as $key => $s) {
+			$sliders[$s->id] = ['image'=>$s->image, 'position'=>$s->position];
+		}
+		$data = [
+			'grids'=>Grid::where('type','=','V')->orderBy('position')->get(),
+			'sliders'=>$sliders
+		];
 		$this->layout->content = View::make('index2', $data);
 	}
 
 	public function supporters() {
 		$this->layout = View::make('template');
-		$data = ['grids'=>Grid::where('type','=','S')->orderBy('position')->get()];
+		$temp = Slider::orderBy('position')->get();
+		$sliders = [];
+		foreach($temp as $key => $s) {
+			$sliders[$s->id] = ['image'=>$s->image, 'position'=>$s->position];
+		}
+		$data = [
+			'grids'=>Grid::where('type','=','S')->orderBy('position')->get(),
+			'sliders'=>$sliders
+		];
 		$this->layout->content = View::make('index2', $data);
 	}
 
 	public function index2()
 	{
 		$this->layout = View::make('template');
-		$data = ['grids'=>Grid::orderBy('position')->get()];
+		$url = explode('/',Request::path());
+		$country = $url[0];
+		$temp = Slider::orderBy('position')->get();
+		$sliders = [];
+		foreach($temp as $key => $s) {
+			$sliders[$s->id] = ['image'=>$s->image, 'position'=>$s->position];
+		}
+		$data = [
+			'grids'=>DB::table('grid')
+				->rightJoin('grid_country', 'grid.id', '=', 'grid_country.grid_id')
+				->where('country', $country)
+				->orderBy('position')->get(),
+			'sliders'=>$sliders				
+		];
 		$this->layout->content = View::make('index2', $data);
 	}
 

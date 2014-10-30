@@ -24,6 +24,7 @@ Route::get('width', function() {
 	return View::make('width');
 });
 
+
 Route::get('bxslider', function() {
 	return View::make('bxslider');
 });
@@ -78,12 +79,16 @@ Route::group(array('prefix' => 'admin'), function()
 	Route::post('grid/create', 'GridController@createPost');
 	Route::get('grid/update/{grid}', 'GridController@update');
 	Route::post('grid/update', 'GridController@updatePost');
+	Route::get('position', 'GridController@position');
+	Route::post('position', 'GridController@positionPost');
 	Route::get('pledge', 'PledgeController@index');
 	Route::get('pledge/create', 'PledgeController@create');
 	Route::post('pledge/create', 'PledgeController@createPost');
 	Route::get('issue', 'IssueController@index');
 	Route::get('issue/create', 'IssueController@create');
 	Route::post('issue/create', 'IssueController@createPost');
+	Route::get('slider', 'SliderController@index');
+	Route::post('slider', 'SliderController@indexPost');
 });
 
 

@@ -11,6 +11,9 @@ class Grid extends Eloquent {
   	'email'=>'required',
   	'address'=>'required',
   );*/
+	public function country() {
+  	return DB::table('grid_country')->where('grid_id', $this->id)->lists('country');
+  }
 
 	public function content() {
 		if ($this->type == 'V') {

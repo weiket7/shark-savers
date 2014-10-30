@@ -5,6 +5,12 @@
 {{HTML::link('admin/grid/create', 'Create Grid')}}
 <br><br>
 
+@if(Session::has('msg'))
+  <div class="alert alert-success ">
+    {{ Session::get('msg') }}
+  </div>
+@endif
+
 @if ($grids->isEmpty())
 	<p> No grids</p>
 
@@ -15,6 +21,7 @@
 				<th>Type</th>
 				<th>Title</th>
 				<th>Position</th>
+				<th>Country</th>
 				<th>Image</th>
 				<th>Logo</th>
 				<th>Link</th>
@@ -27,6 +34,7 @@
 					<td>{{$type_arr[$g->type]}}</td>
 					<td>{{link_to('admin/grid/update/'.$g->id, $g->title) }}</td>
 					<td>{{$g->position}}</td>
+					<td>{{implode(',', $g->country())}}</td>
 					<td>{{HTML::image('img/grid/'.$g->image, '', ['height'=>'40px'])}}</td>
 					<td>
 						@if ($g->logo != '')
