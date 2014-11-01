@@ -170,22 +170,30 @@ function hideAll() {
 			<tr>
 				<td width='100px'>{{ Form::label('country', 'Country') }}</td>
 				<td>
-					<?php $country_arr = ['SG'=>'Singapore','HK'=>'Hong Kong','MY'=>'Malaysia',]?>
+					<?php $country_arr = ['1'=>'Singapore','2'=>'Malaysia','3'=>'Hong Kong']?>
 					@foreach($country_arr as $code => $country) 
-	  			@if (in_array($code, $grid_country))
-						{{ Form::checkbox('country[]', $code, true, ['id'=>$code, 'class'=>'{country[]: true}']) }}
-					@else
-						{{ Form::checkbox('country[]', $code, false, ['id'=>$code]) }}
-			  	@endif
-			  	<label for='{{ $code }}'>{{ $country }}</label>&nbsp;
-		  	@endforeach
-		  	<label for='country[]' class='error' generated='true'>
+		  			@if (in_array($code, $grid_country))
+							{{ Form::checkbox('country[]', $code, true, ['id'=>'country'.$code, 'class'=>'{country[]: true}']) }}
+						@else
+							{{ Form::checkbox('country[]', $code, false, ['id'=>'country'.$code]) }}
+				  	@endif				  	
+				  	<label for='country{{ $code }}'>{{ $country }}</label>&nbsp;
+			  	@endforeach
+		  		<label for='country[]' class='error' generated='true'>
 				</td>
 			</tr>
 			<tr id='category-tr' class='tr'>
 				<td width='100px'>{{ Form::label('category', 'Category') }}</td>
 				<td>
-					<?php $category = [''=>null,'A'=>'Artiste','E'=>'Entertainment','C'=>'Corporate', 'M'=>'Musician', 'O'=>'Others']?>
+					<?php $category = [ ''=>null,	
+						'A'=>'Art & Design',
+						'C'=>'Corporate',
+						'E'=>'Entertainment',
+						'M'=>'Media',
+						'N'=>'NGO',
+						'P'=>'Professional',
+						'S'=>'Sport',
+						'O'=>'Others']?>
 					{{ Form::select('category', $category, $grid->category) }}
 				</td>
 			</tr>

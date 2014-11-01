@@ -28,13 +28,22 @@ class SiteController extends BaseController {
 
 	public function ambassadors() {
 		$this->layout = View::make('template');
+		$url = explode('/',Request::path());
+		$country = strtoupper($url[0]);
+		$country_arr = ['SG'=>'1', 'MY'=>'2', 'HK'=>'3'];
+		$country = $country_arr[$country];
+		
 		$temp = Slider::orderBy('position')->get();
 		$sliders = [];
 		foreach($temp as $key => $s) {
 			$sliders[$s->id] = ['image'=>$s->image, 'position'=>$s->position];
 		}
 		$data = [
-			'grids'=>Grid::where('type','=','A')->orderBy('position')->get(),
+			'grids'=>DB::table('grid')
+				->rightJoin('grid_country', 'grid.id', '=', 'grid_country.grid')
+				->where('grid_country.country', $country)
+				->where('type', 'A')
+				->orderBy('position')->get(),
 			'sliders'=>$sliders
 		];
 		$this->layout->content = View::make('index2', $data);
@@ -42,13 +51,22 @@ class SiteController extends BaseController {
 
 	public function videos() {
 		$this->layout = View::make('template');
+		$url = explode('/',Request::path());
+		$country = strtoupper($url[0]);
+		$country_arr = ['SG'=>'1', 'MY'=>'2', 'HK'=>'3'];
+		$country = $country_arr[$country];
+
 		$temp = Slider::orderBy('position')->get();
 		$sliders = [];
 		foreach($temp as $key => $s) {
 			$sliders[$s->id] = ['image'=>$s->image, 'position'=>$s->position];
 		}
 		$data = [
-			'grids'=>Grid::where('type','=','V')->orderBy('position')->get(),
+			'grids'=>DB::table('grid')
+				->rightJoin('grid_country', 'grid.id', '=', 'grid_country.grid')
+				->where('grid_country.country', $country)
+				->where('type', 'V')
+				->orderBy('position')->get(),
 			'sliders'=>$sliders
 		];
 		$this->layout->content = View::make('index2', $data);
@@ -56,13 +74,22 @@ class SiteController extends BaseController {
 
 	public function supporters() {
 		$this->layout = View::make('template');
+		$url = explode('/',Request::path());
+		$country = strtoupper($url[0]);
+		$country_arr = ['SG'=>'1', 'MY'=>'2', 'HK'=>'3'];
+		$country = $country_arr[$country];
+
 		$temp = Slider::orderBy('position')->get();
 		$sliders = [];
 		foreach($temp as $key => $s) {
 			$sliders[$s->id] = ['image'=>$s->image, 'position'=>$s->position];
 		}
 		$data = [
-			'grids'=>Grid::where('type','=','S')->orderBy('position')->get(),
+			'grids'=>DB::table('grid')
+				->rightJoin('grid_country', 'grid.id', '=', 'grid_country.grid')
+				->where('grid_country.country', $country)
+				->where('type', 'S')
+				->orderBy('position')->get(),
 			'sliders'=>$sliders
 		];
 		$this->layout->content = View::make('index2', $data);
@@ -72,7 +99,10 @@ class SiteController extends BaseController {
 	{
 		$this->layout = View::make('template');
 		$url = explode('/',Request::path());
-		$country = $url[0];
+		$country = strtoupper($url[0]);
+		$country_arr = ['SG'=>'1', 'MY'=>'2', 'HK'=>'3'];
+		$country = $country_arr[$country];
+
 		$temp = Slider::orderBy('position')->get();
 		$sliders = [];
 		foreach($temp as $key => $s) {
@@ -80,8 +110,8 @@ class SiteController extends BaseController {
 		}
 		$data = [
 			'grids'=>DB::table('grid')
-				->rightJoin('grid_country', 'grid.id', '=', 'grid_country.grid_id')
-				->where('country', $country)
+				->rightJoin('grid_country', 'grid.id', '=', 'grid_country.grid')
+				->where('grid_country.country', $country)
 				->orderBy('position')->get(),
 			'sliders'=>$sliders				
 		];

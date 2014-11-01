@@ -24,6 +24,9 @@ Route::get('width', function() {
 	return View::make('width');
 });
 
+Route::get('test', function() {
+	return View::make('test');
+});
 
 Route::get('bxslider', function() {
 	return View::make('bxslider');

@@ -162,6 +162,9 @@ border-top: none;
 .close {
   opacity: 1;
 }
+.modal-body {
+  padding: 15px 15px 0 15px;
+}
 /*.modal-content {
   margin-top:7%;
 }*/

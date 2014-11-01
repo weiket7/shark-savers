@@ -6,13 +6,17 @@
 		  captions: true,
 		  pager: false,
 		});
+
+		$('#video-modal').on('hidden.bs.modal', function () {
+		  stopVideo();
+		});
 	});
 
 	function showAmbassador(id) {
 		var image = $('#A'+id).attr('data-image');
 		$('#pop-ambassador-title').text($('#A'+id).attr('data-title'));
-		$('#pop-ambassador-image1').attr('src', "http://www.adoptadog.sg/sharksavers/img/grid/"+image);
-		$('#pop-ambassador-image2').attr('src', "http://www.adoptadog.sg/sharksavers/img/grid/"+image);
+		document.getElementById('pop-ambassador-image1').src = "/img/grid/"+image;
+		$('#pop-ambassador-image2').attr('src', "/img/grid/"+image);
 		$('#ambassador-modal').modal();
 	}
 
@@ -26,10 +30,12 @@
 	function showSupporter(id) {
 		$('#pop-supporter-title').text($('#S'+id).attr('data-title'));
 		var image = $('#S'+id).attr('data-image');
-		$('#pop-supporter-image').attr('src', "http://www.adoptadog.sg/sharksavers/img/grid/"+image);
+		if (image != '') {
+	 		$('#pop-supporter-image').attr('src', "/img/grid/"+image);
+		}
 		var logo = $('#S'+id).attr('data-logo');
-		$('#pop-supporter-logo').attr('src', "http://www.adoptadog.sg/sharksavers/img/grid/"+logo);
-		$('#pop-supporter-logo-small').attr('src', "http://www.adoptadog.sg/sharksavers/img/grid/"+logo);
+		$('#pop-supporter-logo').attr('src', "/img/grid/"+logo);
+		$('#pop-supporter-logo-small').attr('src', "/img/grid/"+logo);
 		$('#pop-supporter-text').text($('#S'+id).attr('data-text'));
 		$('#supporter-modal').modal();
 	}
@@ -46,8 +52,12 @@
 	  var u="http://www.finishedwithfins.org";
 	  var t="I'm FINished with FINS. Join the pledge now! http://www.finishedwithfins.org/sg/pledge";
 	  window.open('http://www.facebook.com/sharer.php?u='+encodeURIComponent(u)+'&message='+encodeURIComponent(t),'sharer', windowFeatures);
-	  
 	}	
+
+	function stopVideo() {
+		var url = $('#pop-video-link').attr('src');
+		$('#pop-video-link').attr('src', '');
+	}
 </script>
 
 <div class='shark-bg'>
@@ -70,10 +80,12 @@
 
 
 <div class='container'>
+
 	<?php
 	$count = 1;
 	$total = count($grids);
-	$category_arr = array('A'=>'Artiste', 'C'=>'Corporate', 'O'=>'Others', 'E'=>'Entertainment');
+	$category_arr = [''=>null, 'A'=>'Art & Design', 'C'=>'Corporate', 'E'=>'Entertainment', 'M'=>'Media', 'N'=>'NGO',
+						'P'=>'Professional', 'S'=>'Sport', 'O'=>'Others'];
 	foreach($grids as $key => $g) {		
 		if($g->type=='A') {
 			echo "<div id='A".$g->id."' data-title='".$category_arr[$g->category].': '.$g->title."' data-image='".$g->image."' style='display:none'></div>";
@@ -92,7 +104,7 @@
 				@if($g->type == 'A')
 					{{HTML::image('img/grid/'.$g->image,'a',['class'=>'grey', 'width'=>'100%', 'height'=>'100%', 'onclick'=>"showAmbassador(".$g->id.")"])}}
 				@elseif($g->type == 'V')
-					{{HTML::image('img/video-play.png', '', ['style'=>'position:absolute; top:125px; left: 125px; z-index:100'])}}
+					{{HTML::image('img/video-play.png', '', ['style'=>'position:absolute; width:15%; left:0; right:0; margin:auto; top:-15%; bottom:0; z-index:100'])}}
 					{{HTML::image('img/grid/'.$g->image,'a',['class'=>'grey', 'width'=>'100%','onclick'=>"showVideo(".$g->id.")"])}}
 				@elseif($g->type == 'S')
 					<div style='width:100%; height:270px; background-color:#fff; text-align:center; padding-top:100px' onclick=showSupporter('{{$g->id}}')>
@@ -100,7 +112,15 @@
 					</div>
 				@endif
 
-				<?php $category_arr = ['A'=>'Artiste','E'=>'Entertainment','C'=>'Corporate', 'M'=>'Musician', 'O'=>'Others'] ?>
+				<?php $category_arr = [ ''=>null,	
+						'A'=>'Art & Design',
+						'C'=>'Corporate',
+						'E'=>'Entertainment',
+						'M'=>'Media',
+						'N'=>'NGO',
+						'P'=>'Professional',
+						'S'=>'Sport',
+						'O'=>'Others'] ?>
 				@if($g->type == 'A')
 
 					<div class='grid-text'>{{$category_arr[$g->category]}}: {{$g->title}}</div>
@@ -139,9 +159,9 @@ $country_arr = array('SG'=>'Singapore', 'MY'=>'Malaysia', 'HK'=>'Hong Kong');
       </div>
 
       <div class="modal-body" style='text-align:center'>
-      	<img src='' id='pop-ambassador-image1' style='width:60%' class='hidden-xs hidden-sm hidden-md'/>      	
-      	<img src='' id='pop-ambassador-image2' style='width:100%' class='visible-xs visible-sm visible-md'/>      	
-      	<!-- <div class='hidden-sm hidden-xs'>
+      	<!-- <img src='' id='pop-ambassador-image1' style='width:60%' class='hidden-xs hidden-sm hidden-md'/>      	
+      	<img src='' id='pop-ambassador-image2' style='width:100%' class='visible-xs visible-sm visible-md'/>       -->	
+      	<div class='hidden-sm hidden-xs'>
 		      <div style='position:absolute; top:60px; left:20px; z-index:1'>
 	        	@if ($country == 'hk')
 	        		{{HTML::image('img/im-finished-hk.png')}}
@@ -153,16 +173,16 @@ $country_arr = array('SG'=>'Singapore', 'MY'=>'Malaysia', 'HK'=>'Hong Kong');
 	        <div style='text-align:right'>
 	        	<img src='' id='pop-ambassador-image1' style='height:482px'/>
 	        </div>
-        </div> -->
+        </div>
 
-        <!-- <div class='visible-sm visible-xs row'>
+        <div class='visible-sm visible-xs row'>
        	 	@if ($country == 'hk')
         		{{HTML::image('img/im-finished-hk.png')}}
         	@else
         		{{HTML::image('img/im-finished-sgmy.png')}}
         	@endif
         	<img src='' id='pop-ambassador-image2'/>
-        </div> -->
+        </div>
       </div>      
 
       <div class="modal-footer" style='border-top: 4px solid red; text-align:left'>
@@ -186,8 +206,8 @@ $country_arr = array('SG'=>'Singapore', 'MY'=>'Malaysia', 'HK'=>'Hong Kong');
         <h4 class="modal-title pop-title"><div id='pop-video-title'></div></h4>
       </div>
 
-      <div class="modal-body">
-		    <iframe width="100%" height="500" src="" id='pop-video-link' frameborder="0" allowfullscreen></iframe>
+      <div class="modal-body" id='video-container'>        
+  			<iframe width="100%" height="500" src="" id='pop-video-link' frameborder="0" allowfullscreen></iframe>
       </div>      
 
       <div class="modal-footer" style='text-align:left'>
@@ -234,7 +254,7 @@ $country_arr = array('SG'=>'Singapore', 'MY'=>'Malaysia', 'HK'=>'Hong Kong');
 				<a href="https://twitter.com/intent/tweet?text=I'm FINished with FINS. Join the pledge now! http://www.finishedwithfins.org/sg/pledge">
 				  <span class='share-twitter'></span>
 				</a>
-      	<a href='{{$g->link}}' target='_blank'><span class='visit-site'></span></a>	
+      	 <a href='' target='_blank'><span class='visit-site'></span></a>	
       </div>
     </div>
   </div>

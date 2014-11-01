@@ -18,13 +18,14 @@ class CreateGridTable extends Migration {
         $table->increments('id');
         $table->char('type', 1);
         $table->string('image', 50);
-        $table->string('logo', 50);
-        $table->text('text');
-        $table->char('category', 1);
+        $table->string('logo', 50)->nullable();
+        $table->text('text')->nullable();
+        $table->char('category', 1)->nullable();
         $table->string('title', 200);
-        $table->string('link', 200);
-        $table->string('caption', 50);
-        $table->mediumInteger('position');
+        $table->string('link', 200)->nullable();
+        $table->string('caption', 50)->nullable();
+        $table->mediumInteger('position')->nullable();
+        $table->integer('country', 1)->nullable();
         $table->timestamps();
 
         Schema::create('grid_country', function($table)

@@ -20,6 +20,7 @@
 			<tr>
 				<th>Type</th>
 				<th>Title</th>
+				<th>Category</th>
 				<th>Position</th>
 				<th>Country</th>
 				<th>Image</th>
@@ -29,10 +30,14 @@
 		</thead>
 		<tbody>
 			<?php $type_arr = ['A'=>'Ambassador', 'S'=>'Supporter', 'V'=>'Video'] ?>
+			<?php $country_arr = [''=>'','1'=>'SG', '2'=>'MY', '3'=>'HK'] ?>
+			<?php $category_arr = [ ''=>null,	'A'=>'Art & Design', 'C'=>'Corporate', 'E'=>'Entertainment', 'M'=>'Media',
+						'N'=>'NGO', 'P'=>'Professional', 'S'=>'Sport', 'O'=>'Others'] ?>
 			@foreach($grids as $g)
 				<tr>
 					<td>{{$type_arr[$g->type]}}</td>
 					<td>{{link_to('admin/grid/update/'.$g->id, $g->title) }}</td>
+					<td>{{$category_arr[$g->category]}}</td>
 					<td>{{$g->position}}</td>
 					<td>{{implode(',', $g->country())}}</td>
 					<td>{{HTML::image('img/grid/'.$g->image, '', ['height'=>'40px'])}}</td>

@@ -18,7 +18,7 @@ class GridController extends BaseController {
 	public function update (Grid $grid) {
 		$data = [
 		'grid'=>$grid,
-		'grid_country'=>DB::table('grid_country')->where('grid_id', $grid->id)->lists('country'),
+		'grid_country'=>DB::table('grid_country')->where('grid', $grid->id)->lists('country'),
 		];
 		$this->layout->content = View::make('grid-form', $data);
 	}
@@ -36,11 +36,11 @@ class GridController extends BaseController {
 		$grid->link = $input['link'];
 		$grid->category = $input['category'];
 		/*$grid->position = $input['position'];*/
-		$grid->caption = $input['caption'];
+		/*$grid->caption = $input['caption'];*/
 		$grid->text = $input['text'];
 
 		//$destinationPath = $_SERVER['DOCUMENT_ROOT'] . "/img/supporter/";
-    $destinationPath = $_SERVER['DOCUMENT_ROOT'] . "/sharksavers/img/grid/";
+    $destinationPath = $_SERVER['DOCUMENT_ROOT'] . "/img/grid/";
 		if (Input::hasFile('image')) {
         $file            = Input::file('image');
         $filename        = $file->getClientOriginalName();
@@ -57,10 +57,10 @@ class GridController extends BaseController {
 
 		foreach($_POST['country'] as $key => $c) {
     	DB::table('grid_country')
-            ->insert(['grid_id'=>$grid->id, 'country'=>$c]);
+            ->insert(['grid'=>$grid->id, 'country'=>$c]);
     }
 
-		return Redirect::to('admin/grid');
+		return Redirect::to('admin/grid')->with('msg', 'Grid has been created');;
 	}
 
 	public function updatePost() {
@@ -69,6 +69,9 @@ class GridController extends BaseController {
 
 		if (isset($_POST['delete'])) {
 			$grid->delete();
+			DB::table('grid_country')
+      ->where('grid', $input['id'])
+      ->delete();
 			return Redirect::to('admin/grid')->with('msg', 'Grid has been deleted');
 		}
 
@@ -81,15 +84,15 @@ class GridController extends BaseController {
 		$grid->text = $input['text'];
 
 		DB::table('grid_country')
-      ->where('grid_id', $input['id'])
+      ->where('grid', $input['id'])
       ->delete();
     foreach($_POST['country'] as $key => $c) {
     	DB::table('grid_country')
-      ->insert(['grid_id'=>$input['id'], 'country'=>$c]);
+      ->insert(['grid'=>$input['id'], 'country'=>$c]);
     }
 
 		//$destinationPath = $_SERVER['DOCUMENT_ROOT'] . "/img/supporter/";
-    $destinationPath = $_SERVER['DOCUMENT_ROOT'] . "/sharksavers/img/grid/";
+    $destinationPath = $_SERVER['DOCUMENT_ROOT'] . "/img/grid/";
 		if (Input::hasFile('image')) {
         $file            = Input::file('image');
         $filename        = $file->getClientOriginalName();
