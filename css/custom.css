@@ -179,6 +179,7 @@ border-top: none;
 
 .shark-repeat {
   background-image: url(../img/shark-bg3.jpg);
+  background-repeat: repeat;
 }
 
 .grid-text {
@@ -362,6 +363,17 @@ filter: grayscale(0%);
 }
 .link-weibo:hover {
     background-image:url(../img/weibo-hover.png);
+}
+.link-about {
+    display:block;
+    margin-left: auto;
+    margin-right: auto;
+    width:32px;
+    height:32px;
+    background-image:url(../img/about.png);
+}
+.link-about:hover {
+    background-image:url(../img/about-hover.png);
 }
 .pledge-now {
     display:inline-block;

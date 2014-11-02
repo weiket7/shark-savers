@@ -79,13 +79,13 @@ function submitForm() {
 	    rules: {
 	    	type: {required: true},
 	      title: { required: true },
-	      link: { required: true},
+	      /*link: { required: true},*/
 	      "country[]": { required: true, minlength: 1}
 	    },
 	    messages: {
 	    	type: {required: "Required"},
 	      title: { required: "Required" },
-	      link: { required: "Required"},
+	      /*link: { required: "Required"},*/
 	       "country[]": { required: "Required"}
 	    }
 	  });

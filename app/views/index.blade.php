@@ -88,7 +88,7 @@ $country = $url[0];
 	<ul class="bxslider">
 		@foreach ($sliders as $key => $s)
 			@if ($s['image'] !='')
-				<li><?php echo "<img src='img/".$s['image']."'>" ?></li>
+				<li><?php echo "<img src='img/slider/".$s['image']."'>" ?></li>
 			@endif		
 		@endforeach
 	</ul>

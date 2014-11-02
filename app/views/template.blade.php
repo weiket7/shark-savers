@@ -62,12 +62,12 @@
 						<a href="http://wildaid.org/" target='_blank'>{{HTML::image('img/partner_wild-aid.gif', '', ['class'=>'partner'])}}</a>
 						<a href="http://natgeotv.com/asia" target='_blank'>{{HTML::image('img/partner_national-geographic.gif', '', ['class'=>'partner'])}}</a>
 						<a href="http://natgeotv.com/asia" target='_blank'>{{HTML::image('img/partner_nat-geo.gif', '', ['class'=>'partner'])}}</a>
-						<span class='hidden-xs hidden-sm'>
+						<!-- <span class='hidden-xs hidden-sm'>
 							<select name='language' id='language'>
 								<option>English</option>
 								<option>Chinese</option>
 							</select>
-						</span>
+						</span> -->
 					</div>
 
 					<?php
@@ -139,6 +139,12 @@
 						<b>Supporters</b>
 					</a>
 				</td>
+				<td width='100px' style='text-align:center'>				
+					<a href="{{URL::to('/'.$country.'/about')}}">
+						<span class='link-about'></span>
+						<b>About</b>
+					</a>
+				</td>
 				<td style='text-align:right'>
 					<a href="{{URL::to(''.$country.'/pledge')}}">
 						<span class='pledge-now-small'></span>
@@ -200,6 +206,7 @@
 {{HTML::image('img/videos-hover.png')}}
 {{HTML::image('img/supporters-hover.png')}}
 {{HTML::image('img/home-hover.png')}}
+{{HTML::image('img/about-hover.png')}}
 {{HTML::image('img/facebook-hover.png')}}
 {{HTML::image('img/youtube-hover.png')}}
 {{HTML::image('img/twitter-hover.png')}}

@@ -39,7 +39,11 @@
 					<td>{{link_to('admin/grid/update/'.$g->id, $g->title) }}</td>
 					<td>{{$category_arr[$g->category]}}</td>
 					<td>{{$g->position}}</td>
-					<td>{{implode(',', $g->country())}}</td>
+					<td>							
+						@foreach($g->country() as $key => $c)
+							{{ $country_arr[$c] }}
+						@endforeach
+					</td>
 					<td>{{HTML::image('img/grid/'.$g->image, '', ['height'=>'40px'])}}</td>
 					<td>
 						@if ($g->logo != '')

@@ -35,29 +35,56 @@ class GridController extends BaseController {
 		$grid->title = $input['title'];
 		$grid->link = $input['link'];
 		$grid->category = $input['category'];
-		/*$grid->position = $input['position'];*/
-		/*$grid->caption = $input['caption'];*/
 		$grid->text = $input['text'];
 
-		//$destinationPath = $_SERVER['DOCUMENT_ROOT'] . "/img/supporter/";
-    $destinationPath = $_SERVER['DOCUMENT_ROOT'] . "/img/grid/";
+		if ($grid->type == 'V') {
+			$destinationPath = $_SERVER['DOCUMENT_ROOT'] . "/img/grid/video/";			
+		} else if ($grid->type == 'A') {
+			$destinationPath = $_SERVER['DOCUMENT_ROOT'] . "/img/grid/";			
+		} else if ($grid->type == 'S') {
+			$destinationPath = $_SERVER['DOCUMENT_ROOT'] . "/img/grid/supporter/";
+		}
+
 		if (Input::hasFile('image')) {
-        $file            = Input::file('image');
-        $filename        = $file->getClientOriginalName();
-        $uploadSuccess   = $file->move($destinationPath, $filename);
-        $grid->image = $filename;
+      $file            = Input::file('image');
+      $image_name        = $file->getClientOriginalName();
+      $uploadSuccess   = $file->move($destinationPath, $image_name);
+      $grid->image = $image_name;
     }
     if (Input::hasFile('logo')) {
-        $file            = Input::file('logo');
-        $filename        = $file->getClientOriginalName();
-        $uploadSuccess   = $file->move($destinationPath, $filename);
-        $grid->logo = $filename;
+      $file           = Input::file('logo');
+      $logo_name        = $file->getClientOriginalName();
+      $uploadSuccess   = $file->move($destinationPath, $logo_name);
+      $grid->logo = $logo_name;
     }
 		$grid->save();
 
 		foreach($_POST['country'] as $key => $c) {
+			/*$country_arr = ['1'=>'SG', '2'=>'MY', '3'=>'HK'];
+			$country = $country_arr[$c];
+			$destinationPath = $_SERVER['DOCUMENT_ROOT'] . "/img/".$country;
+			if ($grid->type == 'A') {
+				$destinationPath .= "/ambassador/";
+			} else if ($grid->type = 'V') {
+				$destinationPath .= "/video/";				
+			} else if ($grid->type = 'S') {
+				$destinationPath .= "/supporter/";
+			}
+
+      if (Input::hasFile('image')) {
+      	$file            = Input::file('image');
+      	$image_name        = $file->getClientOriginalName();
+        $uploadSuccess   = $file->move($destinationPath, $image_name);
+	    }
+	    if (Input::hasFile('logo')) {
+    	  $file           = Input::file('logo');
+    		$logo_name        = $fil->getClientOriginalName();
+        $uploadSuccess   = $file->move($destinationPath, $logo_name);
+	    }*/
+
     	DB::table('grid_country')
-            ->insert(['grid'=>$grid->id, 'country'=>$c]);
+        ->insert(['grid'=>$grid->id, 'country'=>$c]);
+
     }
 
 		return Redirect::to('admin/grid')->with('msg', 'Grid has been created');;
@@ -91,8 +118,14 @@ class GridController extends BaseController {
       ->insert(['grid'=>$input['id'], 'country'=>$c]);
     }
 
-		//$destinationPath = $_SERVER['DOCUMENT_ROOT'] . "/img/supporter/";
-    $destinationPath = $_SERVER['DOCUMENT_ROOT'] . "/img/grid/";
+    if ($grid->type == 'V') {
+			$destinationPath = $_SERVER['DOCUMENT_ROOT'] . "/img/grid/video/";			
+		} else if ($grid->type == 'A') {
+			$destinationPath = $_SERVER['DOCUMENT_ROOT'] . "/img/grid/";			
+		} else if ($grid->type == 'S') {
+			$destinationPath = $_SERVER['DOCUMENT_ROOT'] . "/img/grid/supporter/";
+		}
+		
 		if (Input::hasFile('image')) {
         $file            = Input::file('image');
         $filename        = $file->getClientOriginalName();

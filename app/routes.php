@@ -48,6 +48,7 @@ Route::group(array('prefix' => 'sg'), function()
 	Route::get('ambassadors', 'SiteController@ambassadors');
 	Route::get('videos', 'SiteController@videos');
 	Route::get('supporters', 'SiteController@supporters');
+	Route::get('about', 'SiteController@about');
 }); 
 
 Route::group(array('prefix' => 'my'), function()
@@ -59,6 +60,7 @@ Route::group(array('prefix' => 'my'), function()
 	Route::get('ambassadors', 'SiteController@ambassadors');
 	Route::get('videos', 'SiteController@videos');
 	Route::get('supporters', 'SiteController@supporters');
+	Route::get('about', 'SiteController@about');
 }); 
 
 
@@ -71,6 +73,7 @@ Route::group(array('prefix' => 'hk'), function()
 	Route::get('ambassadors', 'SiteController@ambassadors');
 	Route::get('videos', 'SiteController@videos');
 	Route::get('supporters', 'SiteController@supporters');
+	Route::get('about', 'SiteController@about');
 }); 
 
 
