@@ -54,7 +54,7 @@
   <li>{{HTML::link('admin/pledge', 'Pledge')}}</li>
   <li>{{HTML::link('admin/issue', 'Issue Tracker')}}</li>
   <!-- <li>{{HTML::link('admin/issue', 'Config')}}</li> -->
-  <li>{{HTML::link('admin/info', 'Dimensions')}}</li>
+  <li>{{HTML::link('admin', 'Dimensions')}}</li>
   <!-- <li>{{HTML::link('admin/ambassador', 'Ambassador')}}</li>
   <li>{{HTML::link('admin/supporter', 'Supporter')}}</li>
   <li>{{HTML::link('admin/video', 'Video')}}</li> -->

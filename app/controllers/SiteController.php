@@ -81,6 +81,7 @@ class SiteController extends BaseController {
 				->where('grid_country.country', $country)
 				->orderBy('position')->get(),
 			'sliders'=>Slider::getSlider($country),		
+			'country'=>$country,
 		];
 		$this->layout->content = View::make('index2', $data);
 	}
@@ -119,12 +120,16 @@ class SiteController extends BaseController {
 	public function about() {
 		$this->layout = View::make('template');
 		$country = strtoupper(Request::segment(1));
-		if ($country == 'SG') {
-			$this->layout->content = View::make('about-sg');
-		} else if ($country == 'MY') {
-			$this->layout->content = View::make('about-my');			
-		} else if ($country == 'HK') {
-			$this->layout->content = View::make('about-hk');			
+		$country_arr = ['SG'=>'1', 'MY'=>'2', 'HK'=>'3'];
+		$country = $country_arr[$country];
+
+		$country = Request::segment(1);
+		if ($country == 'sg') {
+			$this->layout->content = View::make('about-sg', ['country'=>$country]);
+		} else if ($country == 'my') {
+			$this->layout->content = View::make('about-my', ['country'=>$country]);			
+		} else if ($country == 'hk') {
+			$this->layout->content = View::make('about-hk', ['country'=>$country]);			
 		}
 	}
 

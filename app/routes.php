@@ -15,6 +15,7 @@ Route::get('/', 'SiteController@index');
 
 Route::model('grid', 'Grid');
 Route::model('pledge', 'Pledge');
+Route::model('slider', 'Slider');
 
 Route::get('/r', function() {
 	return View::make('r');
@@ -94,7 +95,13 @@ Route::group(array('prefix' => 'admin'), function()
 	Route::get('issue/create', 'IssueController@create');
 	Route::post('issue/create', 'IssueController@createPost');
 	Route::get('slider', 'SliderController@index');
-	Route::post('slider', 'SliderController@indexPost');
+	Route::get('slider/create', 'SliderController@create');
+	Route::post('slider/create', 'SliderController@createPost');
+	Route::get('slider/update/{slider}', 'SliderController@update');
+	Route::post('slider/update', 'SliderController@updatePost');
+	Route::get('slider/order/{country}', 'SliderController@order');
+	Route::post('slider/order/{country}', 'SliderController@orderPost');
+
 });
 
 

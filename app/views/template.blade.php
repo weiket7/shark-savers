@@ -8,9 +8,9 @@
 			<?php
 			$url = explode('/',Request::path());
 			$country = $url[0];
-			$country_arr = array('SG'=>'Singapore', 'MY'=>'Malaysia', 'HK'=>'Hong Kong');
+			$country_arr = array('sg'=>'Singapore', 'my'=>'Malaysia', 'hk'=>'Hong Kong');
 			?>
-			{{ $country_arr[strtoupper($country)] }}
+			{{ $country_arr[$country] }}
 		</title>
 		
 		<script src="{{asset('js/jquery-2.1.1.min.js') }}"></script>
@@ -53,15 +53,21 @@
   	<table class='landing-tbl' style='margin-top:10px'>
 			<tr>
 				<td style='text-align:left'>
-					<a href="{{URL::to('/')}}">{{HTML::image('img/logo-'.$country.'.png', '', ['height'=>'100px'])}}</a>
+					<a href="http://www.sharksavers.org/" target="_blank">{{HTML::image('img/logo-'.$country.'.png', '', ['height'=>'100px'])}}</a>
 				</td>				
 				<td style='text-align:right; vertical-align:top'>					
 					<div id='partner-div'>
-						<a href="http://www.wwf.org.hk/" target='_blank'>{{HTML::image('img/partner_wwf.gif', '', ['class'=>'partner']), ''}}</a>
-						<a href="http://www.earthhour.org/" target='_blank'>{{HTML::image('img/partner_earth-hour.gif', '', ['class'=>'partner'])}}</a>
-						<a href="http://wildaid.org/" target='_blank'>{{HTML::image('img/partner_wild-aid.gif', '', ['class'=>'partner'])}}</a>
-						<a href="http://natgeotv.com/asia" target='_blank'>{{HTML::image('img/partner_national-geographic.gif', '', ['class'=>'partner'])}}</a>
-						<a href="http://natgeotv.com/asia" target='_blank'>{{HTML::image('img/partner_nat-geo.gif', '', ['class'=>'partner'])}}</a>
+						@if($country == 'sg')
+							<a href="http://www.wwf.sg/" target='_blank'>{{HTML::image('img/partner_wwf.gif', '', ['class'=>'partner']), ''}}</a>
+						@elseif($country =='my')
+							<a href="http://www.wwf.org.my/" target='_blank'>{{HTML::image('img/partner_wwf.gif', '', ['class'=>'partner']), ''}}</a>
+						@elseif($country == 'hk')
+							<a href="http://www.wwf.org.hk/" target='_blank'>{{HTML::image('img/partner_wwf.gif', '', ['class'=>'partner']), ''}}</a>
+						@endif
+						<a href="http://www.earthhour.org/im-finished-fins" target='_blank'>{{HTML::image('img/partner_earth-hour.gif', '', ['class'=>'partner'])}}</a>
+						<a href="http://wildaid.org/sharks" target='_blank'>{{HTML::image('img/partner_wild-aid.gif', '', ['class'=>'partner'])}}</a>
+						<a href="http://channel.nationalgeographic.com/" target='_blank'>{{HTML::image('img/partner_national-geographic.gif', '', ['class'=>'partner'])}}</a>
+						<a href="http://channel.nationalgeographic.com/wild/" target='_blank'>{{HTML::image('img/partner_nat-geo.gif', '', ['class'=>'partner'])}}</a>
 						<!-- <span class='hidden-xs hidden-sm'>
 							<select name='language' id='language'>
 								<option>English</option>

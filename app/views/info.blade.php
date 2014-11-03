@@ -1,23 +1,24 @@
 @section('content')
-<br>
 
-Slider<br>
-870px width x 483px height
+<h1>Dimensions</h1>
+
+<b>Slider</b><br>
+870px width x 483px height<br>
+&lt;200kb size
 <br><br>
 
-One image in 3 column grid<br>
-722px width x any height
+<b>Ambassador and video preview</b><br>
+772px width x 732px<br>
+&lt;200kb size
 <br><br>
 
-Ambassador image<br>
-520px width x 482px height
+<b>Supporter banner</b><br>
+872px width by any height<br>
+&lt;300kb size
 <br><br>
 
-Supporter banner – 872px width
-<br><br>
-
-Supporter logo – 300px width<br>
-  In grid it’s resized to 100x100
+<b>Supporter logo</b><br>
+&lt;100kb size
 <br><br>
 
 @stop

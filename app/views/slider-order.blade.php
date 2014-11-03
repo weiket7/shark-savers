@@ -16,6 +16,7 @@
 	<thead>
 	<tr>
 		<th></th>
+		<th>Position</th>
 		<th>Country</th>
 		<th>Image</th>
 	</tr>
@@ -25,6 +26,7 @@
 	@foreach ($sliders as $key => $s)
 		<tr>
 			<td>{{link_to('admin/slider/update/'.$s->id, 'Update')}}</td>
+			<td>{{$s->position}}</td>
 			<td>{{$country_arr[$s->country]}}</td>
 			<td>
 				@if ($s->image != '')
