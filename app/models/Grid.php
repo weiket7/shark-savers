@@ -8,6 +8,18 @@ class Grid extends Eloquent {
   	return DB::table('grid_country')->where('grid', $this->id)->lists('country');
   }
 
+  public static function getCategoryArr() {
+  	return [ ''=>null,	
+						'A'=>'Art & Design',
+						'C'=>'Corporate',
+						'E'=>'Entertainment',
+						'M'=>'Media',
+						'N'=>'NGO',
+						'P'=>'Professional',
+						'S'=>'Sport',
+						'O'=>'Others'];
+  }
+
 	public static function bare () {
 		$columns = Schema::getColumnListing('grid');
 		$data = new stdClass();

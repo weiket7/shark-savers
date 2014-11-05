@@ -20,8 +20,7 @@ class CreatePledgeTable extends Migration {
         $table->string('nric', 20);
         $table->string('email', 100);
         $table->string('country', 20);
-        $table->boolean('finished');
-        $table->boolean('support');
+        $table->string('current', 20);        
         $table->timestamps();        
     });
 

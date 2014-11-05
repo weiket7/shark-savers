@@ -53,7 +53,7 @@
   	<table class='landing-tbl' style='margin-top:10px'>
 			<tr>
 				<td style='text-align:left'>
-					<a href="http://www.sharksavers.org/" target="_blank">{{HTML::image('img/logo-'.$country.'.png', '', ['height'=>'100px'])}}</a>
+					<a href="http://www.finishedwithfins.org/">{{HTML::image('img/logo-'.$country.'.png', '', ['height'=>'100px'])}}</a>
 				</td>				
 				<td style='text-align:right; vertical-align:top'>					
 					<div id='partner-div'>
@@ -77,12 +77,17 @@
 					</div>
 
 					<?php
-					$count = Pledge::all()->count();
-					//$count = 100000;
-					if ($count < 100000) //99,999
-						$count_padded = str_split(str_pad($count, 5, '0', STR_PAD_LEFT));
+					$country_domain_arr = ['sg'=>1, 'my'=>2, 'hk'=>'3'];
+					$country_domain = $country_domain_arr[$country];
+					$pledge_count = Pledge::where('country_domain', $country_domain)->count();
+					
+					if ($country == 'my') {
+						$pledge_count += 76001;
+					}
+					if ($pledge_count < 100000) //99,999
+						$pledge_count_padded = str_split(str_pad($pledge_count, 5, '0', STR_PAD_LEFT));
 					else
-						$count_padded = str_split($count);
+						$pledge_count_padded = str_split($count);
 					//$count = str_split(50000);
 					?>
 					
@@ -90,7 +95,7 @@
 						<table>
 							<tr>
 								<td>
-									@foreach($count_padded as $k => $c)
+									@foreach($pledge_count_padded as $k => $c)
 										<span class='counter-bg'>{{$c}}</span>
 									@endforeach
 								</td>
@@ -109,7 +114,7 @@
 					</div>
 
 					<div class='hidden-xs hidden-sm hidden-md'>
-						@foreach($count_padded as $k => $c)
+						@foreach($pledge_count_padded as $k => $c)
 							<span class='counter-bg'>{{$c}}</span>
 						@endforeach
 
@@ -118,6 +123,32 @@
 				</td>
 			</tr>			
 		</table>
+
+		<style type="text/css">
+			ul{
+        padding: 0;
+        list-style: none;
+	    }
+	    /*http://www.tutorialrepublic.com/faq/show-hide-dropdown-menu-on-mouse-hover-using-css.php*/
+	    #ambassadors-dropdown{
+        display: none;
+        position: absolute;
+        margin-left: 17px;
+        background-color: #e5e5e5;
+	    }
+	    #ambassadors-dropdown>li {
+	    	padding: 10px;
+	    	width: 120px;
+	    	text-align: left;
+	    }
+	    #ambassadors-dropdown>li:not(:last-child) {
+	    	border-bottom: 1px solid white;
+	    	border-width: 80%
+	    }
+	    #div-ambassadors:hover ul{
+	        display: block; /* display the dropdown */
+	    }
+		</style>
 		
 		<table class='landing-tbl hidden-xs hidden-sm hidden-md' style='margin-top:7px; margin-bottom: 7px'>
 			<tr>
@@ -128,10 +159,21 @@
 					</a>
 				</td>
 				<td width='130px' style='text-align:center'>				
+					<div id='div-ambassadors'>
 					<a href="{{URL::to('/'.$country.'/ambassadors')}}">
 						<span class='link-ambassadors'></span>
 						<b>Ambassadors</b>
+						<ul id='ambassadors-dropdown'>
+            <li>{{link_to('/'.$country.'/ambassadors/artanddesign','Art & Design')}}</li>
+            <li>{{link_to('/'.$country.'/ambassadors/corporate','Corporate')}}</li>
+            <li>{{link_to('/'.$country.'/ambassadors/entertainment','Entertainment')}}</li>
+            <li>{{link_to('/'.$country.'/ambassadors/media','Media')}}</li>
+            <li>{{link_to('/'.$country.'/ambassadors/ngo','NGO')}}</li>
+            <li>{{link_to('/'.$country.'/ambassadors/professional','Professional')}}</li>
+            <li>{{link_to('/'.$country.'/ambassadors/sports','Sports')}}</li>
+          </ul>
 					</a>
+					</div>
 				</td>
 				<td width='100px' style='text-align:center'>				
 					<a href="{{URL::to('/'.$country.'/videos')}}">
@@ -159,7 +201,7 @@
 			</tr>
 		</table>
 
-		<div class='visible-xs visible-sm visible-md'>
+		<div class='visible-xs visible-sm visible-md' style='margin-top:10px'>
 			<div class="dropdown">
 			  <button class="dropdown-toggle" type="button" id="mobile-menu" data-toggle="dropdown">
 			    {{HTML::image('img/triple-line.jpg', '', ['style'=>'margin-left: 10px; margin-right:20px'])}}
@@ -182,9 +224,10 @@
 		<table style='width:100%'>
 		<tr>
 			<td>
-			Shark savers, inc. is a 501(C) (3) Non-Profit Organization.<br>
-			Copyright © 2013 Shark Savers Inc. All Rights Reserved.<br>
-			Privacy Policy | Terms & Conditions
+			Shark Savers, inc. is a 501(C) (3) Non-Profit Organization.<br>
+			Copyright © 2014 Shark Savers Inc. All Rights Reserved.<br>
+			Privacy Policy | Terms & Conditions<br>
+			Developed by Wei Ket from <a href='http://www.adoptadog.sg' target='_blank'>www.adoptadog.sg</a>
 			</td>
 			<td style='text-align:right'>		
 				@if (strtolower($country)=='sg')

@@ -27,27 +27,46 @@
 		var image = $('#A'+id).attr('data-image');
 		$('#pop-ambassador-title').text($('#A'+id).attr('data-title'));
 		$('#pop-ambassador-image1').attr('src', "/img/grid/"+image);
+		$('#pop-ambassador-image2').attr('src', "/img/grid/"+image);
 		$('#ambassador-modal').modal();
 	}
 
 	function showVideo(id) {
 		var link = $('#V'+id).attr('data-link');
-		$('#pop-video-title').text($('#V'+id).attr('data-title'));
+		var title = $('#V'+id).attr('data-title');
+		$('#pop-video-title').text(title);
 		$('#pop-video-link').attr('src', '//www.youtube.com/embed/'+link);
 		$('#video-modal').modal();
 	}
 
 	function showSupporter(id) {
-		$('#pop-supporter-title').text($('#S'+id).attr('data-title'));
+		var title = $('#S'+id).attr('data-title');
 		var image = $('#S'+id).attr('data-image');
-		if (image != '') {
-	 		$('#pop-supporter-image').attr('src', "/img/grid/supporter/"+image);
-		}
 		var logo = $('#S'+id).attr('data-logo');
+		var text = $('#S'+id).attr('data-text');
+		var link = $('#S'+id).attr('data-link');
+		$('#pop-supporter-title').text($('#S'+id).attr('data-title'));
 		$('#pop-supporter-logo').attr('src', "/img/grid/supporter/"+logo);
 		$('#pop-supporter-logo-small').attr('src', "/img/grid/supporter/"+logo);
-		$('#pop-supporter-text').text($('#S'+id).attr('data-text'));
+		$('#pop-supporter-text').text(text);
+		if (image != '') {	//no banner
+	 		$('#pop-supporter-image').attr('src', "/img/grid/supporter/"+image);
+		}
+		if (link != '') {	//got text no link
+			$('#pop-supporter-link').attr('href', $('#S'+id).attr('data-link'));			
+		} else {
+			$('#pop-supporter-link').hide();
+		}
 		$('#supporter-modal').modal();
+	}
+
+	function linkSupporter(id) {
+		var link = $('#S'+id).attr('data-link');				
+		if (link.indexOf('http://') >= 0) {
+			window.open($('#S'+id).attr('data-link'));
+		} else {
+			window.open('//'+$('#S'+id).attr('data-link'));			
+		}
 	}
 
 	function shareFacebook()	{
@@ -100,9 +119,9 @@
 		if($g->type=='A') {
 			echo "<div id='A".$g->id."' data-title='".$category_arr[$g->category].': '.$g->title."' data-image='".$g->image."' style='display:none'></div>";
 		} elseif ($g->type=='V') {
-			echo "<div id='V".$g->id."' data-link='".$g->link."' data-title='".$g->title."' data-text='".$g->text."' style='display:none'></div>";
+			echo '<div id="V'.$g->id.'" data-title="'.$g->title.'" data-link="'.$g->link.'" style="display:none"></div>';
 		} elseif ($g->type='S') {
-			echo "<div id='S".$g->id."' data-title='".$g->title."' data-logo='".$g->logo."' data-image='".$g->image."' data-text='".$g->text."' style='display:none'></div>";
+			echo "<div id='S".$g->id."' data-link='".$g->link."' data-title='".$title."' data-logo='".$g->logo."' data-image='".$g->image."' data-text='".$g->text."' style='display:none'></div>";
 
 		}
 	if (($count-1)%3==0) 
@@ -117,8 +136,14 @@
 					{{HTML::image('img/video-play.png', '', ['style'=>'position:absolute; width:15%; left:0; right:0; margin:auto; top:-15%; bottom:0; z-index:100'])}}
 					{{HTML::image('img/grid/video/'.$g->image,'a',['class'=>'grey', 'width'=>'100%','onclick'=>"showVideo(".$g->id.")"])}}
 				@elseif($g->type == 'S')
-					<div style='width:100%; height:270px; background-color:#fff; text-align:center; padding-top:100px' onclick=showSupporter('{{$g->id}}')>
-					{{HTML::image('img/grid/supporter/'.$g->logo,'',['class'=>'grey', 'style'=>'position:absolute; width:50%; left:0; right:0; margin:auto; top:-15%; bottom:0; z-index:100'])}}
+					<?php $onclick = ''; ?>
+					@if($g->text != '')						
+						<?php $onclick = "onclick=showSupporter('".$g->id."')"; ?>
+					@elseif ($g->link != '')
+						<?php $onclick = "onclick=linkSupporter('".$g->id."')"; ?>
+					@endif
+					<div style='width:100%; height:270px; background-color:#fff; text-align:center; padding-top:100px' {{$onclick}}>
+						{{HTML::image('img/grid/supporter/'.$g->logo,'',['class'=>'grey', 'style'=>'position:absolute; width:50%; left:0; right:0; margin:auto; top:-15%; bottom:0; z-index:100'])}}
 					</div>
 				@endif
 
@@ -162,8 +187,6 @@
         <h4 class="modal-title pop-title" id="myModalLabel"><div id='pop-ambassador-title'></div></h4>
       </div>
       <div class="modal-body" style='text-align:center'>
-      	<!-- <img src='' id='pop-ambassador-image1' style='width:60%' class='hidden-xs hidden-sm hidden-md'/>      	
-      	<img src='' id='pop-ambassador-image2' style='width:100%' class='visible-xs visible-sm visible-md'/>       -->	
       	<div class='hidden-sm hidden-xs'>
 		      <div style='position:absolute; top:60px; left:20px; z-index:1'>
 	        	@if (Request::segment(1) == 'hk')
@@ -257,7 +280,7 @@
 				<a href="https://twitter.com/intent/tweet?text=I'm FINished with FINS. Join the pledge now! http://www.finishedwithfins.org/sg/pledge">
 				  <span class='share-twitter'></span>
 				</a>
-      	 <a href='' target='_blank'><span class='visit-site'></span></a>	
+      	<a href='' target='_blank' id='pop-supporter-link'><span class='visit-site'></span></a>	
       </div>
     </div>
   </div>

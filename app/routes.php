@@ -17,25 +17,22 @@ Route::model('grid', 'Grid');
 Route::model('pledge', 'Pledge');
 Route::model('slider', 'Slider');
 
-Route::get('/r', function() {
-	return View::make('r');
+Route::filter('logged_in', function()
+{
+  if (Session::get('logged_in') != 'true') {
+    return Redirect::to('admin')->with('msg', 'Not logged in');
+  }
 });
-
-Route::get('width', function() {
-	return View::make('width');
-});
-
-Route::get('test', function() {
-	return View::make('test');
-});
-
-Route::get('bxslider', function() {
-	return View::make('bxslider');
-});
-
+/*
 Route::get('exist/{nric}', function($nric) {
 	$nric = preg_replace('/[^0-9,]|,[0-9]*$/','',$nric);	//remove non-numeric
 	$p = DB::table('pledge')->where('nric', 'like', '%'.$nric.'%')->get();
+	//var_dump($p);
+	echo $p ? 'true' : 'false';	//exist = true 
+});*/
+
+Route::get('exist/{email}', function($email) {
+	$p = DB::table('pledge')->where('email', 'like', '%'.$email.'%')->get();
 	/*var_dump($p);*/
 	echo $p ? 'true' : 'false';	//exist = true 
 });
@@ -50,6 +47,7 @@ Route::group(array('prefix' => 'sg'), function()
 	Route::get('videos', 'SiteController@videos');
 	Route::get('supporters', 'SiteController@supporters');
 	Route::get('about', 'SiteController@about');
+	Route::get('ambassadors/{category_raw}', 'SiteController@category');
 }); 
 
 Route::group(array('prefix' => 'my'), function()
@@ -62,6 +60,7 @@ Route::group(array('prefix' => 'my'), function()
 	Route::get('videos', 'SiteController@videos');
 	Route::get('supporters', 'SiteController@supporters');
 	Route::get('about', 'SiteController@about');
+	Route::get('ambassadors/{category_raw}', 'SiteController@category');	 
 }); 
 
 
@@ -75,12 +74,16 @@ Route::group(array('prefix' => 'hk'), function()
 	Route::get('videos', 'SiteController@videos');
 	Route::get('supporters', 'SiteController@supporters');
 	Route::get('about', 'SiteController@about');
+	Route::get('ambassadors/{category_raw}', 'SiteController@category');	
 }); 
 
+Route::get('admin/', 'AdminController@index');
+Route::post('admin/login', 'AdminController@loginPost');
+Route::get('admin/logout', 'AdminController@logout');
 
-Route::group(array('prefix' => 'admin'), function()
+Route::group(array('prefix' => 'admin', 'before'=>'logged_in'), function()
 {	 
-	Route::get('/', 'GridController@info');
+	Route::get('info', 'AdminController@info');
 	Route::get('grid', 'GridController@index');
 	Route::get('grid/create', 'GridController@create');
 	Route::post('grid/create', 'GridController@createPost');

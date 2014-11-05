@@ -172,14 +172,14 @@ function hideAll() {
 				<td>
 					<?php $country_arr = ['1'=>'Singapore','2'=>'Malaysia','3'=>'Hong Kong']?>
 					@foreach($country_arr as $code => $country) 
-		  			@if (in_array($code, $grid_country))
-							{{ Form::checkbox('country[]', $code, true, ['id'=>'country'.$code, 'class'=>'{country[]: true}']) }}
+		  			@if ($code == $grid->country)
+							{{ Form::radio('country', $code, true, ['id'=>'country'.$code, 'class'=>'{country[]: true}']) }}
 						@else
-							{{ Form::checkbox('country[]', $code, false, ['id'=>'country'.$code]) }}
+							{{ Form::radio('country', $code, false, ['id'=>'country'.$code]) }}
 				  	@endif				  	
 				  	<label for='country{{ $code }}'>{{ $country }}</label>&nbsp;
 			  	@endforeach
-		  		<label for='country[]' class='error' generated='true'>
+		  		<label for='country' class='error' generated='true'>
 				</td>
 			</tr>
 			<tr id='category-tr' class='tr'>

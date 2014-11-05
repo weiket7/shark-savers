@@ -9,9 +9,9 @@
 
   $( document ).ready(function() {
   	$.validator.addMethod("exist", function(value, element) {
-	    var nric = $('#nric').val();
+	    var email = $('#email').val();
 	    $.ajax({
-	      url: "{{URL::to('exist/"+nric+"')}}",
+	      url: "{{URL::to('exist/"+email+"')}}",
 	      error: function (xhr, ajaxOptions, thrownError) { alert(xhr.status + " " + thrownError); },
 	      async: false
 	    }).done(function(data) {
@@ -25,8 +25,8 @@
 		  rules: {
 		    first_name: { required: true },
 		    last_name: { required: true },
-		    nric: { required: true, exist: true},
-		    email: { required: true },
+		    //nric: { required: true, exist: true},
+		    email: { required: true, exist: true },
 		    country: { required: true },
 		    finished: { required: true },
 		    support: { required: true },
@@ -34,8 +34,8 @@
 		  messages: {
 		    first_name: { required: "Please enter first name"},
 		    last_name: { required: "Please enter last name" },
-		    nric: { required: "Please enter NRIC", exist: "The NRIC has already pledged"},
-		    email: { required: "Please enter valid email"},
+		    //nric: { required: "Please enter NRIC", exist: "The NRIC has already pledged"},
+		    email: { required: "Please enter valid email", exist: "The NRIC has already pledged"},
 		    country: { required: "Please select country"},
 		    finished: { required: "Please check the checkbox"},
 		    support: { required: "Please check the checkbox"},
@@ -103,9 +103,10 @@
 	</div>
 
 	<div class='row'>
-		<div class='col-md-6' style='height:60px'>
+		<div class='col-md-6' style='height:100px'>
 				<input type='text' name='nric' id='nric' placeholder='NRIC' class='form-control pledge-textbox'>
-				<label for='nric' generated='true' class='error'></label>
+				<small>Governments care about the concerns of voters and citizens. By entering your NRIC, we will be able to convey these concerns convincingly.</small>
+				<label for='nric' generated='true' class='error'></label><br>
 		</div>
 		<div class='col-md-6'>
 				<input type='text' name='email' id='email' placeholder='Email' class='form-control pledge-textbox'>
@@ -366,16 +367,18 @@
 
 	<!-- <div style='text-align:left'>
 	<div style='margin-left:auto; margin-right:auto;'> -->
-	<input type='checkbox' id='finished' name='finished'> "I'm FINished with FINs and I will never eat or serve
-	shark fin soup again"
+	<input type='checkbox' id='finished' name='finished'> <b>"I'm FINished with FINs" and I will never eat or serve
+	shark fin soup again.</b>
 	<br><label for='finished' generated='true' class='error'></label><br>
 	<!-- </div>
 	</div> -->
 
 
-	<input type='checkbox' id='support' name='support'> "I support ending the shark fin trade in my country and
-	ask my government to enact a ban on the shark fin trade"
-	<br><label for='support' generated='true' class='error'></label><br>
+	<input type='checkbox' id='support' name='support'>
+	<b>I support ending the shark fin trade in my country.</b><br>
+	The global shark fin trade depletes our ocean of sharks, putting healthy marine ecosystems,<br>
+	oceanic health and resilience of our  commercial fisheries at risk.
+	<label for='support' generated='true' class='error'></label><br>
 	<br>
 
 	<span class='pledge-now' onclick='submitForm()'></span>

@@ -43,11 +43,7 @@
 					<td>{{link_to('admin/grid/update/'.$g->id, $g->title) }}</td>
 					<td>{{$category_arr[$g->category]}}</td>
 					<td>{{$g->position}}</td>
-					<td>							
-						@foreach($g->country() as $key => $c)
-							{{ $country_arr[$c] }}
-						@endforeach
-					</td>
+					<td>{{$country_arr[$g->country]}}</td>
 					<!-- <td>{{HTML::image('img/grid/'.$g->image, '', ['height'=>'40px'])}}</td>
 					<td>
 						@if ($g->logo != '')
@@ -59,7 +55,11 @@
 							@if ($g->type == 'V')
 								{{HTML::link('http://youtube.com/watch?v='.$g->link, 'Video', ['target'=>'_blank'])}}
 							@elseif ($g->type == 'S')
-								<a href='//{{$g->link}}' target='_blank'>Website</a>
+								@if (strpos($g->link, 'http://') !== false)
+									<a href="<?php echo $g->link ?>" target='_blank'>Website</a>
+								@else
+									<a href="//{{$g->link}}" target='_blank'>Website</a>
+								@endif
 							@endif
 						@endif
 					</td>

@@ -23,7 +23,6 @@ class CreateGridTable extends Migration {
         $table->char('category', 1)->nullable();
         $table->string('title', 200);
         $table->string('link', 200)->nullable();
-        $table->string('caption', 50)->nullable();
         $table->mediumInteger('position')->nullable();
         $table->integer('country', 1)->nullable();
         $table->timestamps();

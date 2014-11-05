@@ -26,6 +26,25 @@ $country = $url[0];
 
 		<link rel="stylesheet" href="{{ asset('css/landing.css') }}">
 
+		<!-- Twitter Card data -->
+		<meta name="twitter:card" content="summary">
+		<meta name="twitter:site" content="@publisher_handle">
+		<meta name="twitter:title" content="I'm Finished With Fins">
+		<meta name="twitter:description" content="What do over 100 of Singapore's most iconic and influential personalities
+		have in common? They have all taken a personal pledge to stop eating shark fin soup by saying “I'm
+		FINished with Fins”. ">
+		<meta name="twitter:creator" content="@author_handle">
+		<meta name="twitter:image" content="http://www.finishedwithfins.org/img/logo.png">
+		<!-- Open Graph data -->
+		<meta property="og:title" content="I'm Finished With Fins" />
+		<meta property="og:type" content="article" />
+		<meta property="og:url" content="http://www.finishedwithfins.org/" />
+		<meta property="og:image" content="http://www.finishedwithfins.org/img/logo.png" />
+		<meta property="og:description" content="What do over 100 of Singapore's most iconic and influential personalities
+		have in common? They have all taken a personal pledge to stop eating shark fin soup by saying “I'm
+		FINished with Fins”." />
+		<meta property="og:site_name" content="I'm Finished With Fins" />
+
 		<script type='text/javascript'>
 			$(document).ready( function() {
 				$('#country').change(function() {
@@ -62,7 +81,7 @@ $country = $url[0];
 
 	<table class='landing-tbl'>
 		<tr>
-			<td rowspan='2' style='text-align:left; width:300px'>
+			<td rowspan='2' style='text-align:left; width:200px'>
 				<a href="{{URL::to('/')}}">{{HTML::image('img/logo.png', '')}}</a>
 			</td>
 			<td style='text-align:right'>
@@ -100,10 +119,11 @@ $country = $url[0];
 	<div class='container'>
 		<table style='width:100%'>
 		<tr>
-		<td style='font-size:10px'>
-		Shark savers, inc. is a 501(C) (3) Non-Profit Organization.<br>
-		Copyright © 2013 Shark Savers Inc. All Rights Reserved.<br>
-		Privacy Policy | Terms & Conditions
+		<td style='font-size:11px'>
+		Shark Savers, inc. is a 501(C) (3) Non-Profit Organization.<br>
+		Copyright © 2014 Shark Savers Inc. All Rights Reserved.<br>
+		Privacy Policy | Terms & Conditions<br>
+		Developed by Wei Ket from <a href='http://www.adoptadog.sg' target='_blank'>www.adoptadog.sg</a>
 		</td>
 		<td style='text-align:right'>		
 			<a href='https://www.facebook.com/SharkSaversSingapore' target='_blank'><span class='link-facebook'></span></a>

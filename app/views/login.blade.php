@@ -45,21 +45,22 @@
 <div class="container">	
 
 {{HTML::image('img/logo-sg.png')}}
+<br>
 
-<ul class="pagination">
-  <li>{{HTML::link('/', 'finishedwithfins.org')}}</li>
-  <li>{{HTML::link('admin/grid', 'Grid')}}</li>
-  <li>{{HTML::link('admin/position', 'Position')}}</li>
-  <li>{{HTML::link('admin/slider', 'Slider')}}</li>
-  <li>{{HTML::link('admin/pledge', 'Pledge')}}</li>
-  <li>{{HTML::link('admin/issue', 'Issue Tracker')}}</li>
-  <!-- <li>{{HTML::link('admin/issue', 'Config')}}</li> -->
-  <li>{{HTML::link('admin/info', 'Dimensions')}}</li>
-  <li>{{HTML::link('admin/logout', 'Logout')}}</li>
-  <!-- <li>{{HTML::link('admin/ambassador', 'Ambassador')}}</li>
-  <li>{{HTML::link('admin/supporter', 'Supporter')}}</li>
-  <li>{{HTML::link('admin/video', 'Video')}}</li> -->
-</ul>
+<h2>Login</h2>
+
+@if(Session::has('msg'))
+  <div class="alert alert-success ">
+    {{ Session::get('msg') }}
+  </div>
+@endif
+
+Password<br>
+{{ Form::open(['url'=> 'admin/login', 'id'=>'val', 'class'=>'form', 'role'=>'form', 'files'=>true]) }}
+	{{ Form::password('password', ['style'=>'width:50%', 'class'=>'form-control']) }}
+	<br>
+	{{ Form::submit('Login') }}
+{{ Form::close() }}
 
 @yield('content')
 

@@ -35,6 +35,7 @@ class GridController extends BaseController {
 		$grid->title = $input['title'];
 		$grid->link = $input['link'];
 		$grid->category = $input['category'];
+		$grid->country = $input['country'];
 		$grid->text = $input['text'];
 
 		if ($grid->type == 'V') {
@@ -59,35 +60,7 @@ class GridController extends BaseController {
     }
 		$grid->save();
 
-		foreach($_POST['country'] as $key => $c) {
-			/*$country_arr = ['1'=>'SG', '2'=>'MY', '3'=>'HK'];
-			$country = $country_arr[$c];
-			$destinationPath = $_SERVER['DOCUMENT_ROOT'] . "/img/".$country;
-			if ($grid->type == 'A') {
-				$destinationPath .= "/ambassador/";
-			} else if ($grid->type = 'V') {
-				$destinationPath .= "/video/";				
-			} else if ($grid->type = 'S') {
-				$destinationPath .= "/supporter/";
-			}
-
-      if (Input::hasFile('image')) {
-      	$file            = Input::file('image');
-      	$image_name        = $file->getClientOriginalName();
-        $uploadSuccess   = $file->move($destinationPath, $image_name);
-	    }
-	    if (Input::hasFile('logo')) {
-    	  $file           = Input::file('logo');
-    		$logo_name        = $fil->getClientOriginalName();
-        $uploadSuccess   = $file->move($destinationPath, $logo_name);
-	    }*/
-
-    	DB::table('grid_country')
-        ->insert(['grid'=>$grid->id, 'country'=>$c]);
-
-    }
-
-		return Redirect::to('admin/grid')->with('msg', 'Grid has been created');;
+		return Redirect::to('admin/grid')->with('msg', 'Grid has been created');
 	}
 
 	public function updatePost() {
@@ -106,17 +79,18 @@ class GridController extends BaseController {
 		$grid->title = $input['title'];
 		$grid->link = $input['link'];
 		$grid->category = $input['category'];
+		$grid->country = $input['country'];
 		/*$grid->position = $input['position'];*/
-		$grid->caption = $input['caption'];
+		/*$grid->caption = $input['caption'];*/
 		$grid->text = $input['text'];
 
-		DB::table('grid_country')
+		/*DB::table('grid_country')
       ->where('grid', $input['id'])
       ->delete();
     foreach($_POST['country'] as $key => $c) {
     	DB::table('grid_country')
       ->insert(['grid'=>$input['id'], 'country'=>$c]);
-    }
+    }*/
 
     if ($grid->type == 'V') {
 			$destinationPath = $_SERVER['DOCUMENT_ROOT'] . "/img/grid/video/";			
