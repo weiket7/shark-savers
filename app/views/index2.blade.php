@@ -69,7 +69,35 @@
 		}
 	}
 
+	//https://developers.facebook.com/docs/plugins/share-button/
+	//https://developers.facebook.com/docs/sharing/reference/share-dialog
+	//http://scotch.io/tutorials/how-to-share-webpages-with-facebook
+	//https://developers.facebook.com/docs/plugins/like-button
 	function shareFacebook()	{
+		var width=850;
+		var height=520;
+		var leftPosition, topPosition;
+	  //Allow for borders.
+	  leftPosition = (window.screen.width / 2) - ((width / 2) + 10);
+	  //Allow for title and status bars.
+	  topPosition = (window.screen.height / 2) - ((height / 2) + 50);
+	  var windowFeatures = "status=no,height=" + height + ",width=" + width + ",resizable=yes,left=" + leftPosition + ",top=" + topPosition + ",screenX=" + leftPosition + ",screenY=" + topPosition + ",toolbar=no,menubar=no,scrollbars=no,location=no,directories=no";
+	  var u="http://www.finishedwithfins.org";
+	  var t="I'm FINished with FINS. Join the pledge now! http://www.finishedwithfins.org/{{$country = strtolower(Request::segment(1))}}/pledge";
+	  <?php if ($country=='sg') {
+	  	echo 'var i = "http://finishedwithfins.org/img/grid/Kimberly_Chia.jpg"';
+	  } else if ($country=='my'){
+	  	echo 'var i = "http://finishedwithfins.org/img/grid/Amber-Chia_IMG_1237_1.jpg"';
+	  } else if ($country=='hk') {
+	  	echo 'var i = "http://finishedwithfins.org/img/grid/SS_Poster_GEM.jpg"';
+	  }
+	  ?>
+	  //window.open('http://www.facebook.com/sharer.php?u='+encodeURIComponent(u)+'&message='+encodeURIComponent(t)+'&picture='+encodeURIComponent(i),'sharer', windowFeatures);
+	  var url = "https://www.facebook.com/dialog/feed?app_id=288386708038383&redirect_uri=http://www.finishedwithfins.org&link=http://www.finishedwithfins.org&picture="+i;
+	  window.open(url,'sharer', windowFeatures);
+	}	
+
+	function shareTwitter()	{
 		var width=600;
 		var height=400;
 		var leftPosition, topPosition;
@@ -79,8 +107,8 @@
 	  topPosition = (window.screen.height / 2) - ((height / 2) + 50);
 	  var windowFeatures = "status=no,height=" + height + ",width=" + width + ",resizable=yes,left=" + leftPosition + ",top=" + topPosition + ",screenX=" + leftPosition + ",screenY=" + topPosition + ",toolbar=no,menubar=no,scrollbars=no,location=no,directories=no";
 	  var u="http://www.finishedwithfins.org";
-	  var t="I'm FINished with FINS. Join the pledge now! http://www.finishedwithfins.org/sg/pledge";
-	  window.open('http://www.facebook.com/sharer.php?u='+encodeURIComponent(u)+'&message='+encodeURIComponent(t),'sharer', windowFeatures);
+	  var t="I'm FINished with FINS. Join the pledge now! http://www.finishedwithfins.org/{{$country = strtolower(Request::segment(1))}}/pledge";
+	  window.open("https://twitter.com/intent/tweet?text=I'm FINished with FINS. Join the pledge now! http://www.finishedwithfins.org/{{$country = strtolower(Request::segment(1))}}/pledge", 'sharer', windowFeatures);
 	}	
 
 	function stopVideo() {
@@ -107,7 +135,6 @@
 	</div> -->
 </div>
 
-
 <div class='container'>
 
 	<?php
@@ -121,7 +148,7 @@
 		} elseif ($g->type=='V') {
 			echo '<div id="V'.$g->id.'" data-title="'.$g->title.'" data-link="'.$g->link.'" style="display:none"></div>';
 		} elseif ($g->type='S') {
-			echo "<div id='S".$g->id."' data-link='".$g->link."' data-title='".$title."' data-logo='".$g->logo."' data-image='".$g->image."' data-text='".$g->text."' style='display:none'></div>";
+			echo "<div id='S".$g->id."' data-link='".$g->link."' data-title='".$g->title."' data-logo='".$g->logo."' data-image='".$g->image."' data-text='".$g->text."' style='display:none'></div>";
 
 		}
 	if (($count-1)%3==0) 
@@ -212,11 +239,8 @@
       </div>      
 
       <div class="modal-footer" style='border-top: 4px solid red; text-align:left'>
-      	{{HTML::image('img/share-facebook.png', '', ['onclick'=>'shareFacebook()', 'style'=>'height:40px'])}}
-
-				<a href="https://twitter.com/intent/tweet?text=I'm FINished with FINS. Join the pledge now! http://www.finishedwithfins.org/sg/pledge">
-				  {{HTML::image('img/share-twitter.png', '', ['style'=>'height:40px'])}}
-				</a>			
+      	<span class='share-facebook' onclick='shareFacebook()'></span>
+			  <span class='share-twitter' onclick='shareTwitter()'></span>		
       </div>
     </div>
   </div>
@@ -237,10 +261,8 @@
       </div>      
 
       <div class="modal-footer" style='text-align:left'>
-      	{{HTML::image('img/share-facebook.png', '', ['onclick'=>'shareFacebook()', 'style'=>'height:40px'])}}
-
-				<a href="https://twitter.com/intent/tweet?text=I'm FINished with FINS. Join the pledge now! http://www.finishedwithfins.org/sg/pledge">
-				  {{HTML::image('img/share-twitter.png', '', ['style'=>'height:40px'])}}
+      	<span class='share-facebook' onclick='shareFacebook()'></span>
+			  <span class='share-twitter' onclick='shareTwitter()'></span>
 				</a>
       </div>
     </div>
@@ -277,10 +299,8 @@
 
       <div class="modal-footer" style='text-align:left'>
       	<span class='share-facebook' onclick='shareFacebook()'></span>
-				<a href="https://twitter.com/intent/tweet?text=I'm FINished with FINS. Join the pledge now! http://www.finishedwithfins.org/sg/pledge">
-				  <span class='share-twitter'></span>
-				</a>
-      	<a href='' target='_blank' id='pop-supporter-link'><span class='visit-site'></span></a>	
+			  <span class='share-twitter' onclick='shareTwitter()'></span>
+				<a href='' target='_blank' id='pop-supporter-link'><span class='visit-site'></span></a>	
       </div>
     </div>
   </div>

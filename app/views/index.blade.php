@@ -39,13 +39,14 @@ $country = $url[0];
 		<meta property="og:title" content="I'm Finished With Fins" />
 		<meta property="og:type" content="article" />
 		<meta property="og:url" content="http://www.finishedwithfins.org/" />
-		<meta property="og:image" content="http://www.finishedwithfins.org/img/logo.png" />
+		<meta property="og:image" content="http://finishedwithfins.org/img/grid/Amber-Chia_IMG_1237_1.jpg" />
 		<meta property="og:description" content="What do over 100 of Singapore's most iconic and influential personalities
 		have in common? They have all taken a personal pledge to stop eating shark fin soup by saying “I'm
 		FINished with Fins”." />
 		<meta property="og:site_name" content="I'm Finished With Fins" />
 
 		<script type='text/javascript'>
+			//https://developers.facebook.com/tools/debug/og/object/
 			$(document).ready( function() {
 				$('#country').change(function() {
 					var country = $(this).val();

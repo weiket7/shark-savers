@@ -35,7 +35,7 @@
 		    first_name: { required: "Please enter first name"},
 		    last_name: { required: "Please enter last name" },
 		    //nric: { required: "Please enter NRIC", exist: "The NRIC has already pledged"},
-		    email: { required: "Please enter valid email", exist: "The NRIC has already pledged"},
+		    email: { required: "Please enter valid email", exist: "The email has already pledged"},
 		    country: { required: "Please select country"},
 		    finished: { required: "Please check the checkbox"},
 		    support: { required: "Please check the checkbox"},
@@ -71,10 +71,22 @@
 		something you wear as a badge and remain faithful to for life.
 		<br><br>
 
+		@if($country == 'sg') 
+Your pledge will help us spread the message and encourage even more to
+		follow. Take the pledge today and help us reach the goal of getting 100,000
+		Singaporeans to also do the same. Together we can make a difference in Singapore,
+		and in the world.
+		@elseif($country == 'my')
+Your pledge will help us spread the message and encourage even more to
+		follow. Take the pledge today and help us reach the goal of getting 100,000
+		Malaysians to also do the same. Together we can make a difference in Malaysia,
+		and in the world.
+		@elseif($country == 'hk')
 		Your pledge will help us spread the message and encourage even more to
 		follow. Take the pledge today and help us reach the goal of getting 100,000
-		Singaporeans to also do the same. Together we can make a difference in
-		Singapore, and in the world.
+		Hong Kongese to also do the same. Together we can make a difference in Hong Kong,
+		and in the world.
+		@endif
 		<br>
 	</div>
 
