@@ -85,7 +85,7 @@
 	  var u="http://www.finishedwithfins.org";
 	  var t="I'm FINished with FINS. Join the pledge now! http://www.finishedwithfins.org/{{$country = strtolower(Request::segment(1))}}/pledge";
 	  <?php if ($country=='sg') {
-	  	echo 'var i = "http://finishedwithfins.org/img/grid/Kimberly_Chia.jpg"';
+	  	echo 'var i = "http://finishedwithfins.org/img/grid/HossanLeong.jpg"';
 	  } else if ($country=='my'){
 	  	echo 'var i = "http://finishedwithfins.org/img/grid/Amber-Chia_IMG_1237_1.jpg"';
 	  } else if ($country=='hk') {

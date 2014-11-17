@@ -33,4 +33,32 @@ class PledgeController extends BaseController {
 		return Redirect::to('admin/pledge');
 	}
 
+	public function createApi() {
+		$this->layout = "";
+
+		$input = Input::all();	 	
+	 	$validator = Validator::make( $input, Pledge::$rules ); 
+		if ( $validator->fails() ) { 
+			 return 'false: missing fields';
+		}
+
+		$pledge = new Pledge();
+		$pledge->first_name = $input['first_name'];
+		$pledge->last_name = $input['last_name'];
+		$pledge->nric = $input['nric'];
+		$pledge->email = $input['email'];
+		$pledge->country = $input['country'];
+
+		$p = DB::table('pledge')->where('email', 'like', '%'.$input['email'].'%')->get();
+		if ($p)
+			return 'false: email exists';
+
+		if (isset($input['test']) && $input['test'] == 'true') {
+			return 'true: test only did not create';
+		}
+
+		$pledge->save();			
+		return 'true: pledge created';
+	}
+
 }

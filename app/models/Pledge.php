@@ -10,7 +10,7 @@ class Pledge extends Eloquent {
   	'last_name'=>'required',
   	'nric'=>'required',
   	'email'=>'required',
-  	'address'=>'required',
+  	'country'=>'required',
   );
 
 	public static function bare () {

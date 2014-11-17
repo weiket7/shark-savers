@@ -37,6 +37,8 @@ Route::get('exist/{email}', function($email) {
 	echo $p ? 'true' : 'false';	//exist = true 
 });
 
+Route::get('api/pledge/create', 'PledgeController@createApi');
+
 Route::group(array('prefix' => 'sg'), function()
 {	 
 	Route::get('/', 'SiteController@index2');
