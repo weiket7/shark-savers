@@ -4,7 +4,7 @@
 		<meta charset="UTF-8">
 		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 		<title>
-			IMWF | I'm Finished With Fins
+			IFWF | I'm Finished With Fins
 			<?php
 			$url = explode('/',Request::path());
 			$country = $url[0];
