@@ -127,9 +127,9 @@ $country = $url[0];
 		Developed by Wei Ket from <a href='http://www.adoptadog.sg' target='_blank'>www.adoptadog.sg</a>
 		</td>
 		<td style='text-align:right'>		
-			<a href='https://www.facebook.com/SharkSaversSingapore' target='_blank'><span class='link-facebook'></span></a>
-			<a href='http://www.twitter.com/SharkSaversSG' target='_blank'><span class='link-twitter'></span></a>
-			<a href='https://www.youtube.com/user/sharksaverssingapore' target='_blank'><span class='link-youtube'></span></a>
+			<a href='https://www.facebook.com/FinishedWithFins' target='_blank'><span class='link-facebook'></span></a>
+			<a href='http://www.twitter.com/sharksavers' target='_blank'><span class='link-twitter'></span></a>
+			<a href='https://www.youtube.com/user/sharksavers' target='_blank'><span class='link-youtube'></span></a>
 		</td>
 		</tr>
 		</table>

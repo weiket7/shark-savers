@@ -235,13 +235,13 @@
 					<a href='http://www.twitter.com/SharkSaversSG' target='_blank'><span class='link-twitter'></span></a>
 					<a href='https://www.youtube.com/user/sharksaverssingapore' target='_blank'><span class='link-youtube'></span></a>
 				@elseif (strtolower($country)=='hk')
-					<a href='https://www.facebook.com/FinishedWithFins' target='_blank'><span class='link-facebook'></span></a>				
-					<a href='https://www.youtube.com/user/HKSharksavers' target='_blank'><span class='link-youtube'></span></a>
-				@else <!--MY-->
-					<a href='https://www.facebook.com/FinishedWithFins' target='_blank'><span class='link-facebook'></span></a>
+					<a href='https://www.facebook.com/SharkSaversHK' target='_blank'><span class='link-facebook'></span></a>				
 					<a href='http://www.weibo.com/sharksavershk' target='_blank'><span class='link-weibo'></span></a>
-					<a href='http://instagram.com/sharksavershk' target='_blank'><span class='link-instagram'></span></a>
+					<a href='http://instagram.com/sharksavershk' target='_blank'><span class='link-instagram'></span></a>					
 					<a href='https://www.youtube.com/user/HKSharksavers' target='_blank'><span class='link-youtube'></span></a>
+				@elseif (strtolower($country)=='my')
+					<a href='https://www.facebook.com/sharksaversmalaysia' target='_blank'><span class='link-facebook'></span></a>
+					<a href='https://www.youtube.com/user/sharksaversmalaysia' target='_blank'><span class='link-youtube'></span></a>
 				@endif
 			</td>
 		</tr>
