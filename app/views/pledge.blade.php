@@ -379,19 +379,17 @@ Your pledge will help us spread the message and encourage even more to
 
 	<!-- <div style='text-align:left'>
 	<div style='margin-left:auto; margin-right:auto;'> -->
-	<input type='checkbox' id='finished' name='finished'> <b>"I'm FINished with FINs" and I will never eat or serve
+	<label><input type='checkbox' id='finished' name='finished'> <b>"I'm FINished with FINs" and I will never eat or serve
 	shark fin soup again.</b>
-	<br><label for='finished' generated='true' class='error'></label><br>
-	<!-- </div>
-	</div> -->
+	<br><label for='finished' generated='true' class='error'></label></label>
+	<br>
 
-
-	<input type='checkbox' id='support' name='support'>
+	<label><input type='checkbox' id='support' name='support'>
 	<b>I support ending the shark fin trade in my country.</b><br>
 	The global shark fin trade depletes our ocean of sharks, putting healthy marine ecosystems,<br>
 	oceanic health and resilience of our  commercial fisheries at risk.
-	<label for='support' generated='true' class='error'></label><br>
-	<br>
+	<label for='support' generated='true' class='error'></label></label>
+	<br><br>
 
 	<span class='pledge-now' onclick='submitForm()'></span>
 
